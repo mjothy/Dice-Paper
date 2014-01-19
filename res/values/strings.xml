@@ -2,4 +2,6 @@
 <resources>
     <string name="app_name">DicePaper</string>
     <string name="Univers">Univers</string>
+    <string name="newUniverse">Créer un Univers</string>
+    <string name="loadUniverse">Ouvrir un Univers</string>
 </resources>
