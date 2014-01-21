@@ -46,9 +46,19 @@ public class CreateUniversDialog extends DialogFragment {
         @Override
         public void onClick(View v) {
             String univName = name.getText().toString();
+            long result = -1;
             if (!univName.isEmpty()){
-                Toast.makeText(getActivity(), "Univers :"+univName, Toast.LENGTH_SHORT).show();
+                UniversDAO univManager = new UniversDAO(getActivity());
+                univManager.open();
+                result = univManager.createUnivers(univName);
+                univManager.close();
             }
+            if(result != -1){
+                Toast.makeText(getActivity(), "Univers créé", Toast.LENGTH_SHORT).show();
+            } else {
+                Toast.makeText(getActivity(), "Erreur, pas de créa d'univers", Toast.LENGTH_SHORT).show();
+            }
+            dismiss();
         }
     };
 

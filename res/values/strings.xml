@@ -5,6 +5,7 @@
     <string name="newUniverse">Créer un Univers</string>
     <string name="loadUniverse">Ouvrir un Univers</string>
     <string name="nameUniverse">Nom du nouvel univers :</string>
+    <string name="listUniverse">Liste des univers :</string>
     <string name="ok">Ok</string>
     <string name="cancel">Annuler</string>
 </resources>
