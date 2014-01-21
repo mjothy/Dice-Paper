@@ -1,9 +1,6 @@
 package edu.jdr.DicePaper;
 
-import android.app.Activity;
-import android.app.AlertDialog;
-import android.app.Dialog;
-import android.app.DialogFragment;
+import android.app.*;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
@@ -31,9 +28,26 @@ public class UniversMenu extends Activity {
         createUniverse.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                new MyDialogFragment().show(getFragmentManager(), "MyDialog");
+                showDialogType(1);
             }
         });
+    }
+
+    public void showDialogType(int type){
+        FragmentTransaction ft = getFragmentManager().beginTransaction();
+        Fragment prev = getFragmentManager().findFragmentByTag("dialog");
+        if (prev != null) {
+            ft.remove(prev);
+        }
+        ft.addToBackStack(null);
+
+        DialogFragment dial = null;
+        switch (type){
+            case 1 :
+                dial = CreateUniversDialog.newInstance(R.string.nameUniverse);
+                break;
+        }
+        dial.show(ft,"dialog");
     }
 
 
