@@ -1,0 +1,155 @@
+#------------------------------------------------------------
+#        Script SQLite  
+#------------------------------------------------------------
+
+CREATE TABLE univers(
+	nom_univers  TEXT NOT NULL ,
+	PRIMARY KEY (nom_univers)
+);
+
+CREATE TABLE utilitaire_liste(
+	utilitaire_liste_id  INTEGER autoincrement NOT NULL ,
+	nom                  TEXT NOT NULL ,
+	nom_univers          TEXT ,
+	PRIMARY KEY (utilitaire_liste_id) ,
+	
+	FOREIGN KEY (nom_univers) REFERENCES univers(nom_univers)
+);
+
+CREATE TABLE utilitaire_valeur(
+	utilitaire_valeur_id  INTEGER autoincrement NOT NULL ,
+	valeur                TEXT NOT NULL ,
+	groupe                TEXT ,
+	utilitaire_liste_id   INTEGER NOT NULL ,
+	nom_fiche             TEXT NOT NULL ,
+	PRIMARY KEY (utilitaire_valeur_id) ,
+	
+	FOREIGN KEY (utilitaire_liste_id) REFERENCES utilitaire_liste(utilitaire_liste_id),
+	FOREIGN KEY (nom_fiche) REFERENCES fiche_personnage(nom_fiche)
+);
+
+CREATE TABLE caracteristique_liste(
+	caracteristique_liste_id  INTEGER autoincrement NOT NULL ,
+	nom                       TEXT NOT NULL ,
+	nom_univers               TEXT ,
+	PRIMARY KEY (caracteristique_liste_id) ,
+	
+	FOREIGN KEY (nom_univers) REFERENCES univers(nom_univers)
+);
+
+CREATE TABLE caracteristique_valeur(
+	caracteristique_valeur_id  INTEGER autoincrement NOT NULL ,
+	valeur_base                REAL NOT NULL ,
+	valeur_actuelle            REAL ,
+	caracteristique_liste_id   INTEGER NOT NULL ,
+	nom_fiche                  TEXT NOT NULL ,
+	PRIMARY KEY (caracteristique_valeur_id) ,
+	
+	FOREIGN KEY (caracteristique_liste_id) REFERENCES caracteristique_liste(caracteristique_liste_id),
+	FOREIGN KEY (nom_fiche) REFERENCES fiche_personnage(nom_fiche)
+);
+
+CREATE TABLE modificateur_liste(
+	modificateur_liste_id     INTEGER autoincrement NOT NULL ,
+	nom                       TEXT ,
+	caracteristique_liste_id  INTEGER NOT NULL ,
+	PRIMARY KEY (modificateur_liste_id) ,
+	
+	FOREIGN KEY (caracteristique_liste_id) REFERENCES caracteristique_liste(caracteristique_liste_id)
+);
+
+CREATE TABLE modificateur_valeur(
+	modificateur_valeur_id  INTEGER autoincrement NOT NULL ,
+	valeur                  REAL ,
+	modificateur_liste_id   INTEGER ,
+	nom_fiche               TEXT NOT NULL ,
+	PRIMARY KEY (modificateur_valeur_id) ,
+	
+	FOREIGN KEY (modificateur_liste_id) REFERENCES modificateur_liste(modificateur_liste_id),
+	FOREIGN KEY (nom_fiche) REFERENCES fiche_personnage(nom_fiche)
+);
+
+CREATE TABLE competence_liste(
+	competence_liste_id  INTEGER autoincrement NOT NULL ,
+	nom                  TEXT NOT NULL ,
+	nom_univers          TEXT ,
+	PRIMARY KEY (competence_liste_id) ,
+	
+	FOREIGN KEY (nom_univers) REFERENCES univers(nom_univers)
+);
+
+CREATE TABLE competence_valeur(
+	competence_valeur_id  INTEGER autoincrement NOT NULL ,
+	valeur_base           REAL NOT NULL ,
+	valeur_actuelle       REAL NOT NULL ,
+	competence_liste_id   INTEGER NOT NULL ,
+	nom_fiche             TEXT NOT NULL ,
+	PRIMARY KEY (competence_valeur_id) ,
+	
+	FOREIGN KEY (competence_liste_id) REFERENCES competence_liste(competence_liste_id),
+	FOREIGN KEY (nom_fiche) REFERENCES fiche_personnage(nom_fiche)
+);
+
+CREATE TABLE jauge_liste(
+	jauge_list_id  INTEGER autoincrement NOT NULL ,
+	nom            TEXT NOT NULL ,
+	nom_univers    TEXT ,
+	PRIMARY KEY (jauge_list_id) ,
+	
+	FOREIGN KEY (nom_univers) REFERENCES univers(nom_univers)
+);
+
+CREATE TABLE jauge_valeur(
+	jauge_valeur_id  INTEGER autoincrement NOT NULL ,
+	valeur_max       INTEGER NOT NULL ,
+	valeur_actuelle  INTEGER ,
+	jauge_list_id    INTEGER NOT NULL ,
+	nom_fiche        TEXT NOT NULL ,
+	PRIMARY KEY (jauge_valeur_id) ,
+	
+	FOREIGN KEY (jauge_list_id) REFERENCES jauge_liste(jauge_list_id),
+	FOREIGN KEY (nom_fiche) REFERENCES fiche_personnage(nom_fiche)
+);
+
+CREATE TABLE equipement(
+	equipement_id  INTEGER autoincrement NOT NULL ,
+	nom            TEXT NOT NULL ,
+	description    TEXT ,
+	nom_fiche      TEXT NOT NULL ,
+	PRIMARY KEY (equipement_id) ,
+	
+	FOREIGN KEY (nom_fiche) REFERENCES fiche_personnage(nom_fiche)
+);
+
+CREATE TABLE equipement_detail(
+	detail_id      INTEGER autoincrement NOT NULL ,
+	nom            TEXT NOT NULL ,
+	valeur         TEXT NOT NULL ,
+	equipement_id  INTEGER NOT NULL ,
+	PRIMARY KEY (detail_id) ,
+	
+	FOREIGN KEY (equipement_id) REFERENCES equipement(equipement_id)
+);
+
+CREATE TABLE inventaire(
+	inventaire_id  INTEGER autoincrement NOT NULL ,
+	nom            TEXT NOT NULL ,
+	description    TEXT NOT NULL ,
+	quantite       INTEGER NOT NULL ,
+	nom_fiche      TEXT NOT NULL ,
+	PRIMARY KEY (inventaire_id) ,
+	
+	FOREIGN KEY (nom_fiche) REFERENCES fiche_personnage(nom_fiche)
+);
+
+CREATE TABLE fiche_personnage(
+	nom_fiche    TEXT NOT NULL ,
+	favori       INTEGER NOT NULL ,
+	nom_univers  TEXT ,
+	PRIMARY KEY (nom_fiche) ,
+	
+	FOREIGN KEY (nom_univers) REFERENCES univers(nom_univers)
+);
+
+
+
