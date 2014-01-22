@@ -3,7 +3,9 @@
     <string name="app_name">DicePaper</string>
     <string name="Univers">Univers</string>
     <string name="newUniverse">Créer un Univers</string>
-    <string name="loadUniverse">Ouvrir un Univers</string>
+    <string name="loadUniverse">Modifier un Univers</string>
+    <string name="deleteUniverse">Supprimer un Univers</string>
+    <string name="enterUniverse">Entrer dans un Univers</string>
     <string name="nameUniverse">Nom du nouvel univers :</string>
     <string name="listUniverse">Liste des univers :</string>
     <string name="ok">Ok</string>

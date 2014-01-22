@@ -56,7 +56,7 @@ public class CreateUniversDialog extends DialogFragment {
             if(result != -1){
                 Toast.makeText(getActivity(), "Univers créé", Toast.LENGTH_SHORT).show();
             } else {
-                Toast.makeText(getActivity(), "Erreur, pas de créa d'univers", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), "Erreur, pas de création d'univers", Toast.LENGTH_SHORT).show();
             }
             dismiss();
         }

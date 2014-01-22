@@ -1,14 +1,9 @@
 package edu.jdr.DicePaper;
 
 import android.app.*;
-import android.content.Context;
-import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.Toast;
-
-import java.util.ArrayList;
 
 /**
  * Created with IntelliJ IDEA.
@@ -20,15 +15,21 @@ import java.util.ArrayList;
 public class UniversMenu extends Activity {
     private Button createUniverse;
     private Button loadUniverse;
+    private Button deleteUniverse;
+    private Button enterUniverse;
     private final int CREATEDIALOG = 1;
     private final int LOADIALOG = 2;
+    private final int DELETEDIALOG = 3;
+    private final int ENTERDIALOG = 4;
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.universmenu);
 
+        //initializing buttons
         createUniverse = (Button) findViewById(R.id.NewUniverse);
         loadUniverse = (Button) findViewById(R.id.LoadUniverse);
-
+        deleteUniverse = (Button) findViewById(R.id.DeleteUniverse);
+        enterUniverse = (Button) findViewById(R.id.EnterUniverse);
         createUniverse.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -38,12 +39,19 @@ public class UniversMenu extends Activity {
         loadUniverse.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                UniversDAO manager = new UniversDAO(v.getContext());
-                manager.open();
-                ArrayList<String> list = manager.getAllUnivers();
-                manager.close();
-                Toast.makeText(v.getContext(), "Ca marche "+ list.get(0), android.widget.Toast.LENGTH_SHORT).show();
-                //showDialogType(LOADIALOG);
+                showDialogType(LOADIALOG);
+            }
+        });
+        deleteUniverse.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showDialogType(DELETEDIALOG);
+            }
+        });
+        enterUniverse.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showDialogType(ENTERDIALOG);
             }
         });
     }
@@ -62,10 +70,16 @@ public class UniversMenu extends Activity {
                 dial = CreateUniversDialog.newInstance(R.string.nameUniverse);
                 break;
             case LOADIALOG :
-                dial = LoadUniverseDialog.newinstance(R.string.listUniverse);
+                dial = LoadUniverseDialog.newinstance(R.string.listUniverse, LoadUniverseDialog.LOAD);
+                break;
+            case DELETEDIALOG :
+                dial = LoadUniverseDialog.newinstance(R.string.listUniverse, LoadUniverseDialog.DELETE);
+                break;
+            case ENTERDIALOG :
+                dial = LoadUniverseDialog.newinstance(R.string.listUniverse, LoadUniverseDialog.ENTER);
                 break;
         }
-        dial.show(ft,"dialog");
+        dial.show(getFragmentManager(),"dialog");
     }
 
 
