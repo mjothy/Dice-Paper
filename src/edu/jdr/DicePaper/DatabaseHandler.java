@@ -24,4 +24,13 @@ public class DatabaseHandler extends SQLiteOpenHelper{
         db.execSQL(UniversDAO.TABLE_DROP);
         onCreate(db);
     }
+
+    @Override
+    public void onOpen(SQLiteDatabase db){
+        super.onOpen(db);
+        if (!db.isReadOnly()) {
+            //allow foreign key constaints such as ON DELETE...
+            db.execSQL("PRAGMA foreign_keys=ON;");
+        }
+    }
 }
