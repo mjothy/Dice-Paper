@@ -5,6 +5,7 @@ import android.app.Dialog;
 import android.app.DialogFragment;
 import android.app.Fragment;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -60,6 +61,11 @@ public class LoadUniverseDialog extends DialogFragment {
     private Dialog.OnClickListener loadListener = new DialogInterface.OnClickListener() {
         @Override
         public void onClick(DialogInterface dialog, int which) {
+            if(goal == LOAD){
+                Intent universeBuilder = new Intent(getActivity(), UniversBuilderMenu.class);
+                universeBuilder.putExtra("universeName", listUniv.get(which));
+                startActivity(universeBuilder);
+            }
             if(goal == DELETE){
                 AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
                 builder.setTitle("Êtes vous certain de vouloir supprimer " + listUniv.get(which) + "?");

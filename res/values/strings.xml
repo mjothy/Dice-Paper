@@ -10,4 +10,12 @@
     <string name="listUniverse">Liste des univers :</string>
     <string name="ok">Ok</string>
     <string name="cancel">Annuler</string>
+    <string name="buildUnivDescription">
+        Dans ce menu, vous pouvez paramétrer votre univers comme vous le souhaitez, que ce soit pour
+        la fiche de personnage ou pour la façon dont les jets de dés se font.
+    </string>
+    <string name="defineUnivTitle">Définition de l\'univers</string>
+    <string name="defineCharSheet">Définir le template de fiche de personnage</string>
+    <string name="defineDiceRoll">Définir les jets de dés</string>
+    <string name="charSheetBuildTitle">Définition de la fiche de personnage</string>
 </resources>

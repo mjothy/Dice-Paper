@@ -13,5 +13,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".UniversMenu" android:label="univermenu"/>
+        <activity android:name=".UniversBuilderMenu"/>
+        <activity android:name=".CharSheetBuilder"/>
     </application>
 </manifest>

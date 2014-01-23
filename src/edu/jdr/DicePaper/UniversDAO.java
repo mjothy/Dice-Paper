@@ -7,6 +7,9 @@ import android.database.Cursor;
 import java.util.ArrayList;
 
 /**
+ * This is the manager of universe
+ * Since universe table is only made of a string as primary key
+ * there is no Univers class to simplify que result of queries
  * Created by paulyves on 1/21/14.
  */
 public class UniversDAO extends DAOBase {

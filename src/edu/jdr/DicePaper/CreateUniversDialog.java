@@ -3,6 +3,7 @@ package edu.jdr.DicePaper;
 import android.app.DialogFragment;
 import android.app.Fragment;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -54,9 +55,11 @@ public class CreateUniversDialog extends DialogFragment {
                 univManager.close();
             }
             if(result != -1){
-                Toast.makeText(getActivity(), "Univers créé", Toast.LENGTH_SHORT).show();
+                Intent universeBuilder = new Intent(getActivity(), UniversBuilderMenu.class);
+                universeBuilder.putExtra("universeName", univName);
+                startActivity(universeBuilder);
             } else {
-                Toast.makeText(getActivity(), "Erreur, pas de création d'univers", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), "Erreur, échec de la création d'univers", Toast.LENGTH_SHORT).show();
             }
             dismiss();
         }
