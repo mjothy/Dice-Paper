@@ -1,17 +1,16 @@
-package edu.jdr.DicePaper;
+package edu.jdr.DicePaper.fragments;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.app.DialogFragment;
-import android.app.Fragment;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Toast;
+import edu.jdr.DicePaper.R;
+import edu.jdr.DicePaper.activity.UniversDefinition;
+import edu.jdr.DicePaper.models.UniversDAO;
 
 import java.util.ArrayList;
 
@@ -20,7 +19,7 @@ import java.util.ArrayList;
  * the goals can be loading (to modify), deleting or entering (to play)
  * Created by paulyves on 1/21/14.
  */
-public class LoadUniverseDialog extends DialogFragment {
+public class ListUniverseDialog extends DialogFragment {
     ArrayList<String> listUniv = null;
     int goal;
     public static final int LOAD = 1;
@@ -34,8 +33,8 @@ public class LoadUniverseDialog extends DialogFragment {
      * @param goal the goal of the list, listener will do different thing depending on it
      * @return
      */
-    public static LoadUniverseDialog newinstance(int title, int goal){
-        LoadUniverseDialog dialog = new LoadUniverseDialog();
+    public static ListUniverseDialog newinstance(int title, int goal){
+        ListUniverseDialog dialog = new ListUniverseDialog();
         Bundle args = new Bundle();
         args.putInt("title", title);
         dialog.setArguments(args);
@@ -50,7 +49,7 @@ public class LoadUniverseDialog extends DialogFragment {
         univManager.open();
         listUniv = univManager.getAllUnivers();
         univManager.close();
-        ArrayAdapter<String> ad = new ArrayAdapter<String>(getActivity(), R.layout.loaduniversedialog, R.id.univList);
+        ArrayAdapter<String> ad = new ArrayAdapter<String>(getActivity(), R.layout.list_univers_dialog, R.id.univList);
         ad.addAll(listUniv);
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         builder.setTitle(title)
@@ -62,7 +61,7 @@ public class LoadUniverseDialog extends DialogFragment {
         @Override
         public void onClick(DialogInterface dialog, int which) {
             if(goal == LOAD){
-                Intent universeBuilder = new Intent(getActivity(), UniversBuilderMenu.class);
+                Intent universeBuilder = new Intent(getActivity(), UniversDefinition.class);
                 universeBuilder.putExtra("universeName", listUniv.get(which));
                 startActivity(universeBuilder);
             }

@@ -1,4 +1,4 @@
-package edu.jdr.DicePaper;
+package edu.jdr.DicePaper.models;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;

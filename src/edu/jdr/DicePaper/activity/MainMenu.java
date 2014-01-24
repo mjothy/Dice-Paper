@@ -1,10 +1,11 @@
-package edu.jdr.DicePaper;
+package edu.jdr.DicePaper.activity;
 
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import edu.jdr.DicePaper.R;
 
 public class MainMenu extends Activity {
 
@@ -21,7 +22,7 @@ public class MainMenu extends Activity {
         versUnivers.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainMenu.this, UniversMenu.class);
+                Intent intent = new Intent(MainMenu.this, UniversMaster.class);
                 startActivity(intent);
             }
         });

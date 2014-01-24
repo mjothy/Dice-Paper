@@ -1,9 +1,12 @@
-package edu.jdr.DicePaper;
+package edu.jdr.DicePaper.activity;
 
 import android.app.*;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import edu.jdr.DicePaper.R;
+import edu.jdr.DicePaper.fragments.CreateUniversDialog;
+import edu.jdr.DicePaper.fragments.ListUniverseDialog;
 
 /**
  * Created with IntelliJ IDEA.
@@ -12,7 +15,7 @@ import android.widget.Button;
  * Time: 16:39
  * To change this template use File | Settings | File Templates.
  */
-public class UniversMenu extends Activity {
+public class UniversMaster extends Activity {
     private Button createUniverse;
     private Button loadUniverse;
     private Button deleteUniverse;
@@ -23,7 +26,7 @@ public class UniversMenu extends Activity {
     private final int ENTERDIALOG = 4;
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.universmenu);
+        setContentView(R.layout.univers_master);
 
         //initializing buttons
         createUniverse = (Button) findViewById(R.id.NewUniverse);
@@ -70,13 +73,13 @@ public class UniversMenu extends Activity {
                 dial = CreateUniversDialog.newInstance(R.string.nameUniverse);
                 break;
             case LOADIALOG :
-                dial = LoadUniverseDialog.newinstance(R.string.listUniverse, LoadUniverseDialog.LOAD);
+                dial = ListUniverseDialog.newinstance(R.string.listUniverse, ListUniverseDialog.LOAD);
                 break;
             case DELETEDIALOG :
-                dial = LoadUniverseDialog.newinstance(R.string.listUniverse, LoadUniverseDialog.DELETE);
+                dial = ListUniverseDialog.newinstance(R.string.listUniverse, ListUniverseDialog.DELETE);
                 break;
             case ENTERDIALOG :
-                dial = LoadUniverseDialog.newinstance(R.string.listUniverse, LoadUniverseDialog.ENTER);
+                dial = ListUniverseDialog.newinstance(R.string.listUniverse, ListUniverseDialog.ENTER);
                 break;
         }
         dial.show(getFragmentManager(),"dialog");

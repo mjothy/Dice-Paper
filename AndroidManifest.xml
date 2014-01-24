@@ -5,15 +5,15 @@
           android:versionName="1.0">
     <uses-sdk android:minSdkVersion="16"/>
     <application android:label="@string/app_name" android:icon="@drawable/ic_launcher" android:debuggable="true">
-        <activity android:name="MainMenu"
+        <activity android:name=".activity.MainMenu"
                   android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name=".UniversMenu" android:label="univermenu"/>
-        <activity android:name=".UniversBuilderMenu"/>
-        <activity android:name=".CharSheetBuilder"/>
+        <activity android:name=".activity.UniversMaster" android:label="univermenu"/>
+        <activity android:name=".activity.UniversDefinition"/>
+        <activity android:name=".activity.CharSheetDef"/>
     </application>
 </manifest>

@@ -1,8 +1,6 @@
-package edu.jdr.DicePaper;
+package edu.jdr.DicePaper.fragments;
 
 import android.app.DialogFragment;
-import android.app.Fragment;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -11,6 +9,9 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+import edu.jdr.DicePaper.R;
+import edu.jdr.DicePaper.activity.UniversDefinition;
+import edu.jdr.DicePaper.models.UniversDAO;
 
 /**
  * Created by paulyves on 1/21/14.
@@ -30,7 +31,7 @@ public class CreateUniversDialog extends DialogFragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View v = inflater.inflate(R.layout.createuniversdialog, container, false);
+        View v = inflater.inflate(R.layout.create_univers_dialog, container, false);
         cancel = (Button) v.findViewById(R.id.cancel);
         validate = (Button) v.findViewById(R.id.validUniverse);
         name = (EditText) v.findViewById(R.id.univName);
@@ -55,7 +56,7 @@ public class CreateUniversDialog extends DialogFragment {
                 univManager.close();
             }
             if(result != -1){
-                Intent universeBuilder = new Intent(getActivity(), UniversBuilderMenu.class);
+                Intent universeBuilder = new Intent(getActivity(), UniversDefinition.class);
                 universeBuilder.putExtra("universeName", univName);
                 startActivity(universeBuilder);
             } else {
