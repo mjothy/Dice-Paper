@@ -7,6 +7,7 @@
     <string name="deleteUniverse">Supprimer un Univers</string>
     <string name="enterUniverse">Entrer dans un Univers</string>
     <string name="nameUniverse">Nom du nouvel univers :</string>
+    <string name="errorCreateUniverse">Erreur, échec de la création d\'univers</string>
     <string name="listUniverse">Liste des univers :</string>
     <string name="ok">Ok</string>
     <string name="cancel">Annuler</string>
@@ -18,4 +19,5 @@
     <string name="defineCharSheet">Définir le template de fiche de personnage</string>
     <string name="defineDiceRoll">Définir les jets de dés</string>
     <string name="charSheetBuildTitle">Définition de la fiche de personnage</string>
+    <string name="addCharac">Ajouter une caractéristique</string>
 </resources>

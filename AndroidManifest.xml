@@ -12,7 +12,7 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name=".activity.UniversMaster" android:label="univermenu"/>
+        <activity android:name=".activity.UniversMaster"/>
         <activity android:name=".activity.UniversDefinition"/>
         <activity android:name=".activity.CharSheetDef"/>
     </application>

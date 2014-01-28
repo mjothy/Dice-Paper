@@ -60,7 +60,7 @@ public class CreateUniversDialog extends DialogFragment {
                 universeBuilder.putExtra("universeName", univName);
                 startActivity(universeBuilder);
             } else {
-                Toast.makeText(getActivity(), "Erreur, échec de la création d'univers", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), getText(R.string.errorCreateUniverse), Toast.LENGTH_SHORT).show();
             }
             dismiss();
         }
