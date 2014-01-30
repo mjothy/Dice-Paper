@@ -20,4 +20,6 @@
     <string name="defineDiceRoll">Définir les jets de dés</string>
     <string name="charSheetBuildTitle">Définition de la fiche de personnage</string>
     <string name="addCharac">Ajouter une caractéristique</string>
+    <string name="successCreateCarac">Ajout de la caractéristique</string>
+    <string name="errorCreate">Echec de la création</string>
 </resources>
