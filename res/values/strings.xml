@@ -21,4 +21,6 @@
     <string name="charSheetBuildTitle">Définition de la fiche de personnage</string>
     <string name="addCharac">Ajouter une caractéristique</string>
     <string name="addJauge">Ajouter une Jauge</string>
+    <string name="successCreateCarac">Ajout de la caractéristique</string>
+    <string name="errorCreate">Echec de la création</string>
 </resources>
