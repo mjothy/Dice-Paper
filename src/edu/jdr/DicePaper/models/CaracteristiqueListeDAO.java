@@ -23,7 +23,6 @@ public class CaracteristiqueListeDAO extends DAOBase {
 
     public long createCaracListe(CaracteristiqueListe carac){
         ContentValues value = new ContentValues();
-        value.put(CaracteristiqueListeDAO.KEY, carac.getCaracteristiqueListeId());
         value.put(CaracteristiqueListeDAO.NOM, carac.getNom());
         value.put(UniversDAO.KEY, carac.getNomUnivers());
         return mDb.insert(CaracteristiqueListeDAO.TABLE_NAME, null, value);
