@@ -24,4 +24,6 @@
     <string name="successCreateCarac">Ajout de la caractéristique</string>
     <string name="errorCreate">Echec de la création</string>
     <string name="successCreateJauge">Ajout de la jauge</string>
+    <string name="addUtilitaire">Ajouter un utilitaire</string>
+    <string name="successCreateUtilitaire">Ajout de l'utilitaire</string>
 </resources>
