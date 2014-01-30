@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.TextView;
 import edu.jdr.DicePaper.R;
 import edu.jdr.DicePaper.fragments.CreateCaracDialog;
+import edu.jdr.DicePaper.fragments.CreateJaugeDialog;
 import edu.jdr.DicePaper.fragments.CreateUniversDialog;
 import edu.jdr.DicePaper.fragments.ListUniverseDialog;
 
@@ -26,6 +27,7 @@ public class CharSheetDef extends Activity {
     private Button addJauge;
 
     private static final int CREATECARAC = 0;
+    private static final int CREATEJAUGE = 1;
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,11 +39,19 @@ public class CharSheetDef extends Activity {
 
         addCharac = (Button) findViewById(R.id.addCharac);
 
-        addJauge = (Button) findViewById((R.id.addJauge));
         addCharac.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 showDialogType(CREATECARAC);
+            }
+        });
+
+        addJauge = (Button) findViewById((R.id.addJauge));
+
+        addJauge.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showDialogType(CREATEJAUGE);
             }
         });
     }
@@ -58,6 +68,9 @@ public class CharSheetDef extends Activity {
         switch (type){
             case CREATECARAC :
                 dial = CreateCaracDialog.newInstance(R.string.addCharac, universeName);
+                break;
+            case CREATEJAUGE :
+                dial = CreateJaugeDialog.newInstance(R.string.addJauge, universeName);
                 break;
         }
         dial.show(getFragmentManager(),"dialog");

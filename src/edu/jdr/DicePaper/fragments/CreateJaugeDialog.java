@@ -9,20 +9,20 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 import edu.jdr.DicePaper.R;
-import edu.jdr.DicePaper.models.CaracteristiqueListe;
-import edu.jdr.DicePaper.models.CaracteristiqueListeDAO;
+import edu.jdr.DicePaper.models.JaugeListe;
+import edu.jdr.DicePaper.models.JaugeListeDAO;
 
 /**
- * Created by paulyves on 1/30/14.
+ * Created by mario on 30/01/14.
  */
-public class CreateCaracDialog extends DialogFragment {
+public class CreateJaugeDialog extends DialogFragment {
     private Button cancel = null;
     private Button validate = null;
     private EditText name = null;
     private String univName = null;
 
-    public static CreateCaracDialog newInstance(int title, String univName){
-        CreateCaracDialog dialog = new CreateCaracDialog();
+    public static CreateJaugeDialog newInstance(int title, String univName){
+        CreateJaugeDialog dialog = new CreateJaugeDialog();
         Bundle args = new Bundle();
         args.putInt("title", title);
         dialog.setArguments(args);
@@ -38,24 +38,24 @@ public class CreateCaracDialog extends DialogFragment {
         name = (EditText) v.findViewById(R.id.name);
         validate.setOnClickListener(validateListener);
         cancel.setOnClickListener(cancelListener);
-        getDialog().setTitle(getString(R.string.addCharac));
+        getDialog().setTitle(getString(R.string.addJauge));
         return v;
     }
 
     private View.OnClickListener validateListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            String caracName = name.getText().toString();
+            String jaugeName = name.getText().toString();
             long result = -1;
-            if(!caracName.isEmpty()){
-                CaracteristiqueListe carac = new CaracteristiqueListe(caracName, univName);
-                CaracteristiqueListeDAO caracManager = new CaracteristiqueListeDAO(getActivity());
-                caracManager.open();
-                result = caracManager.createCaracListe(carac);
-                caracManager.close();
+            if(!jaugeName.isEmpty()){
+                JaugeListe jauge = new JaugeListe(jaugeName, univName);
+                JaugeListeDAO jaugeManager = new JaugeListeDAO(getActivity());
+                jaugeManager.open();
+                result = jaugeManager.createJaugeListe(jauge);
+                jaugeManager.close();
             }
             if(result != -1){
-                Toast.makeText(getActivity(), getText(R.string.successCreateCarac), Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), getText(R.string.successCreateJauge), Toast.LENGTH_SHORT).show();
             } else {
                 Toast.makeText(getActivity(), getText(R.string.errorCreate), Toast.LENGTH_SHORT).show();
             }
@@ -69,5 +69,4 @@ public class CreateCaracDialog extends DialogFragment {
             dismiss();
         }
     };
-
 }

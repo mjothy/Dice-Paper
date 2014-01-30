@@ -23,4 +23,5 @@
     <string name="addJauge">Ajouter une Jauge</string>
     <string name="successCreateCarac">Ajout de la caractéristique</string>
     <string name="errorCreate">Echec de la création</string>
+    <string name="successCreateJauge">Ajout de la jauge</string>
 </resources>
