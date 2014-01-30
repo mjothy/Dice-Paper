@@ -29,5 +29,19 @@
             android:layout_height="wrap_content"
             android:text="@string/addJauge"
             android:id="@+id/addJauge" android:layout_gravity="center_horizontal"/>
+    <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center_horizontal"
+            android:text="@string/addComp"
+            android:id="@+id/addComp"/>
+    <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center_horizontal"
+            android:text="@string/addUtil"
+            android:id="@+id/addUtil"/>
 
 </LinearLayout>

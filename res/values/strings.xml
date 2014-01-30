@@ -24,6 +24,8 @@
     <string name="successCreateCarac">Ajout de la caractéristique</string>
     <string name="errorCreate">Echec de la création</string>
     <string name="successCreateJauge">Ajout de la jauge</string>
-    <string name="addUtilitaire">Ajouter un utilitaire</string>
-    <string name="successCreateUtilitaire">Ajout de l'utilitaire</string>
+    <string name="successCreateUtilitaire">Ajout de l\'utilitaire</string>
+    <string name="addComp">Ajouter une compétence</string>
+    <string name="successCreateComp">Ajout de la compétence</string>
+    <string name="addUtil">Ajouter un utilitaire</string>
 </resources>

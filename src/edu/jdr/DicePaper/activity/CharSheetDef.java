@@ -9,10 +9,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import edu.jdr.DicePaper.R;
-import edu.jdr.DicePaper.fragments.CreateCaracDialog;
-import edu.jdr.DicePaper.fragments.CreateJaugeDialog;
-import edu.jdr.DicePaper.fragments.CreateUniversDialog;
-import edu.jdr.DicePaper.fragments.ListUniverseDialog;
+import edu.jdr.DicePaper.fragments.*;
 
 /**
  * Class to define the character sheet builder where user can define
@@ -25,9 +22,13 @@ public class CharSheetDef extends Activity {
     private String universeName;
     private Button addCharac;
     private Button addJauge;
+    private Button addComp;
+    private Button addUtil;
 
     private static final int CREATECARAC = 0;
     private static final int CREATEJAUGE = 1;
+    private static final int CREATECOMP  = 2;
+    private static final int CREATEUTIL = 3;
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,6 +55,20 @@ public class CharSheetDef extends Activity {
                 showDialogType(CREATEJAUGE);
             }
         });
+        addUtil = (Button) findViewById((R.id.addUtil));
+        addUtil.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showDialogType(CREATEUTIL);
+            }
+        });
+        addComp = (Button) findViewById((R.id.addComp));
+        addComp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showDialogType(CREATECOMP);
+            }
+        });
     }
 
     public void showDialogType(int type){
@@ -71,6 +86,12 @@ public class CharSheetDef extends Activity {
                 break;
             case CREATEJAUGE :
                 dial = CreateJaugeDialog.newInstance(R.string.addJauge, universeName);
+                break;
+            case CREATECOMP :
+                dial = CreateCompDialog.newInstance(R.string.addComp, universeName);
+                break;
+            case CREATEUTIL :
+                dial = CreateUtilitaireDialog.newInstance(R.string.addComp, universeName);
                 break;
         }
         dial.show(getFragmentManager(),"dialog");
