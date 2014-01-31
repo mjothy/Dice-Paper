@@ -3,6 +3,7 @@ package edu.jdr.DicePaper.models;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import edu.jdr.DicePaper.models.DAO.*;
 
 /**
  * Created by paulyves on 1/19/14.

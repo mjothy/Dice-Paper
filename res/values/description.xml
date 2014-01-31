@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="buildUnivDescription">
+        Dans ce menu, vous pouvez paramétrer votre univers comme vous le souhaitez, que ce soit pour
+        la fiche de personnage ou pour la façon dont les jets de dés se font.
+    </string>
+</resources>

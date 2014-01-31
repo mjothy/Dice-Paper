@@ -11,7 +11,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 import edu.jdr.DicePaper.R;
 import edu.jdr.DicePaper.activity.UniversDefinition;
-import edu.jdr.DicePaper.models.UniversDAO;
+import edu.jdr.DicePaper.models.DAO.UniversDAO;
 
 /**
  * Created by paulyves on 1/21/14.

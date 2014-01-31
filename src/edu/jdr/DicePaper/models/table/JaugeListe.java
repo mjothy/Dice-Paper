@@ -1,4 +1,4 @@
-package edu.jdr.DicePaper.models;
+package edu.jdr.DicePaper.models.table;
 
 /**
  * Created by mario on 30/01/14.

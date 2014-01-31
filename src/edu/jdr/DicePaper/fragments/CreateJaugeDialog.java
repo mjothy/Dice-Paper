@@ -9,8 +9,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 import edu.jdr.DicePaper.R;
-import edu.jdr.DicePaper.models.JaugeListe;
-import edu.jdr.DicePaper.models.JaugeListeDAO;
+import edu.jdr.DicePaper.models.table.JaugeListe;
+import edu.jdr.DicePaper.models.DAO.JaugeListeDAO;
 
 /**
  * Created by mario on 30/01/14.

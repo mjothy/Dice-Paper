@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="errorCreateUniverse">Erreur, échec de la création d\'univers</string>
+    <string name="errorCreate">Echec de la création</string>
+
+    <string name="successCreateJauge">Ajout de la jauge</string>
+    <string name="successCreateUtilitaire">Ajout de l\'utilitaire</string>
+    <string name="successCreateCarac">Ajout de la caractéristique</string>
+    <string name="successCreateComp">Ajout de la compétence</string>
+</resources>

@@ -9,8 +9,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 import edu.jdr.DicePaper.R;
-import edu.jdr.DicePaper.models.UtilitaireListe;
-import edu.jdr.DicePaper.models.UtilitaireListeDAO;
+import edu.jdr.DicePaper.models.table.UtilitaireListe;
+import edu.jdr.DicePaper.models.DAO.UtilitaireListeDAO;
 
 /**
  * Created by mario on 30/01/14.

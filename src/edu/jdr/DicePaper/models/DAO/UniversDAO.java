@@ -1,8 +1,9 @@
-package edu.jdr.DicePaper.models;
+package edu.jdr.DicePaper.models.DAO;
 
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
+import edu.jdr.DicePaper.models.DAOBase;
 
 import java.util.ArrayList;
 

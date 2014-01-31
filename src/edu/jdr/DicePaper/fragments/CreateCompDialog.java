@@ -1,7 +1,6 @@
 package edu.jdr.DicePaper.fragments;
 
 import android.app.DialogFragment;
-import android.app.Fragment;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,10 +9,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 import edu.jdr.DicePaper.R;
-import edu.jdr.DicePaper.models.CaracteristiqueListe;
-import edu.jdr.DicePaper.models.CaracteristiqueListeDAO;
-import edu.jdr.DicePaper.models.CompetenceListe;
-import edu.jdr.DicePaper.models.CompetenceListeDAO;
+import edu.jdr.DicePaper.models.table.CompetenceListe;
+import edu.jdr.DicePaper.models.DAO.CompetenceListeDAO;
 
 /**
  * Created by paulyves on 1/30/14.
