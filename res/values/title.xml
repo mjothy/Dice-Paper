@@ -3,4 +3,5 @@
     <string name="app_name">DicePaper</string>
     <string name="Univers">Univers</string>
     <string name="charSheetBuildTitle">Définition de la fiche de personnage</string>
+    <string name="jaugeList">Liste des jauges</string>
 </resources>

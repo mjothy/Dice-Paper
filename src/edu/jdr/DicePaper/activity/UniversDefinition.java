@@ -29,7 +29,7 @@ public class UniversDefinition extends Activity {
         defineCharSheet.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent charSheetBuilder = new Intent(UniversDefinition.this, CharSheetDef.class);
+                Intent charSheetBuilder = new Intent(UniversDefinition.this, CharSheetDefSwipper.class);
                 charSheetBuilder.putExtra("universeName", universeName);
                 startActivity(charSheetBuilder);
             }
