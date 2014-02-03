@@ -1,4 +1,4 @@
-package edu.jdr.DicePaper.activity;
+package edu.jdr.DicePaper.fragments;
 
 import android.app.Fragment;
 import android.os.Bundle;
@@ -7,8 +7,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ListView;
 import android.widget.TextView;
 import edu.jdr.DicePaper.R;
+import edu.jdr.DicePaper.activity.CharSheetDefSwipper;
 import edu.jdr.DicePaper.models.DAO.JaugeListeDAO;
 import edu.jdr.DicePaper.models.table.JaugeListe;
 
@@ -47,10 +49,11 @@ public class CharSheetDefCompoList extends Fragment {
                 swipper.goToCompoDefine();
             }
         });
-
+        ListView listView = (ListView) v.findViewById(R.id.jaugeList);
         setJauge();
-        ArrayAdapter<JaugeListe> ad = new ArrayAdapter<JaugeListe>(getActivity(), R.layout.char_sheet_def_compo_list, R.id.jaugeList);
+        ArrayAdapter<JaugeListe> ad = new ArrayAdapter<JaugeListe>(getActivity(), R.layout.list_component);
         ad.addAll(jaugeList);
+        listView.setAdapter(ad);
         return v;
     }
 

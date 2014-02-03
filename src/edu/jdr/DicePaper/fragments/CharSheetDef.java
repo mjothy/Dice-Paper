@@ -1,6 +1,5 @@
-package edu.jdr.DicePaper.activity;
+package edu.jdr.DicePaper.fragments;
 
-import android.app.Activity;
 import android.app.DialogFragment;
 import android.app.Fragment;
 import android.app.FragmentTransaction;
@@ -11,7 +10,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 import edu.jdr.DicePaper.R;
-import edu.jdr.DicePaper.fragments.*;
+import edu.jdr.DicePaper.activity.CharSheetDefSwipper;
 
 /**
  * Class to define the character sheet builder where user can define

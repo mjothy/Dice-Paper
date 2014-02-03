@@ -7,6 +7,8 @@ import android.app.FragmentTransaction;
 import android.os.Bundle;
 import android.widget.FrameLayout;
 import edu.jdr.DicePaper.R;
+import edu.jdr.DicePaper.fragments.CharSheetDef;
+import edu.jdr.DicePaper.fragments.CharSheetDefCompoList;
 
 
 /**
