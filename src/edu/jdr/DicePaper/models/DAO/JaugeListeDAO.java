@@ -37,6 +37,15 @@ public class JaugeListeDAO extends DAOBase {
         return mDb.update(JaugeListeDAO.TABLE_NAME, value, KEY+" = ?", new String[]{Integer.toString(jauge.getJaugeListeId())});
     }
 
+    /**
+     * Delete a JaugeList
+     * @param jaugeListId
+     * @return the number of rows affected
+     */
+    public int deleteJaugeList(int jaugeListId){
+        return mDb.delete(TABLE_NAME, KEY + " = ?", new String[]{String.valueOf(jaugeListId)});
+    }
+
     public JaugeListe getJaugeListe(int id){
         Cursor c = mDb.rawQuery("SELECT * FROM "+TABLE_NAME+" WHERE "+KEY+" = ?", new String[]{String.valueOf(id)});
         if(c.moveToFirst()){
