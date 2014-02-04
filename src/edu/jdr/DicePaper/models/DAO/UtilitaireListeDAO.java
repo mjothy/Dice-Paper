@@ -37,6 +37,15 @@ public class UtilitaireListeDAO extends DAOBase {
         return mDb.update(UtilitaireListeDAO.TABLE_NAME, value, KEY+" = ?", new String[]{Integer.toString(utilitaireListe.getUtilitaireListeId())});
     }
 
+    /**
+     * Delete a UtilitaireList
+     * @param id
+     * @return the number of rows affected
+     */
+    public int delete(int id){
+        return mDb.delete(TABLE_NAME, KEY + " = ?", new String[]{String.valueOf(id)});
+    }
+
     public UtilitaireListe getUtilitaireListe(int id){
         Cursor c = mDb.rawQuery("SELECT * FROM "+TABLE_NAME+" WHERE "+KEY+" = ?", new String[]{String.valueOf(id)});
         if(c.moveToFirst()){

@@ -4,4 +4,7 @@
     <string name="Univers">Univers</string>
     <string name="charSheetBuildTitle">Définition de la fiche de personnage</string>
     <string name="jaugeList">Liste des jauges</string>
+    <string name="utilList">Liste des utilitaires</string>
+    <string name="caracList">Liste des caractéristiques</string>
+    <string name="skillList">Liste des compétences</string>
 </resources>

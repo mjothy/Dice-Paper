@@ -22,6 +22,42 @@
             style="@style/list"
             android:id="@+id/jaugeList"/>
 
+    <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/utilList"
+            style="@style/h2"/>
+    <ListView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            style="@style/list"
+            android:id="@+id/utilList"/>
+
+    <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/caracList"
+            style="@style/h2"/>
+    <ListView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            style="@style/list"
+            android:id="@+id/caracList"/>
+
+    <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/skillList"
+            style="@style/h2"/>
+    <ListView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            style="@style/list"
+            android:id="@+id/skillList"/>
+
     <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

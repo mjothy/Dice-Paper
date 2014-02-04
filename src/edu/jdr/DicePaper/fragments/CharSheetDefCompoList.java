@@ -12,7 +12,9 @@ import android.widget.*;
 import edu.jdr.DicePaper.R;
 import edu.jdr.DicePaper.activity.CharSheetDefSwipper;
 import edu.jdr.DicePaper.models.DAO.JaugeListeDAO;
+import edu.jdr.DicePaper.models.DAO.UtilitaireListeDAO;
 import edu.jdr.DicePaper.models.table.JaugeListe;
+import edu.jdr.DicePaper.models.table.UtilitaireListe;
 
 import java.util.ArrayList;
 
@@ -21,8 +23,12 @@ import java.util.ArrayList;
  */
 public class CharSheetDefCompoList extends Fragment {
     private String universeName;
+
     private ArrayList<JaugeListe> jaugeList;
-    ArrayAdapter<JaugeListe> jaugeListAdapter;
+    private ArrayAdapter<JaugeListe> jaugeListAdapter;
+    private ArrayList<UtilitaireListe> utilList;
+    private ArrayAdapter<UtilitaireListe> utilListAdapter;
+
     private Class componentClass;
     private int componentId;
     private int componentPosition;
@@ -66,13 +72,14 @@ public class CharSheetDefCompoList extends Fragment {
                 componentId = jaugeToDelete.getJaugeListeId();
                 componentPosition = position;
                 AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-                builder.setTitle("Êtes vous certain de vouloir supprimer " + jaugeToDelete.getNom() + "?");
-                builder.setPositiveButton("oui", deleteConfirmListener);
-                builder.setNegativeButton("non", null);
+                builder.setTitle(getString(R.string.askDeleteConfirmation)+" "+ jaugeToDelete.getNom() + "?");
+                builder.setPositiveButton(getString(R.string.yes), deleteConfirmListener);
+                builder.setNegativeButton(getString(R.string.no), null);
                 builder.show();
                 return false;
             }
         });
+        setUtils(v);
         return v;
     }
 
@@ -81,6 +88,32 @@ public class CharSheetDefCompoList extends Fragment {
         jaugeManager.open();
         jaugeList = jaugeManager.getAllJaugeListe(universeName);
         jaugeManager.close();
+    }
+
+    private void setUtils(View v){
+        ListView utilListView = (ListView) v.findViewById(R.id.utilList);
+        utilListAdapter = new ArrayAdapter<UtilitaireListe>(getActivity(), R.layout.list_component);
+        UtilitaireListeDAO utilManager = new UtilitaireListeDAO(getActivity());
+        utilManager.open();
+        utilList = utilManager.getAllUtilitaireListe(universeName);
+        utilManager.close();
+        utilListAdapter.addAll(utilList);
+        utilListView.setAdapter(utilListAdapter);
+        utilListView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+                UtilitaireListe utilToDelete = (UtilitaireListe) parent.getItemAtPosition(position);
+                componentClass = UtilitaireListe.class;
+                componentId = utilToDelete.getUtilitaireListeId();
+                componentPosition = position;
+                AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+                builder.setTitle(getString(R.string.askDeleteConfirmation)+" "+ utilToDelete.getNom() + "?");
+                builder.setPositiveButton(getString(R.string.yes), deleteConfirmListener);
+                builder.setNegativeButton(getString(R.string.no), null);
+                builder.show();
+                return false;
+            }
+        });
     }
 
     private Dialog.OnClickListener deleteConfirmListener = new DialogInterface.OnClickListener() {
@@ -94,6 +127,15 @@ public class CharSheetDefCompoList extends Fragment {
                 jaugeListAdapter.remove(jaugeList.get(componentPosition));
                 jaugeList.remove(componentPosition);
                 jaugeListAdapter.notifyDataSetChanged();
+            }
+            if(componentClass.equals(UtilitaireListe.class)){
+                UtilitaireListeDAO utilManager = new UtilitaireListeDAO(getActivity());
+                utilManager.open();
+                utilManager.delete(componentId);
+                utilManager.close();
+                utilListAdapter.remove(utilList.get(componentPosition));
+                utilList.remove(componentPosition);
+                utilListAdapter.notifyDataSetChanged();
             }
         }
     };
