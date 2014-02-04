@@ -22,8 +22,10 @@ import java.util.ArrayList;
 public class CharSheetDefCompoList extends Fragment {
     private String universeName;
     private ArrayList<JaugeListe> jaugeList;
+    ArrayAdapter<JaugeListe> jaugeListAdapter;
     private Class componentClass;
     private int componentId;
+    private int componentPosition;
     /**
      * Method to instanciate this fragment
      * Only this method should be used to create this kind of fragment
@@ -51,17 +53,18 @@ public class CharSheetDefCompoList extends Fragment {
                 swipper.goToCompoDefine();
             }
         });
-        ListView listView = (ListView) v.findViewById(R.id.jaugeList);
+        ListView jaugeListView = (ListView) v.findViewById(R.id.jaugeList);
         setJauge();
-        ArrayAdapter<JaugeListe> ad = new ArrayAdapter<JaugeListe>(getActivity(), R.layout.list_component);
-        ad.addAll(jaugeList);
-        listView.setAdapter(ad);
-        listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+        jaugeListAdapter = new ArrayAdapter<JaugeListe>(getActivity(), R.layout.list_component);
+        jaugeListAdapter.addAll(jaugeList);
+        jaugeListView.setAdapter(jaugeListAdapter);
+        jaugeListView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
                 JaugeListe jaugeToDelete = (JaugeListe) parent.getItemAtPosition(position);
                 componentClass = JaugeListe.class;
                 componentId = jaugeToDelete.getJaugeListeId();
+                componentPosition = position;
                 AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
                 builder.setTitle("Êtes vous certain de vouloir supprimer " + jaugeToDelete.getNom() + "?");
                 builder.setPositiveButton("oui", deleteConfirmListener);
@@ -84,7 +87,13 @@ public class CharSheetDefCompoList extends Fragment {
         @Override
         public void onClick(DialogInterface dialog, int which) {
             if(componentClass.equals(JaugeListe.class)){
-                Toast.makeText(getActivity(), "Vous avez bien supprimé "+componentId, Toast.LENGTH_SHORT).show();
+                JaugeListeDAO jaugeManager = new JaugeListeDAO(getActivity());
+                jaugeManager.open();
+                jaugeManager.deleteJaugeList(componentId);
+                jaugeManager.close();
+                jaugeListAdapter.remove(jaugeList.get(componentPosition));
+                jaugeList.remove(componentPosition);
+                jaugeListAdapter.notifyDataSetChanged();
             }
         }
     };
