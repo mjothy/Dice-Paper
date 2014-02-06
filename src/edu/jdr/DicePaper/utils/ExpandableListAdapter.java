@@ -1,4 +1,4 @@
-package edu.jdr.DicePaper;
+package edu.jdr.DicePaper.utils;
 
 /**
  * Created by mario on 06/02/14.
@@ -14,6 +14,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseExpandableListAdapter;
 import android.widget.TextView;
+import edu.jdr.DicePaper.R;
 import edu.jdr.DicePaper.models.table.MasterListe;
 
 public class ExpandableListAdapter extends BaseExpandableListAdapter {

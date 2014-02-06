@@ -66,7 +66,6 @@ public class CharSheetDefCompoList extends Fragment {
         });
         setJauge(v);
         setUtils(v);
-        setComp(v);
         return v;
     }
 
