@@ -67,8 +67,8 @@ public class CharSheetDefSwipper extends Activity {
         final FragmentManager fm = getFragmentManager();
         final FragmentTransaction ft = fm.beginTransaction();
         // We can also animate the changing of fragment
+        ft.setCustomAnimations(R.animator.slide_in_left, R.animator.slide_out_right);
         ft.replace(R.id.Switcher, fragment);
-        ft.setCustomAnimations(FragmentTransaction.TRANSIT_FRAGMENT_OPEN,FragmentTransaction.TRANSIT_FRAGMENT_CLOSE);
         ft.commit();
     }
 
