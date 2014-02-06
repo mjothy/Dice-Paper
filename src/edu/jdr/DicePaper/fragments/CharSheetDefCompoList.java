@@ -59,8 +59,17 @@ public class CharSheetDefCompoList extends Fragment {
                 swipper.goToCompoDefine();
             }
         });
+        setJauge(v);
+        setUtils(v);
+        return v;
+    }
+
+    private void setJauge(View v){
         ListView jaugeListView = (ListView) v.findViewById(R.id.jaugeList);
-        setJauge();
+        JaugeListeDAO jaugeManager = new JaugeListeDAO(getActivity());
+        jaugeManager.open();
+        jaugeList = jaugeManager.getAllJaugeListe(universeName);
+        jaugeManager.close();
         jaugeListAdapter = new ArrayAdapter<JaugeListe>(getActivity(), R.layout.list_component);
         jaugeListAdapter.addAll(jaugeList);
         jaugeListView.setAdapter(jaugeListAdapter);
@@ -79,15 +88,6 @@ public class CharSheetDefCompoList extends Fragment {
                 return false;
             }
         });
-        setUtils(v);
-        return v;
-    }
-
-    private void setJauge(){
-        JaugeListeDAO jaugeManager = new JaugeListeDAO(getActivity());
-        jaugeManager.open();
-        jaugeList = jaugeManager.getAllJaugeListe(universeName);
-        jaugeManager.close();
     }
 
     private void setUtils(View v){
