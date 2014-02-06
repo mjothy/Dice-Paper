@@ -9,10 +9,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.*;
-import edu.jdr.DicePaper.R;
+import android.widget.ExpandableListAdapter;
+import edu.jdr.DicePaper.*;
 import edu.jdr.DicePaper.activity.CharSheetDefSwipper;
+import edu.jdr.DicePaper.models.DAO.CompetenceListeDAO;
 import edu.jdr.DicePaper.models.DAO.JaugeListeDAO;
 import edu.jdr.DicePaper.models.DAO.UtilitaireListeDAO;
+import edu.jdr.DicePaper.models.table.CompetenceListe;
 import edu.jdr.DicePaper.models.table.JaugeListe;
 import edu.jdr.DicePaper.models.table.UtilitaireListe;
 
@@ -28,6 +31,8 @@ public class CharSheetDefCompoList extends Fragment {
     private ArrayAdapter<JaugeListe> jaugeListAdapter;
     private ArrayList<UtilitaireListe> utilList;
     private ArrayAdapter<UtilitaireListe> utilListAdapter;
+    private ArrayList<CompetenceListe> compList;
+    private ExpandableListAdapter compListAdapter;
 
     private Class componentClass;
     private int componentId;
@@ -61,6 +66,7 @@ public class CharSheetDefCompoList extends Fragment {
         });
         setJauge(v);
         setUtils(v);
+        setComp(v);
         return v;
     }
 
@@ -114,6 +120,13 @@ public class CharSheetDefCompoList extends Fragment {
                 return false;
             }
         });
+    }
+
+    private void setComp(View v){
+        ExpandableListView listView = (ExpandableListView) v.findViewById(R.id.skillList);
+        CompetenceListeDAO compManager = new CompetenceListeDAO(getActivity());
+        compList = compManager.getAllCompetence(universeName);
+        //todo
     }
 
     private Dialog.OnClickListener deleteConfirmListener = new DialogInterface.OnClickListener() {
