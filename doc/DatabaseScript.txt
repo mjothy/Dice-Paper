@@ -151,5 +151,24 @@ CREATE TABLE fiche_personnage(
 	FOREIGN KEY (nom_univers) REFERENCES univers(nom_univers)
 );
 
+CREATE TABLE specialisation_liste(
+	specialisation_liste_id  INTEGER autoincrement NOT NULL ,
+	nom                      TEXT NOT NULL ,
+	nom_univers              TEXT ,
+	PRIMARY KEY (specialisation_liste_id) ,
+	
+	FOREIGN KEY (nom_univers) REFERENCES univers(nom_univers)
+);
+
+CREATE TABLE specialisation_valeur(
+	specialisation_valeur_id  INTEGER autoincrement NOT NULL ,
+	valeur                    TEXT NOT NULL ,
+	specialisation_liste_id   INTEGER NOT NULL ,
+	nom_fiche                 TEXT NOT NULL ,
+	PRIMARY KEY (specialisation_valeur_id) ,
+	
+	FOREIGN KEY (specialisation_liste_id) REFERENCES specialisation_liste(specialisation_liste_id),
+	FOREIGN KEY (nom_fiche) REFERENCES fiche_personnage(nom_fiche)
+);
 
 
