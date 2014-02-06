@@ -64,7 +64,7 @@ public class CharSheetDefCompoList extends Fragment {
                 swipper.goToCompoDefine();
             }
         });
-        //setJauge(v);
+        setJauge(v);
         setUtils(v);
         return v;
     }
