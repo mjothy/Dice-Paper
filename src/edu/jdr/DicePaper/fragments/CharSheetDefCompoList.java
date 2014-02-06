@@ -50,15 +50,6 @@ public class CharSheetDefCompoList extends Fragment {
         universeName = getActivity().getIntent().getExtras().getString("universeName");
         TextView title = (TextView) v.findViewById(R.id.univTitle);
         title.setText(universeName);
-
-        Button theSlider = (Button) v.findViewById(R.id.slide);
-        theSlider.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                CharSheetDefSwipper swipper = ((CharSheetDefSwipper) getActivity());
-                swipper.goToCompoDefine();
-            }
-        });
         ListView jaugeListView = (ListView) v.findViewById(R.id.jaugeList);
         setJauge();
         jaugeListAdapter = new ArrayAdapter<JaugeListe>(getActivity(), R.layout.list_component);

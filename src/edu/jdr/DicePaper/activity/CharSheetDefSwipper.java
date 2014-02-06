@@ -47,7 +47,7 @@ public class CharSheetDefSwipper extends Activity {
             }
         };
         mFrameLayout.setOnTouchListener(onSwipeTouchListener);
-        goToCompoDefine();
+        goToCompoDefine(1);
 
     }
 
@@ -60,35 +60,39 @@ public class CharSheetDefSwipper extends Activity {
         }
     }
 
-    private void showFragment(final Fragment fragment) {
+    private void showFragment(final Fragment fragment, int i) {
         if (fragment == null){
             return;
         }
         final FragmentManager fm = getFragmentManager();
         final FragmentTransaction ft = fm.beginTransaction();
         // We can also animate the changing of fragment
-        ft.setCustomAnimations(R.animator.slide_in_left, R.animator.slide_out_right);
+        if(i<0){
+            ft.setCustomAnimations(R.animator.slide_in_left, R.animator.slide_out_right);
+        }else{
+            ft.setCustomAnimations(R.animator.slide_in_right, R.animator.slide_out_left);
+        }
         ft.replace(R.id.Switcher, fragment);
         ft.commit();
     }
 
-    public void goToCompoList() {
+    public void goToCompoList(int i) {
         currentFrag = 0;
-        showFragment(fragCompoList);
+        showFragment(fragCompoList, i);
     }
-    public void goToCompoDefine(){
+    public void goToCompoDefine(int i){
         currentFrag = 1;
-        showFragment(fragCompoDef);
+        showFragment(fragCompoDef, i);
     }
 
     public void switchFragment(int i){
         currentFrag = (currentFrag+2+i)%2;
         switch (currentFrag){
             case 0 :
-                goToCompoList();
+                goToCompoList(i);
                 break;
             case 1 :
-                goToCompoDefine();
+                goToCompoDefine(i);
                 break;
         }
     }

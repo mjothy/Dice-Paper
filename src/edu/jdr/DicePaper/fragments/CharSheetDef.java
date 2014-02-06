@@ -80,14 +80,6 @@ public class CharSheetDef extends Fragment {
                 showDialogType(CREATECOMP);
             }
         });
-        Button theSlider = (Button) v.findViewById(R.id.slide);
-        theSlider.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                CharSheetDefSwipper swipper = ((CharSheetDefSwipper) getActivity());
-                swipper.goToCompoList();
-            }
-        });
         return v;
     }
 
