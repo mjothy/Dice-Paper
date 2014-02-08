@@ -45,7 +45,7 @@ public class CompetenceListeDAO extends DAOBase {
      * @param id
      * @return number of rows affected
      */
-    public int deleteCarac(int id){
+    public int delete(int id){
         return mDb.delete(TABLE_NAME, KEY + " = ?", new String[]{String.valueOf(id)});
     }
 

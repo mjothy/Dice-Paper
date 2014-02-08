@@ -23,6 +23,7 @@ public class DatabaseHandler extends SQLiteOpenHelper{
         db.execSQL(JaugeListeDAO.TABLE_CREATE);
         db.execSQL(UtilitaireListeDAO.TABLE_CREATE);
         db.execSQL(CompetenceListeDAO.TABLE_CREATE);
+        db.execSQL(ModificateurListeDAO.TABLE_CREATE);
     }
 
     @Override
@@ -33,6 +34,7 @@ public class DatabaseHandler extends SQLiteOpenHelper{
         db.execSQL(JaugeListeDAO.TABLE_DROP);
         db.execSQL(UtilitaireListeDAO.TABLE_DROP);
         db.execSQL(CompetenceListeDAO.TABLE_DROP);
+        db.execSQL(ModificateurListeDAO.TABLE_DROP);
         onCreate(db);
     }
 
