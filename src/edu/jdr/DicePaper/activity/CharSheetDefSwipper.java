@@ -5,12 +5,12 @@ import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.os.Bundle;
-import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.widget.FrameLayout;
 import edu.jdr.DicePaper.R;
 import edu.jdr.DicePaper.fragments.CharSheetDef;
-import edu.jdr.DicePaper.fragments.CharSheetDefCompoList;
+import edu.jdr.DicePaper.fragments.CharSheetDefJaugeList;
+import edu.jdr.DicePaper.fragments.CharSheetDefUtilList;
 import edu.jdr.DicePaper.utils.OnSwipeTouchListener;
 
 
@@ -21,7 +21,8 @@ public class CharSheetDefSwipper extends Activity {
     private String universeName;
     private FrameLayout mFrameLayout;
     private CharSheetDef fragCompoDef;
-    private CharSheetDefCompoList fragCompoList;
+    private CharSheetDefJaugeList fragJaugeList;
+    private CharSheetDefUtilList fragUtilList;
     public OnSwipeTouchListener onSwipeTouchListener;
     private int currentFrag;
 
@@ -55,8 +56,11 @@ public class CharSheetDefSwipper extends Activity {
         if (this.fragCompoDef == null) {
             this.fragCompoDef = CharSheetDef.newInstance();
         }
-        if(fragCompoList == null) {
-            fragCompoList = CharSheetDefCompoList.newInstance();
+        if(fragJaugeList == null) {
+            fragJaugeList = CharSheetDefJaugeList.newInstance();
+        }
+        if(fragUtilList == null) {
+            fragUtilList = CharSheetDefUtilList.newInstance();
         }
     }
 
@@ -76,23 +80,30 @@ public class CharSheetDefSwipper extends Activity {
         ft.commit();
     }
 
-    public void goToCompoList(int i) {
-        currentFrag = 0;
-        showFragment(fragCompoList, i);
+    public void goToJaugeList(int i) {
+        currentFrag = 1;
+        showFragment(fragJaugeList, i);
     }
     public void goToCompoDefine(int i){
-        currentFrag = 1;
+        currentFrag = 0;
         showFragment(fragCompoDef, i);
+    }
+    public void goToUtilList(int i){
+        currentFrag = 2;
+        showFragment(fragUtilList, i);
     }
 
     public void switchFragment(int i){
-        currentFrag = (currentFrag+2+i)%2;
+        currentFrag = (currentFrag+3+i)%3;
         switch (currentFrag){
             case 0 :
-                goToCompoList(i);
+                goToCompoDefine(i);
                 break;
             case 1 :
-                goToCompoDefine(i);
+                goToJaugeList(i);
+                break;
+            case 2 :
+                goToUtilList(i);
                 break;
         }
     }

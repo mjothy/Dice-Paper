@@ -93,6 +93,8 @@ CREATE TABLE competence_valeur(
 CREATE TABLE jauge_liste(
 	jauge_list_id  INTEGER autoincrement NOT NULL ,
 	nom            TEXT NOT NULL ,
+	min            INTEGER ,
+	max            INTEGER ,
 	nom_univers    TEXT ,
 	PRIMARY KEY (jauge_list_id) ,
 	

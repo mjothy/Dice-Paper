@@ -7,4 +7,5 @@
     <string name="utilList">Liste des utilitaires</string>
     <string name="caracList">Liste des caractéristiques</string>
     <string name="skillList">Liste des compétences</string>
+    <string name="jaugeName">Nom de la jauge</string>
 </resources>

@@ -19,6 +19,8 @@ public class CreateJaugeDialog extends DialogFragment {
     private Button cancel = null;
     private Button validate = null;
     private EditText name = null;
+    private EditText min = null;
+    private EditText max = null;
     private String univName = null;
 
     public static CreateJaugeDialog newInstance(int title, String univName){
@@ -32,10 +34,12 @@ public class CreateJaugeDialog extends DialogFragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View v = inflater.inflate(R.layout.create_component_dialog, container, false);
+        View v = inflater.inflate(R.layout.create_jauge_dialog, container, false);
         cancel = (Button) v.findViewById(R.id.cancel);
         validate = (Button) v.findViewById(R.id.validate);
         name = (EditText) v.findViewById(R.id.name);
+        min = (EditText) v.findViewById(R.id.min);
+        max = (EditText) v.findViewById(R.id.max);
         validate.setOnClickListener(validateListener);
         cancel.setOnClickListener(cancelListener);
         getDialog().setTitle(getString(R.string.addJauge));
@@ -46,9 +50,18 @@ public class CreateJaugeDialog extends DialogFragment {
         @Override
         public void onClick(View v) {
             String jaugeName = name.getText().toString();
+            String minValueS = min.getText().toString();
+            String maxValueS = max.getText().toString();
+            int minValue=0, maxValue=100;
+            if(!minValueS.isEmpty()){
+                minValue = Integer.valueOf(minValueS);
+            }
+            if(!maxValueS.isEmpty()){
+                maxValue = Integer.valueOf(maxValueS);
+            }
             long result = -1;
             if(!jaugeName.isEmpty()){
-                JaugeListe jauge = new JaugeListe(jaugeName, univName);
+                JaugeListe jauge = new JaugeListe(jaugeName, univName, minValue, maxValue);
                 JaugeListeDAO jaugeManager = new JaugeListeDAO(getActivity());
                 jaugeManager.open();
                 result = jaugeManager.createJaugeListe(jauge);

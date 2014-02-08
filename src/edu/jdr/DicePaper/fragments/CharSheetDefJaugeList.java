@@ -11,7 +11,6 @@ import android.view.ViewGroup;
 import android.widget.*;
 import android.widget.ExpandableListAdapter;
 import edu.jdr.DicePaper.*;
-import edu.jdr.DicePaper.activity.CharSheetDefSwipper;
 import edu.jdr.DicePaper.models.DAO.CompetenceListeDAO;
 import edu.jdr.DicePaper.models.DAO.JaugeListeDAO;
 import edu.jdr.DicePaper.models.DAO.UtilitaireListeDAO;
@@ -24,7 +23,7 @@ import java.util.ArrayList;
 /**
  * Created by paulyves on 2/2/14.
  */
-public class CharSheetDefCompoList extends Fragment {
+public class CharSheetDefJaugeList extends Fragment {
     private String universeName;
 
     private ArrayList<JaugeListe> jaugeList;
@@ -42,8 +41,8 @@ public class CharSheetDefCompoList extends Fragment {
      * Only this method should be used to create this kind of fragment
      * @return
      */
-    public static CharSheetDefCompoList newInstance(){
-        CharSheetDefCompoList fragment = new CharSheetDefCompoList();
+    public static CharSheetDefJaugeList newInstance(){
+        CharSheetDefJaugeList fragment = new CharSheetDefJaugeList();
         Bundle args = new Bundle();
         // insert here some argument if you want them in bundle
         return fragment;
@@ -51,12 +50,11 @@ public class CharSheetDefCompoList extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View v = inflater.inflate(R.layout.char_sheet_def_compo_list, container, false);
+        View v = inflater.inflate(R.layout.char_sheet_def_jauge_list, container, false);
         universeName = getActivity().getIntent().getExtras().getString("universeName");
         TextView title = (TextView) v.findViewById(R.id.univTitle);
         title.setText(universeName);
         setJauge(v);
-        setUtils(v);
         return v;
     }
 
@@ -86,31 +84,7 @@ public class CharSheetDefCompoList extends Fragment {
         });
     }
 
-    private void setUtils(View v){
-        ListView utilListView = (ListView) v.findViewById(R.id.utilList);
-        utilListAdapter = new ArrayAdapter<UtilitaireListe>(getActivity(), R.layout.list_component);
-        UtilitaireListeDAO utilManager = new UtilitaireListeDAO(getActivity());
-        utilManager.open();
-        utilList = utilManager.getAllUtilitaireListe(universeName);
-        utilManager.close();
-        utilListAdapter.addAll(utilList);
-        utilListView.setAdapter(utilListAdapter);
-        utilListView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
-            @Override
-            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
-                UtilitaireListe utilToDelete = (UtilitaireListe) parent.getItemAtPosition(position);
-                componentClass = UtilitaireListe.class;
-                componentId = utilToDelete.getUtilitaireListeId();
-                componentPosition = position;
-                AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-                builder.setTitle(getString(R.string.askDeleteConfirmation)+" "+ utilToDelete.getNom() + "?");
-                builder.setPositiveButton(getString(R.string.yes), deleteConfirmListener);
-                builder.setNegativeButton(getString(R.string.no), null);
-                builder.show();
-                return false;
-            }
-        });
-    }
+
 
     private void setComp(View v){
         ExpandableListView listView = (ExpandableListView) v.findViewById(R.id.skillList);
