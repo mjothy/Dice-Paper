@@ -1,35 +1,54 @@
 package edu.jdr.DicePaper.utils;
 
-/**
- * Created by mario on 06/02/14.
- */
-
-import java.util.HashMap;
-import java.util.List;
-
+import android.app.Activity;
+import android.app.Fragment;
+import android.app.FragmentTransaction;
 import android.content.Context;
 import android.graphics.Typeface;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseExpandableListAdapter;
+import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 import edu.jdr.DicePaper.R;
-import edu.jdr.DicePaper.models.table.MasterListe;
+import edu.jdr.DicePaper.fragments.CreateModifDialog;
+import edu.jdr.DicePaper.models.table.CaracteristiqueListe;
 
-public class ExpandableListAdapter extends BaseExpandableListAdapter {
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+
+/**
+ * Created by paulyves on 2/9/14.
+ * todo :
+ * add int attributes for the header and children layouts
+ * add attribute to see if we need to create buttons and what will be their use
+ * once this is done, rename this to MightyExpandableListAdapterOfDoom
+ */
+public class SimpleExpListAdapter<T,S> extends BaseExpandableListAdapter {
 
     private Context _context;
-    private List<MasterListe> _listDataHeader; // header titles
+    private List<T> _listDataHeader; // header titles
     // child data in format of header title, child title
-    private HashMap<MasterListe, List<MasterListe>> _listDataChild;
+    private HashMap<T, List<S>> _listDataChild;
 
-    public ExpandableListAdapter(Context context, List<MasterListe> listDataHeader,
-                                 HashMap<MasterListe, List<MasterListe>> listChildData) {
+    public SimpleExpListAdapter(Context context, List<T> listDataHeader,
+                                HashMap<T, List<S>> listChildData) {
         this._context = context;
         this._listDataHeader = listDataHeader;
         this._listDataChild = listChildData;
     }
+    public SimpleExpListAdapter(Context context, HashMap<T, List<S>> listChildData) {
+        this._context = context;
+        _listDataHeader = new ArrayList<T>();
+        for(T key : listChildData.keySet()){
+            this._listDataHeader.add(key);
+        }
+        this._listDataChild = listChildData;
+    }
+
 
     @Override
     public Object getChild(int groupPosition, int childPosititon) {
@@ -82,20 +101,35 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
     }
 
     @Override
-    public View getGroupView(int groupPosition, boolean isExpanded,
+    public View getGroupView(final int groupPosition, boolean isExpanded,
                              View convertView, ViewGroup parent) {
         String headerTitle = getGroup(groupPosition).toString();
         if (convertView == null) {
             LayoutInflater infalInflater = (LayoutInflater) this._context
                     .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            convertView = infalInflater.inflate(R.layout.list_component, null);
+            convertView = infalInflater.inflate(R.layout.list_group, null);
         }
 
         TextView lblListHeader = (TextView) convertView
                 .findViewById(R.id.components);
         lblListHeader.setTypeface(null, Typeface.BOLD);
         lblListHeader.setText(headerTitle);
-
+        Button add = (Button) convertView.findViewById(R.id.addButton);
+        add.setFocusable(false);
+        add.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                CaracteristiqueListe carac = (CaracteristiqueListe) getGroup(groupPosition);
+                FragmentTransaction ft = ((Activity)_context).getFragmentManager().beginTransaction();
+                Fragment prev = ((Activity)_context).getFragmentManager().findFragmentByTag("dialog");
+                if (prev != null) {
+                    ft.remove(prev);
+                }
+                ft.addToBackStack(null);
+                CreateModifDialog dialog = CreateModifDialog.newInstance(R.string.addModif, carac.getCaracteristiqueListeId());
+                dialog.show(((Activity)_context).getFragmentManager(),"dialog");
+            }
+        });
         return convertView;
     }
 

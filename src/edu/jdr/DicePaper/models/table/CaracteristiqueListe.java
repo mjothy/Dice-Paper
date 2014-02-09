@@ -3,6 +3,7 @@ package edu.jdr.DicePaper.models.table;
 import edu.jdr.DicePaper.models.DAO.ModificateurListeDAO;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by paulyves on 1/28/14.
@@ -11,7 +12,7 @@ public class CaracteristiqueListe {
     private int caracteristiqueListeId;
     private String nom;
     private String nomUnivers;
-    private ArrayList<ModificateurListe> linkedModificateur;
+    private List<ModificateurListe> linkedModificateur;
 
     public CaracteristiqueListe(String nom, String nomUnivers) {
         this.nom = nom;
@@ -48,7 +49,7 @@ public class CaracteristiqueListe {
         this.nomUnivers = nomUnivers;
     }
 
-    public ArrayList<ModificateurListe> getLinkedModificateur() {
+    public List<ModificateurListe> getLinkedModificateur() {
         return linkedModificateur;
     }
 

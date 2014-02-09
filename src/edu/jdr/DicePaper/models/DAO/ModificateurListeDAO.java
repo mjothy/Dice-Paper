@@ -28,7 +28,7 @@ public class ModificateurListeDAO extends DAOBase {
         ContentValues value = new ContentValues();
         value.put(ModificateurListeDAO.NOM, mod.getNomMod());
         value.put(CaracteristiqueListeDAO.KEY, mod.getCaracteristiqueListeId());
-        return mDb.insert(CaracteristiqueListeDAO.TABLE_NAME, null, value);
+        return mDb.insert(ModificateurListeDAO.TABLE_NAME, null, value);
     }
 
     public ModificateurListe getModListe(int id){

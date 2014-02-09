@@ -7,6 +7,7 @@
     <string name="successCreateUtilitaire">Ajout de l\'utilitaire</string>
     <string name="successCreateCarac">Ajout de la caractéristique</string>
     <string name="successCreateComp">Ajout de la compétence</string>
+    <string name="successCreateModif">Ajout du modificateur</string>
 
     <string name="askDeleteConfirmation">Êtes vous certain de vouloir supprimer </string>
 

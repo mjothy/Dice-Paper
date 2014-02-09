@@ -9,6 +9,7 @@ import android.view.MotionEvent;
 import android.widget.FrameLayout;
 import edu.jdr.DicePaper.R;
 import edu.jdr.DicePaper.fragments.CharSheetDef;
+import edu.jdr.DicePaper.fragments.CharSheetDefCaracList;
 import edu.jdr.DicePaper.fragments.CharSheetDefJaugeList;
 import edu.jdr.DicePaper.fragments.CharSheetDefUtilList;
 import edu.jdr.DicePaper.utils.OnSwipeTouchListener;
@@ -23,6 +24,7 @@ public class CharSheetDefSwipper extends Activity {
     private CharSheetDef fragCompoDef;
     private CharSheetDefJaugeList fragJaugeList;
     private CharSheetDefUtilList fragUtilList;
+    private CharSheetDefCaracList fragCaracList;
     public OnSwipeTouchListener onSwipeTouchListener;
     private int currentFrag;
 
@@ -62,6 +64,9 @@ public class CharSheetDefSwipper extends Activity {
         if(fragUtilList == null) {
             fragUtilList = CharSheetDefUtilList.newInstance();
         }
+        if(this.fragCaracList == null){
+            fragCaracList = CharSheetDefCaracList.newInstance();
+        }
     }
 
     private void showFragment(final Fragment fragment, int i) {
@@ -92,9 +97,13 @@ public class CharSheetDefSwipper extends Activity {
         currentFrag = 2;
         showFragment(fragUtilList, i);
     }
+    public void goToCaracList(int i){
+        currentFrag = 3;
+        showFragment(fragCaracList, i);
+    }
 
     public void switchFragment(int i){
-        currentFrag = (currentFrag+3+i)%3;
+        currentFrag = (currentFrag+4+i)%4;
         switch (currentFrag){
             case 0 :
                 goToCompoDefine(i);
@@ -105,6 +114,9 @@ public class CharSheetDefSwipper extends Activity {
             case 2 :
                 goToUtilList(i);
                 break;
+            case 3 :
+                goToCaracList(i);
+                break;
         }
     }
 
@@ -113,5 +125,9 @@ public class CharSheetDefSwipper extends Activity {
     public boolean dispatchTouchEvent(MotionEvent ev){
         onSwipeTouchListener.getGestureDetector().onTouchEvent(ev);
         return super.dispatchTouchEvent(ev);
+    }
+
+    public CharSheetDefCaracList getFragCaracList() {
+        return fragCaracList;
     }
 }
