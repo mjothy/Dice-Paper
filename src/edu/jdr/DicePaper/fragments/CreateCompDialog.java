@@ -38,7 +38,7 @@ public class CreateCompDialog extends DialogFragment {
         name = (EditText) v.findViewById(R.id.name);
         validate.setOnClickListener(validateListener);
         cancel.setOnClickListener(cancelListener);
-        getDialog().setTitle(getString(R.string.addCharac));
+        getDialog().setTitle(getString(R.string.addComp));
         return v;
     }
 

@@ -1,19 +1,20 @@
 package edu.jdr.DicePaper.fragments;
 
+import android.app.AlertDialog;
 import android.app.Fragment;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ExpandableListView;
 import android.widget.TextView;
-import android.widget.Toast;
 import edu.jdr.DicePaper.R;
 import edu.jdr.DicePaper.models.DAO.CaracteristiqueListeDAO;
 import edu.jdr.DicePaper.models.DAO.ModificateurListeDAO;
 import edu.jdr.DicePaper.models.table.CaracteristiqueListe;
 import edu.jdr.DicePaper.models.table.ModificateurListe;
-import edu.jdr.DicePaper.utils.SimpleExpListAdapter;
+import edu.jdr.DicePaper.utils.CaracDefExpListAdapter;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -69,8 +70,42 @@ public class CharSheetDefCaracList extends Fragment {
         for(CaracteristiqueListe carac : caracList){
             theMap.put(carac, carac.getLinkedModificateur());
         }
-        SimpleExpListAdapter<CaracteristiqueListe, ModificateurListe> adapter = new SimpleExpListAdapter<CaracteristiqueListe, ModificateurListe>(getActivity(), theMap);
+        CaracDefExpListAdapter<CaracteristiqueListe, ModificateurListe> adapter = new CaracDefExpListAdapter<CaracteristiqueListe, ModificateurListe>(getActivity(), theMap);
 
         caracListView.setAdapter(adapter);
+    }
+
+    public void callBackDeleteCarac(final CaracteristiqueListe carac){
+        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+        builder.setTitle(getActivity().getString(R.string.askDeleteConfirmation)+" "+ carac.getNom() + "?");
+        builder.setPositiveButton(getActivity().getString(R.string.yes), new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                CaracteristiqueListeDAO manager = new CaracteristiqueListeDAO(getActivity());
+                manager.open();
+                manager.deleteCarac(carac.getCaracteristiqueListeId());
+                manager.close();
+                setCarac();
+            }
+        });
+        builder.setNegativeButton(getActivity().getString(R.string.no), null);
+        builder.show();
+    }
+
+    public void callBackDeleteMod(final ModificateurListe modificateur){
+        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+        builder.setTitle(getActivity().getString(R.string.askDeleteConfirmation)+" "+ modificateur.getNomMod()+ "?");
+        builder.setPositiveButton(getActivity().getString(R.string.yes), new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                ModificateurListeDAO manager = new ModificateurListeDAO(getActivity());
+                manager.open();
+                manager.delete(modificateur.getModificateurListeId());
+                manager.close();
+                setCarac();
+            }
+        });
+        builder.setNegativeButton(getActivity().getString(R.string.no), null);
+        builder.show();
     }
 }

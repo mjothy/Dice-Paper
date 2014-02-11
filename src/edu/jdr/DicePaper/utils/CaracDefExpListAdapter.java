@@ -11,10 +11,11 @@ import android.view.ViewGroup;
 import android.widget.BaseExpandableListAdapter;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 import edu.jdr.DicePaper.R;
+import edu.jdr.DicePaper.activity.CharSheetDefSwipper;
 import edu.jdr.DicePaper.fragments.CreateModifDialog;
 import edu.jdr.DicePaper.models.table.CaracteristiqueListe;
+import edu.jdr.DicePaper.models.table.ModificateurListe;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -27,20 +28,20 @@ import java.util.List;
  * add attribute to see if we need to create buttons and what will be their use
  * once this is done, rename this to MightyExpandableListAdapterOfDoom
  */
-public class SimpleExpListAdapter<T,S> extends BaseExpandableListAdapter {
+public class CaracDefExpListAdapter<T,S> extends BaseExpandableListAdapter {
 
     private Context _context;
     private List<T> _listDataHeader; // header titles
     // child data in format of header title, child title
     private HashMap<T, List<S>> _listDataChild;
 
-    public SimpleExpListAdapter(Context context, List<T> listDataHeader,
-                                HashMap<T, List<S>> listChildData) {
+    public CaracDefExpListAdapter(Context context, List<T> listDataHeader,
+                                  HashMap<T, List<S>> listChildData) {
         this._context = context;
         this._listDataHeader = listDataHeader;
         this._listDataChild = listChildData;
     }
-    public SimpleExpListAdapter(Context context, HashMap<T, List<S>> listChildData) {
+    public CaracDefExpListAdapter(Context context, HashMap<T, List<S>> listChildData) {
         this._context = context;
         _listDataHeader = new ArrayList<T>();
         for(T key : listChildData.keySet()){
@@ -62,7 +63,7 @@ public class SimpleExpListAdapter<T,S> extends BaseExpandableListAdapter {
     }
 
     @Override
-    public View getChildView(int groupPosition, final int childPosition,
+    public View getChildView(final int groupPosition, final int childPosition,
                              boolean isLastChild, View convertView, ViewGroup parent) {
 
         final String childText = getChild(groupPosition, childPosition).toString();
@@ -76,6 +77,16 @@ public class SimpleExpListAdapter<T,S> extends BaseExpandableListAdapter {
         TextView txtListChild = (TextView) convertView
                 .findViewById(R.id.childs);
         txtListChild.setText(childText);
+
+        convertView.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                ModificateurListe mod = (ModificateurListe) getChild(groupPosition, childPosition);
+                ((CharSheetDefSwipper) _context).getFragCaracList().callBackDeleteMod(mod);
+                return false;
+            }
+        });
+
         return convertView;
     }
 
@@ -107,7 +118,7 @@ public class SimpleExpListAdapter<T,S> extends BaseExpandableListAdapter {
         if (convertView == null) {
             LayoutInflater infalInflater = (LayoutInflater) this._context
                     .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            convertView = infalInflater.inflate(R.layout.list_group, null);
+            convertView = infalInflater.inflate(R.layout.list_define_group, null);
         }
 
         TextView lblListHeader = (TextView) convertView
@@ -128,6 +139,15 @@ public class SimpleExpListAdapter<T,S> extends BaseExpandableListAdapter {
                 ft.addToBackStack(null);
                 CreateModifDialog dialog = CreateModifDialog.newInstance(R.string.addModif, carac.getCaracteristiqueListeId());
                 dialog.show(((Activity)_context).getFragmentManager(),"dialog");
+            }
+        });
+        Button del = (Button) convertView.findViewById(R.id.delButton);
+        del.setFocusable(false);
+        del.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                final CaracteristiqueListe carac = (CaracteristiqueListe) getGroup(groupPosition);
+                ((CharSheetDefSwipper) _context).getFragCaracList().callBackDeleteCarac(carac);
             }
         });
         return convertView;
