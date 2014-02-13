@@ -8,10 +8,7 @@ import android.os.Bundle;
 import android.view.MotionEvent;
 import android.widget.FrameLayout;
 import edu.jdr.DicePaper.R;
-import edu.jdr.DicePaper.fragments.CharSheetDef;
-import edu.jdr.DicePaper.fragments.CharSheetDefCaracList;
-import edu.jdr.DicePaper.fragments.CharSheetDefJaugeList;
-import edu.jdr.DicePaper.fragments.CharSheetDefUtilList;
+import edu.jdr.DicePaper.fragments.*;
 import edu.jdr.DicePaper.utils.OnSwipeTouchListener;
 
 
@@ -25,6 +22,7 @@ public class CharSheetDefSwipper extends Activity {
     private CharSheetDefJaugeList fragJaugeList;
     private CharSheetDefUtilList fragUtilList;
     private CharSheetDefCaracList fragCaracList;
+    private CharSheetDefCompList fragCompList;
     public OnSwipeTouchListener onSwipeTouchListener;
     private int currentFrag;
 
@@ -67,6 +65,9 @@ public class CharSheetDefSwipper extends Activity {
         if(this.fragCaracList == null){
             fragCaracList = CharSheetDefCaracList.newInstance();
         }
+        if(this.fragCompList == null){
+            fragCompList = CharSheetDefCompList.newInstance();
+        }
     }
 
     private void showFragment(final Fragment fragment, int i) {
@@ -101,9 +102,13 @@ public class CharSheetDefSwipper extends Activity {
         currentFrag = 3;
         showFragment(fragCaracList, i);
     }
+    public void goToCompList(int i){
+        currentFrag = 4;
+        showFragment(fragCompList, i);
+    }
 
     public void switchFragment(int i){
-        currentFrag = (currentFrag+4+i)%4;
+        currentFrag = (currentFrag+5+i)%5;
         switch (currentFrag){
             case 0 :
                 goToCompoDefine(i);
@@ -116,6 +121,9 @@ public class CharSheetDefSwipper extends Activity {
                 break;
             case 3 :
                 goToCaracList(i);
+                break;
+            case 4 :
+                goToCompList(i);
                 break;
         }
     }

@@ -12,8 +12,7 @@
     <TextView
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:text="@string/jaugeList"
-            android:layout_marginTop="25dp"
+            android:text="@string/skillList"
             style="@style/h2"/>
     <ListView
             android:layout_width="fill_parent"
@@ -21,5 +20,6 @@
             android:layout_gravity="center_horizontal"
             android:scrollbars="vertical"
             style="@style/list"
-            android:id="@+id/jaugeList"/>
+            android:id="@+id/skillList"/>
+
 </LinearLayout>

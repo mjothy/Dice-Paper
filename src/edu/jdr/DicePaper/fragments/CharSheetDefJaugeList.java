@@ -28,10 +28,6 @@ public class CharSheetDefJaugeList extends Fragment {
 
     private ArrayList<JaugeListe> jaugeList;
     private ArrayAdapter<JaugeListe> jaugeListAdapter;
-    private ArrayList<UtilitaireListe> utilList;
-    private ArrayAdapter<UtilitaireListe> utilListAdapter;
-    private ArrayList<CompetenceListe> compList;
-    private ExpandableListAdapter compListAdapter;
 
     private Class componentClass;
     private int componentId;
@@ -86,12 +82,7 @@ public class CharSheetDefJaugeList extends Fragment {
 
 
 
-    private void setComp(View v){
-        ExpandableListView listView = (ExpandableListView) v.findViewById(R.id.skillList);
-        CompetenceListeDAO compManager = new CompetenceListeDAO(getActivity());
-        compList = compManager.getAllCompetence(universeName);
-        //todo
-    }
+
 
     private Dialog.OnClickListener deleteConfirmListener = new DialogInterface.OnClickListener() {
         @Override
@@ -104,15 +95,6 @@ public class CharSheetDefJaugeList extends Fragment {
                 jaugeListAdapter.remove(jaugeList.get(componentPosition));
                 jaugeList.remove(componentPosition);
                 jaugeListAdapter.notifyDataSetChanged();
-            }
-            if(componentClass.equals(UtilitaireListe.class)){
-                UtilitaireListeDAO utilManager = new UtilitaireListeDAO(getActivity());
-                utilManager.open();
-                utilManager.delete(componentId);
-                utilManager.close();
-                utilListAdapter.remove(utilList.get(componentPosition));
-                utilList.remove(componentPosition);
-                utilListAdapter.notifyDataSetChanged();
             }
         }
     };

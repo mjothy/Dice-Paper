@@ -42,4 +42,9 @@ public class CompetenceListe {
     public void setNomUnivers(String nomUnivers) {
         this.nomUnivers = nomUnivers;
     }
+
+    @Override
+    public String toString(){
+        return nom;
+    }
 }
