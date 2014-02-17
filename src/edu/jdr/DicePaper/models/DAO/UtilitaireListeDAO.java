@@ -34,7 +34,7 @@ public class UtilitaireListeDAO extends DAOBase {
         ContentValues value = new ContentValues();
         value.put(UtilitaireListeDAO.NOM, utilitaireListe.getNom());
         value.put(UniversDAO.KEY, utilitaireListe.getNomUnivers());
-        return mDb.update(UtilitaireListeDAO.TABLE_NAME, value, KEY+" = ?", new String[]{Integer.toString(utilitaireListe.getUtilitaireListeId())});
+        return mDb.update(UtilitaireListeDAO.TABLE_NAME, value, KEY+" = ?", new String[]{Integer.toString(utilitaireListe.getListeId())});
     }
 
     /**

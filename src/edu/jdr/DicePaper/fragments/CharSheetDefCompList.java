@@ -64,7 +64,7 @@ public class CharSheetDefCompList extends Fragment {
             @Override
             public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
                 CompetenceListe compToDelete = (CompetenceListe) parent.getItemAtPosition(position);
-                componentId = compToDelete.getCompetenceListeId();
+                componentId = compToDelete.getListeId();
                 componentPosition = position;
                 AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
                 builder.setTitle(getString(R.string.askDeleteConfirmation)+" "+ compToDelete.getNom() + "?");

@@ -62,7 +62,7 @@ public class CharSheetDefCaracList extends Fragment {
         ModificateurListeDAO modManager = new ModificateurListeDAO(getActivity());
         modManager.open();
         for(CaracteristiqueListe carac : caracList){
-            carac.setLinkedModificateur(modManager.getAllModList(carac.getCaracteristiqueListeId()));
+            carac.setLinkedModificateur(modManager.getAllModList(carac.getListeId()));
         }
         modManager.close();
 
@@ -83,7 +83,7 @@ public class CharSheetDefCaracList extends Fragment {
             public void onClick(DialogInterface dialog, int which) {
                 CaracteristiqueListeDAO manager = new CaracteristiqueListeDAO(getActivity());
                 manager.open();
-                manager.deleteCarac(carac.getCaracteristiqueListeId());
+                manager.deleteCarac(carac.getListeId());
                 manager.close();
                 setCarac();
             }

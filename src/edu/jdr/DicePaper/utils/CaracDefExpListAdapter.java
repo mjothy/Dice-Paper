@@ -137,7 +137,7 @@ public class CaracDefExpListAdapter<T,S> extends BaseExpandableListAdapter {
                     ft.remove(prev);
                 }
                 ft.addToBackStack(null);
-                CreateModifDialog dialog = CreateModifDialog.newInstance(R.string.addModif, carac.getCaracteristiqueListeId());
+                CreateModifDialog dialog = CreateModifDialog.newInstance(R.string.addModif, carac.getListeId());
                 dialog.show(((Activity)_context).getFragmentManager(),"dialog");
             }
         });

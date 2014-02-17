@@ -68,7 +68,7 @@ public class CharSheetDefJaugeList extends Fragment {
             public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
                 JaugeListe jaugeToDelete = (JaugeListe) parent.getItemAtPosition(position);
                 componentClass = JaugeListe.class;
-                componentId = jaugeToDelete.getJaugeListeId();
+                componentId = jaugeToDelete.getListeId();
                 componentPosition = position;
                 AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
                 builder.setTitle(getString(R.string.askDeleteConfirmation)+" "+ jaugeToDelete.getNom() + "?");

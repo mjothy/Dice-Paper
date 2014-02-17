@@ -65,7 +65,7 @@ public class CharSheetDefUtilList extends Fragment {
             @Override
             public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
                 UtilitaireListe utilToDelete = (UtilitaireListe) parent.getItemAtPosition(position);
-                componentId = utilToDelete.getUtilitaireListeId();
+                componentId = utilToDelete.getListeId();
                 componentPosition = position;
                 AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
                 builder.setTitle(getString(R.string.askDeleteConfirmation)+" "+ utilToDelete.getNom() + "?");

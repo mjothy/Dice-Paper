@@ -4,9 +4,13 @@ package edu.jdr.DicePaper.models.table;
  * Created by mario on 06/02/14.
  */
 public class MasterListe {
-    private int id;
-    private String nom;
-    private String nomUnivers;
+    protected int id;
+    protected String nom;
+    protected String nomUnivers;
+
+    public MasterListe(){
+
+    }
 
     public MasterListe(String nom, String nomUnivers) {
         this.nom = nom;
@@ -19,11 +23,11 @@ public class MasterListe {
         this.nomUnivers = nomUnivers;
     }
 
-    public int getUtilitaireListeId() {
+    public int getListeId() {
         return id;
     }
 
-    public void setUtilitaireListeId(int id) {
+    public void setListeId(int id) {
         this.id = id;
     }
 
@@ -47,5 +51,4 @@ public class MasterListe {
     public String toString(){
         return nom;
     }
-
 }

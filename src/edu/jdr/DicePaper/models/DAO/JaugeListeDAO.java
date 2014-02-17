@@ -40,7 +40,7 @@ public class JaugeListeDAO extends DAOBase {
         value.put(JaugeListeDAO.MIN, jauge.getMin());
         value.put(JaugeListeDAO.MAX, jauge.getMax());
         value.put(UniversDAO.KEY, jauge.getNomUnivers());
-        return mDb.update(JaugeListeDAO.TABLE_NAME, value, KEY+" = ?", new String[]{Integer.toString(jauge.getJaugeListeId())});
+        return mDb.update(JaugeListeDAO.TABLE_NAME, value, KEY+" = ?", new String[]{Integer.toString(jauge.getListeId())});
     }
 
     /**
