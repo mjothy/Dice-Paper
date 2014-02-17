@@ -4,4 +4,8 @@
         Dans ce menu, vous pouvez paramétrer votre univers comme vous le souhaitez, que ce soit pour
         la fiche de personnage ou pour la façon dont les jets de dés se font.
     </string>
+    <string name="enterUnivDescription">
+        Dans ce menu, vous pouvez créer, supprimer, ou ouvrir une fiche de personnage correspondant
+        au template créé pour cet univers.
+    </string>
 </resources>

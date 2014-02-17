@@ -14,7 +14,7 @@
         </activity>
         <activity android:name=".activity.UniversMaster"/>
         <activity android:name=".activity.UniversDefinition"/>
-        <activity android:name=".fragments.CharSheetDef"/>
         <activity android:name=".activity.CharSheetDefSwipper"/>
+        <activity android:name=".activity.UniversEnter"/>
     </application>
 </manifest>

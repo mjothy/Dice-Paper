@@ -10,6 +10,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Toast;
 import edu.jdr.DicePaper.R;
 import edu.jdr.DicePaper.activity.UniversDefinition;
+import edu.jdr.DicePaper.activity.UniversEnter;
 import edu.jdr.DicePaper.models.DAO.UniversDAO;
 
 import java.util.ArrayList;
@@ -60,11 +61,13 @@ public class ListUniverseDialog extends DialogFragment {
     private Dialog.OnClickListener loadListener = new DialogInterface.OnClickListener() {
         @Override
         public void onClick(DialogInterface dialog, int which) {
+            //Bouton de modification de l'univers
             if(goal == LOAD){
                 Intent universeBuilder = new Intent(getActivity(), UniversDefinition.class);
                 universeBuilder.putExtra("universeName", listUniv.get(which));
                 startActivity(universeBuilder);
             }
+            //Bouton de supression de l'univers
             if(goal == DELETE){
                 AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
                 builder.setTitle("Êtes vous certain de vouloir supprimer " + listUniv.get(which) + "?");
@@ -77,6 +80,12 @@ public class ListUniverseDialog extends DialogFragment {
                 });
                 univToDelete = listUniv.get(which);
                 builder.show();
+            }
+            //Bouton d'entree dans l'univers
+            if(goal == ENTER){
+                Intent universeEnter = new Intent(getActivity(), UniversEnter.class);
+                universeEnter.putExtra("universeName", listUniv.get(which));
+                startActivity(universeEnter);
             }
         }
     };

@@ -2,6 +2,10 @@
 <resources>
     <string name="nameUniverse">Nom du nouvel univers :</string>
     <string name="listUniverse">Liste des univers :</string>
+
     <string name="min">Valeur minimum</string>
     <string name="max">Valeur maximum</string>
+
+    <string name="nameCharSheet">Nom du personnage :</string>
+    <string name="listCharSheet">Liste des personnages :</string>
 </resources>

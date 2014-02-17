@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+    <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:textStyle="bold"
+            android:textSize="25dp"
+            android:id="@+id/univTitle"/>
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
+            android:text="@string/enterUnivDescription"/>
+    <Button
+            android:layout_width="fill_parent"
+            android:gravity="center_horizontal"
+            android:layout_marginTop="25dp"
+            android:paddingLeft="25dp"
+            android:paddingRight="25dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/NewCharSheet"
+            android:text="@string/newCharSheet"/>
+    <Button
+            android:layout_width="fill_parent"
+            android:gravity="center_horizontal"
+            android:paddingLeft="25dp"
+            android:paddingRight="25dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/LoadCharSheet"
+            android:text="@string/loadCharSheet"/>
+    <Button
+            android:layout_width="fill_parent"
+            android:gravity="center_horizontal"
+            android:paddingLeft="25dp"
+            android:paddingRight="25dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/DeleteCharSheet"
+            android:text="@string/deleteCharSheet"/>
+
+</LinearLayout>
