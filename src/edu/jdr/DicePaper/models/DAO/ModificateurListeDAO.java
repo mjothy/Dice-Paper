@@ -50,6 +50,11 @@ public class ModificateurListeDAO extends DAOBase {
         return mDb.delete(TABLE_NAME, KEY + " = ?", new String[]{String.valueOf(id)});
     }
 
+    /**
+     * Return all the ModificateurListe related to a given CaracteristiqueListe
+     * @param caracId the id of the CaracteristiqueListe
+     * @return ArrayList of ModificateurListe
+     */
     public ArrayList<ModificateurListe> getAllModList(int caracId){
         Cursor c = mDb.rawQuery("SELECT * FROM "+TABLE_NAME+" WHERE "+CaracteristiqueListeDAO.KEY+" = ?",
                                 new String[]{String.valueOf(caracId)});

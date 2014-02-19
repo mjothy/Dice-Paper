@@ -46,8 +46,13 @@ public class FichePersonnageDAO extends DAOBase {
         }
     }
 
-    public ArrayList<FichePersonnage> getAllFiche(){
-        Cursor c = mDb.rawQuery("SELECT * FROM "+TABLE_NAME, null);
+    /**
+     * Return all character sheets related to a universe
+     * @param univ the id of the universe
+     * @return an ArrayList of FichePersonnage
+     */
+    public ArrayList<FichePersonnage> getAllFiche(String univ){
+        Cursor c = mDb.rawQuery("SELECT * FROM "+TABLE_NAME+" WHERE "+UniversDAO.KEY+" = ?"+" GROUP BY "+KEY, new String[]{univ});
         ArrayList<FichePersonnage> results = new ArrayList<FichePersonnage>();
         while (c.moveToNext()){
             results.add(new FichePersonnage(c.getString(0),c.getInt(1),c.getString(2)));
