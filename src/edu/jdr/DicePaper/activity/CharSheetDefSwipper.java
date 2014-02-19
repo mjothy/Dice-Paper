@@ -34,11 +34,11 @@ public class CharSheetDefSwipper extends Activity {
         setupFragments();
         onSwipeTouchListener = new OnSwipeTouchListener(this){
             public void onSwipeRight() {
-                switchFragment(1);
+                switchFragment(-1);
             }
 
             public void onSwipeLeft() {
-                switchFragment(-1);
+                switchFragment(1);
             }
 
             public void onSwipeTop() {
@@ -77,7 +77,7 @@ public class CharSheetDefSwipper extends Activity {
         final FragmentManager fm = getFragmentManager();
         final FragmentTransaction ft = fm.beginTransaction();
         // We can also animate the changing of fragment
-        if(i<0){
+        if(i>0){
             ft.setCustomAnimations(R.animator.slide_in_left, R.animator.slide_out_right);
         }else{
             ft.setCustomAnimations(R.animator.slide_in_right, R.animator.slide_out_left);
@@ -87,7 +87,7 @@ public class CharSheetDefSwipper extends Activity {
     }
 
     public void goToJaugeList(int i) {
-        currentFrag = 1;
+        currentFrag = 2;
         showFragment(fragJaugeList, i);
     }
     public void goToCompoDefine(int i){
@@ -95,15 +95,15 @@ public class CharSheetDefSwipper extends Activity {
         showFragment(fragCompoDef, i);
     }
     public void goToUtilList(int i){
-        currentFrag = 2;
+        currentFrag = 4;
         showFragment(fragUtilList, i);
     }
     public void goToCaracList(int i){
-        currentFrag = 3;
+        currentFrag = 1;
         showFragment(fragCaracList, i);
     }
     public void goToCompList(int i){
-        currentFrag = 4;
+        currentFrag = 3;
         showFragment(fragCompList, i);
     }
 
@@ -114,16 +114,16 @@ public class CharSheetDefSwipper extends Activity {
                 goToCompoDefine(i);
                 break;
             case 1 :
-                goToJaugeList(i);
-                break;
-            case 2 :
-                goToUtilList(i);
-                break;
-            case 3 :
                 goToCaracList(i);
                 break;
-            case 4 :
+            case 2 :
+                goToJaugeList(i);
+                break;
+            case 3 :
                 goToCompList(i);
+                break;
+            case 4 :
+                goToUtilList(i);
                 break;
         }
     }
