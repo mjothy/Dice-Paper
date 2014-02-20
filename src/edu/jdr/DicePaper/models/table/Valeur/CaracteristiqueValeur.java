@@ -87,6 +87,6 @@ public class CaracteristiqueValeur {
 
     @Override
     public String toString(){
-        return Float.toString(baseValue)+" ("+Float.toString(modifiedValue)+")";
+        return relatedList.toString()+" : "+Float.toString(baseValue)+" ("+Float.toString(modifiedValue)+")";
     }
 }

@@ -14,6 +14,7 @@ import edu.jdr.DicePaper.models.DAO.Liste.CaracteristiqueListeDAO;
 import edu.jdr.DicePaper.models.DAO.Liste.ModificateurListeDAO;
 import edu.jdr.DicePaper.models.table.Liste.CaracteristiqueListe;
 import edu.jdr.DicePaper.models.table.Liste.ModificateurListe;
+import edu.jdr.DicePaper.models.table.Valeur.CaracteristiqueValeur;
 import edu.jdr.DicePaper.utils.CaracDefExpListAdapter;
 
 import java.util.ArrayList;

@@ -69,7 +69,7 @@ public class CharSheetCaracValeur extends Fragment {
         FichePersonnage fichePersonnage = new FichePersonnage(charName,0,universeName);
         caracManager.open();
         caracManager.initializeNewValues(fichePersonnage);
-        caracList = caracManager.getAllCaracteristiqueValeur(universeName);
+        caracList = caracManager.getAllCaracteristiqueValeur(charName);
         caracManager.close();
         ModificateurValeurDAO modManager = new ModificateurValeurDAO(getActivity());
         modManager.open();

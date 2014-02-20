@@ -64,6 +64,6 @@ public class ModificateurValeur {
 
     @Override
     public String toString(){
-        return Float.toString(value);
+        return relatedList.toString()+" : "+Float.toString(value);
     }
 }

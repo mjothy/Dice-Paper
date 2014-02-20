@@ -72,7 +72,7 @@ public class CaracValeurExpListAdapter<T,S> extends ExpListAdapter {
         if (convertView == null) {
             LayoutInflater infalInflater = (LayoutInflater) this._context
                     .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            convertView = infalInflater.inflate(R.layout.list_define_group, null);
+            convertView = infalInflater.inflate(R.layout.list_carac_valeur_group, null);
         }
 
         TextView lblListHeader = (TextView) convertView
