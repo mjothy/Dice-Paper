@@ -26,7 +26,7 @@ public class JaugeValeurDAO extends DAOBase {
     public static final String TABLE_NAME = "jauge_valeur";
     public static final String KEY = "jauge_valeur_id";
     public static final String CURRENTVALUE = "valeur_actuelle";
-    public static final String MAXVALUE = "valeur_actuelle";
+    public static final String MAXVALUE = "valeur_max";
     public static final String TABLE_CREATE = "CREATE TABLE " + TABLE_NAME + " ( " + KEY + " INTEGER PRIMARY KEY AUTOINCREMENT," +
             " "+CURRENTVALUE+" INTEGER, "+MAXVALUE+" INTEGER, "+ JaugeListeDAO.KEY+
             " INTEGER REFERENCES "+JaugeListeDAO.TABLE_NAME+"("+JaugeListeDAO.KEY+") ON DELETE CASCADE, "+

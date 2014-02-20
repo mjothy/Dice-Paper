@@ -44,4 +44,8 @@ public class FichePersonnage {
     public void setFavori(int favori) {
         this.favori = favori;
     }
+
+    public String toString(){
+        return nomFiche;
+    }
 }

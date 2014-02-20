@@ -103,7 +103,7 @@ public class CaracteristiqueValeurDAO extends DAOBase{
         Cursor c = mDb.rawQuery("SELECT * FROM "+outerTable+
                 " WHERE "+outerKey+" NOT IN ( SELECT "+outerTable+"."+outerKey+" FROM "+
                     TABLE_NAME+" JOIN "+outerTable+" ON "+TABLE_NAME+"."+outerKey+" = "+outerTable+"."+outerKey+
-                    " WHERE "+FichePersonnageDAO.KEY+" = ?) AND" +
+                    " WHERE "+FichePersonnageDAO.KEY+" = ?) AND " +
                 UniversDAO.KEY+" = ?"
                 , new String[]{character.getNomFiche(), character.getNomUnivers()});
         if(c.getCount()>0){

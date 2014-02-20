@@ -25,7 +25,7 @@ public class FichePersonnageDAO extends DAOBase {
                                               " TEXT REFERENCES "+UniversDAO.TABLE_NAME+"("+UniversDAO.KEY+") ON DELETE CASCADE);";
     public static final String TABLE_DROP = "DROP TABLE IF EXIST " + TABLE_NAME + ";";
 
-    public long CreateFiche(FichePersonnage perso){
+    public long createFiche(FichePersonnage perso){
         ContentValues value = new ContentValues();
         value.put(FichePersonnageDAO.KEY, perso.getNomFiche());
         value.put(FichePersonnageDAO.FAVORI, perso.getFavori());
@@ -58,5 +58,14 @@ public class FichePersonnageDAO extends DAOBase {
             results.add(new FichePersonnage(c.getString(0),c.getInt(1),c.getString(2)));
         }
         return results;
+    }
+
+    /**
+     *
+     * @param ficheName
+     * @return number of rows affected
+     */
+    public int deleteFichePerso(String ficheName){
+        return mDb.delete(TABLE_NAME, KEY + " = ?", new String[]{ficheName});
     }
 }

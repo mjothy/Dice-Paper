@@ -9,7 +9,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import edu.jdr.DicePaper.R;
+import edu.jdr.DicePaper.fragments.CreateCharSheetDialog;
 import edu.jdr.DicePaper.fragments.CreateUniversDialog;
+import edu.jdr.DicePaper.fragments.ListCharSheetDialog;
 import edu.jdr.DicePaper.fragments.ListUniverseDialog;
 
 /**
@@ -70,13 +72,13 @@ public class UniversEnter extends Activity {
         DialogFragment dial = null;
         switch (type){
             case CREATEDIALOG :
-                dial = CreateUniversDialog.newInstance(R.string.nameCharSheet);
+                dial = CreateCharSheetDialog.newInstance(R.string.nameCharSheet, universeName);
                 break;
             case LOADIALOG :
-                dial = ListUniverseDialog.newinstance(R.string.listCharSheet, ListUniverseDialog.LOAD);
+                dial = ListCharSheetDialog.newinstance(R.string.listCharSheet, ListCharSheetDialog.LOAD, universeName);
                 break;
             case DELETEDIALOG :
-                dial = ListUniverseDialog.newinstance(R.string.listCharSheet, ListUniverseDialog.DELETE);
+                dial = ListCharSheetDialog.newinstance(R.string.listCharSheet, ListCharSheetDialog.DELETE, universeName);
                 break;
         }
         dial.show(getFragmentManager(),"dialog");

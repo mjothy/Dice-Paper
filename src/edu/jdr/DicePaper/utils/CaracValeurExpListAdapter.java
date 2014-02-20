@@ -13,26 +13,27 @@ import android.widget.Button;
 import android.widget.TextView;
 import edu.jdr.DicePaper.R;
 import edu.jdr.DicePaper.activity.CharSheetDefSwipper;
+import edu.jdr.DicePaper.activity.CharSheetSwipper;
+import edu.jdr.DicePaper.fragments.CharSheetCaracValeur;
 import edu.jdr.DicePaper.fragments.CreateModifDialog;
 import edu.jdr.DicePaper.models.table.Liste.CaracteristiqueListe;
 import edu.jdr.DicePaper.models.table.Liste.ModificateurListe;
+import edu.jdr.DicePaper.models.table.Valeur.CaracteristiqueValeur;
+import edu.jdr.DicePaper.models.table.Valeur.ModificateurValeur;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
 /**
- * Created by paulyves on 2/9/14.
- * add int attributes for the header and children layouts
- * add attribute to see if we need to create buttons and what will be their use
- * once this is done, rename this to MightyExpandableListAdapterOfDoom
+ * Created by mario on 20/02/14.
  */
-public class CaracDefExpListAdapter<T,S> extends ExpListAdapter {
-    public CaracDefExpListAdapter(Context context, List<T> listDataHeader,
+public class CaracValeurExpListAdapter<T,S> extends ExpListAdapter {
+    public CaracValeurExpListAdapter(Context context, List<T> listDataHeader,
                                   HashMap<T, List<S>> listChildData) {
         super(context,listDataHeader,listChildData);
     }
-    public CaracDefExpListAdapter(Context context, HashMap<T, List<S>> listChildData) {
+    public CaracValeurExpListAdapter(Context context, HashMap<T, List<S>> listChildData) {
         super(context,listChildData);
     }
 
@@ -45,22 +46,22 @@ public class CaracDefExpListAdapter<T,S> extends ExpListAdapter {
         if (convertView == null) {
             LayoutInflater infalInflater = (LayoutInflater) this._context
                     .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            convertView = infalInflater.inflate(R.layout.list_child, null);
+            convertView = infalInflater.inflate(R.layout.list_carac_valeur_group, null);
         }
 
         TextView txtListChild = (TextView) convertView
-                .findViewById(R.id.childs);
+                .findViewById(R.id.components);
         txtListChild.setText(childText);
 
-        convertView.setOnLongClickListener(new View.OnLongClickListener() {
+        Button modify = (Button) convertView.findViewById(R.id.modifyButton);
+        modify.setFocusable(false);
+        modify.setOnClickListener(new View.OnClickListener() {
             @Override
-            public boolean onLongClick(View v) {
-                ModificateurListe mod = (ModificateurListe) getChild(groupPosition, childPosition);
-                ((CharSheetDefSwipper) _context).getFragCaracList().callBackDeleteMod(mod);
-                return false;
+            public void onClick(View v) {
+                ModificateurValeur modif = (ModificateurValeur) getChild(groupPosition, childPosition);
+                ((CharSheetSwipper) _context).getFragCaracValeur().callBackModifyModif(modif);
             }
         });
-
         return convertView;
     }
 
@@ -78,29 +79,13 @@ public class CaracDefExpListAdapter<T,S> extends ExpListAdapter {
                 .findViewById(R.id.components);
         lblListHeader.setTypeface(null, Typeface.BOLD);
         lblListHeader.setText(headerTitle);
-        Button add = (Button) convertView.findViewById(R.id.addButton);
-        add.setFocusable(false);
-        add.setOnClickListener(new View.OnClickListener() {
+        Button modify = (Button) convertView.findViewById(R.id.modifyButton);
+        modify.setFocusable(false);
+        modify.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                CaracteristiqueListe carac = (CaracteristiqueListe) getGroup(groupPosition);
-                FragmentTransaction ft = ((Activity)_context).getFragmentManager().beginTransaction();
-                Fragment prev = ((Activity)_context).getFragmentManager().findFragmentByTag("dialog");
-                if (prev != null) {
-                    ft.remove(prev);
-                }
-                ft.addToBackStack(null);
-                CreateModifDialog dialog = CreateModifDialog.newInstance(R.string.addModif, carac.getListeId());
-                dialog.show(((Activity)_context).getFragmentManager(),"dialog");
-            }
-        });
-        Button del = (Button) convertView.findViewById(R.id.delButton);
-        del.setFocusable(false);
-        del.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                final CaracteristiqueListe carac = (CaracteristiqueListe) getGroup(groupPosition);
-                ((CharSheetDefSwipper) _context).getFragCaracList().callBackDeleteCarac(carac);
+                CaracteristiqueValeur carac = (CaracteristiqueValeur) getGroup(groupPosition);
+                ((CharSheetSwipper) _context).getFragCaracValeur().callBackModifyCarac(carac);
             }
         });
         return convertView;

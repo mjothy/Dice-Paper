@@ -97,12 +97,14 @@ public class ModificateurValeurDAO extends DAOBase {
     public void initializeNewValues(FichePersonnage character){
         String outerKey = ModificateurListeDAO.KEY;
         String outerTable = ModificateurListeDAO.TABLE_NAME;
-        Cursor c = mDb.rawQuery("SELECT * FROM "+outerTable+
+        Cursor c = mDb.rawQuery("SELECT "+outerKey+", "+outerTable+"."+ModificateurListeDAO.NOM+", "+outerTable+"."+outerKey+" FROM "+
+                outerTable+" JOIN "+CaracteristiqueListeDAO.TABLE_NAME+" ON "+outerTable+"."+CaracteristiqueListeDAO.KEY+" = "+
+                CaracteristiqueListeDAO.TABLE_NAME+"."+CaracteristiqueListeDAO.KEY+
                 " WHERE "+outerKey+" NOT IN ( SELECT "+outerTable+"."+outerKey+" FROM "+
                 TABLE_NAME+" JOIN "+outerTable+" ON "+TABLE_NAME+"."+outerKey+" = "+outerTable+"."+outerKey+
                 " JOIN "+CaracteristiqueListeDAO.TABLE_NAME+" ON "+outerTable+"."+CaracteristiqueListeDAO.KEY+" = "+
                 CaracteristiqueListeDAO.TABLE_NAME+"."+CaracteristiqueListeDAO.KEY+
-                " WHERE "+FichePersonnageDAO.KEY+" = ?) AND" +
+                " WHERE "+FichePersonnageDAO.KEY+" = ?) AND " +
                 UniversDAO.KEY+" = ?"
                 , new String[]{character.getNomFiche(), character.getNomUnivers()});
         if(c.getCount()>0){

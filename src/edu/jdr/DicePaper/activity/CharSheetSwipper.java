@@ -11,18 +11,18 @@ import edu.jdr.DicePaper.R;
 import edu.jdr.DicePaper.fragments.*;
 import edu.jdr.DicePaper.utils.OnSwipeTouchListener;
 
-
 /**
- * Created by paulyves on 2/2/14.
+ * Created by mario on 20/02/14.
  */
-public class CharSheetDefSwipper extends Activity {
+public class CharSheetSwipper extends Activity{
     private String universeName;
+    private String charName;
     private FrameLayout mFrameLayout;
-    private CharSheetDef fragCompoDef;
-    private CharSheetDefJaugeList fragJaugeList;
-    private CharSheetDefUtilList fragUtilList;
-    private CharSheetDefCaracList fragCaracList;
-    private CharSheetDefCompList fragCompList;
+    //private CharSheetDef fragCompoDef;
+    //private CharSheetDefJaugeList fragJaugeList;
+    //private CharSheetDefUtilList fragUtilList;
+    private CharSheetCaracValeur fragCaracValeur;
+    //private CharSheetDefCompList fragCompList;
     public OnSwipeTouchListener onSwipeTouchListener;
     private int currentFrag;
 
@@ -30,6 +30,7 @@ public class CharSheetDefSwipper extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.swipper);
         universeName = getIntent().getExtras().getString("universeName");
+        charName = getIntent().getExtras().getString("charName");
         mFrameLayout = (FrameLayout) findViewById(R.id.Switcher);
         setupFragments();
         onSwipeTouchListener = new OnSwipeTouchListener(this){
@@ -48,11 +49,12 @@ public class CharSheetDefSwipper extends Activity {
             }
         };
         mFrameLayout.setOnTouchListener(onSwipeTouchListener);
-        goToCompoDefine(1);
+        goToCaracList(1);
 
     }
 
     private void setupFragments() {
+        /*
         if (this.fragCompoDef == null) {
             this.fragCompoDef = CharSheetDef.newInstance();
         }
@@ -62,12 +64,15 @@ public class CharSheetDefSwipper extends Activity {
         if(fragUtilList == null) {
             fragUtilList = CharSheetDefUtilList.newInstance();
         }
-        if(this.fragCaracList == null){
-            fragCaracList = CharSheetDefCaracList.newInstance();
+        */
+        if(this.fragCaracValeur == null){
+            fragCaracValeur = CharSheetCaracValeur.newInstance();
         }
+        /*
         if(this.fragCompList == null){
             fragCompList = CharSheetDefCompList.newInstance();
         }
+        */
     }
 
     private void showFragment(final Fragment fragment, int i) {
@@ -85,7 +90,7 @@ public class CharSheetDefSwipper extends Activity {
         ft.replace(R.id.Switcher, fragment);
         ft.commit();
     }
-
+/*
     public void goToJaugeList(int i) {
         currentFrag = 2;
         showFragment(fragJaugeList, i);
@@ -98,24 +103,30 @@ public class CharSheetDefSwipper extends Activity {
         currentFrag = 4;
         showFragment(fragUtilList, i);
     }
+    */
     public void goToCaracList(int i){
         currentFrag = 1;
-        showFragment(fragCaracList, i);
+        showFragment(fragCaracValeur, i);
     }
+    /*
     public void goToCompList(int i){
         currentFrag = 3;
         showFragment(fragCompList, i);
     }
+    */
 
     public void switchFragment(int i){
         currentFrag = (currentFrag+5+i)%5;
         switch (currentFrag){
+            /*
             case 0 :
                 goToCompoDefine(i);
                 break;
+                */
             case 1 :
                 goToCaracList(i);
                 break;
+            /*
             case 2 :
                 goToJaugeList(i);
                 break;
@@ -125,6 +136,7 @@ public class CharSheetDefSwipper extends Activity {
             case 4 :
                 goToUtilList(i);
                 break;
+                */
         }
     }
 
@@ -135,7 +147,7 @@ public class CharSheetDefSwipper extends Activity {
         return super.dispatchTouchEvent(ev);
     }
 
-    public CharSheetDefCaracList getFragCaracList() {
-        return fragCaracList;
+    public CharSheetCaracValeur getFragCaracValeur() {
+        return fragCaracValeur;
     }
 }

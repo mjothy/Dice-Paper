@@ -17,6 +17,8 @@
     <string name="addComp">Ajouter une compétence</string>
     <string name="addUtil">Ajouter un utilitaire</string>
 
+    <string name="updateCarac">Modifier une caractéristique</string>
+
     <string name="newCharSheet">Créer une fiche de perso</string>
     <string name="loadCharSheet">Ouvrir une fiche de perso</string>
     <string name="deleteCharSheet">Supprimer une fiche de perso</string>

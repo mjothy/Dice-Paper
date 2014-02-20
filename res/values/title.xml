@@ -10,4 +10,7 @@
     <string name="jaugeName">Nom de la jauge</string>
 
     <string name="addModif">Nouveau modificateur</string>
+
+    <string name="modifCarac">Modifier caractéristique</string>
+    <string name="modifModif">Modifier Modificateur</string>
 </resources>
