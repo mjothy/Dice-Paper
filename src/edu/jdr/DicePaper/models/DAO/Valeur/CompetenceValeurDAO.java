@@ -1,11 +1,15 @@
-package edu.jdr.DicePaper.models.DAO;
+package edu.jdr.DicePaper.models.DAO.Valeur;
 
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
+import edu.jdr.DicePaper.models.DAO.FichePersonnageDAO;
+import edu.jdr.DicePaper.models.DAO.Liste.CaracteristiqueListeDAO;
+import edu.jdr.DicePaper.models.DAO.Liste.CompetenceListeDAO;
+import edu.jdr.DicePaper.models.DAO.UniversDAO;
 import edu.jdr.DicePaper.models.DAOBase;
-import edu.jdr.DicePaper.models.table.CompetenceListe;
-import edu.jdr.DicePaper.models.table.CompetenceValeur;
+import edu.jdr.DicePaper.models.table.Liste.CompetenceListe;
+import edu.jdr.DicePaper.models.table.Valeur.CompetenceValeur;
 
 import java.util.ArrayList;
 
@@ -21,9 +25,9 @@ public class CompetenceValeurDAO extends DAOBase {
     public static final String BASEVALUE = "valeur_base";
     public static final String MODIFIEDVALUE = "valeur_actuelle";
     public static final String TABLE_CREATE = "CREATE TABLE " + TABLE_NAME + " ( " + KEY + " INTEGER PRIMARY KEY AUTOINCREMENT," +
-            " "+BASEVALUE+" REAL, "+MODIFIEDVALUE+" REAL, "+CaracteristiqueListeDAO.KEY+
-            " INTEGER REFERENCES "+CompetenceListeDAO.TABLE_NAME+"("+CompetenceListeDAO.KEY+") ON DELETE CASCADE, "+
-            ""+FichePersonnageDAO.KEY+" TEXT NOT NULL REFERENCES "+FichePersonnageDAO.TABLE_NAME+"("+FichePersonnageDAO.KEY+") ON DELETE CASCADE);";
+            " "+BASEVALUE+" REAL, "+MODIFIEDVALUE+" REAL, "+ CaracteristiqueListeDAO.KEY+
+            " INTEGER REFERENCES "+ CompetenceListeDAO.TABLE_NAME+"("+CompetenceListeDAO.KEY+") ON DELETE CASCADE, "+
+            ""+ FichePersonnageDAO.KEY+" TEXT NOT NULL REFERENCES "+FichePersonnageDAO.TABLE_NAME+"("+FichePersonnageDAO.KEY+") ON DELETE CASCADE);";
     public static final String TABLE_DROP = "DROP TABLE IF EXIST " + TABLE_NAME + ";";
 
     public long createCompetenceValeur(CompetenceValeur comp){
@@ -70,7 +74,7 @@ public class CompetenceValeurDAO extends DAOBase {
         String outerKey = CompetenceListeDAO.KEY;
         String joinTable = CompetenceListeDAO.TABLE_NAME;
         Cursor c = mDb.rawQuery("SELECT "+KEY+", "+BASEVALUE+", "+MODIFIEDVALUE+", "+FichePersonnageDAO.KEY+
-                ", "+joinTable+"."+outerKey+", "+CompetenceListeDAO.NOM+", "+UniversDAO.KEY+
+                ", "+joinTable+"."+outerKey+", "+CompetenceListeDAO.NOM+", "+ UniversDAO.KEY+
                 " FROM "+TABLE_NAME+" JOIN "+joinTable+" ON "+TABLE_NAME+"."+outerKey+" = "+joinTable+"."+outerKey+
                 " WHERE "+FichePersonnageDAO.KEY+" = ?", new String[]{charName});
         ArrayList<CompetenceValeur> results = new ArrayList<CompetenceValeur>();

@@ -1,12 +1,14 @@
-package edu.jdr.DicePaper.models.DAO;
+package edu.jdr.DicePaper.models.DAO.Valeur;
 
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
+import edu.jdr.DicePaper.models.DAO.FichePersonnageDAO;
+import edu.jdr.DicePaper.models.DAO.Liste.CaracteristiqueListeDAO;
+import edu.jdr.DicePaper.models.DAO.UniversDAO;
 import edu.jdr.DicePaper.models.DAOBase;
-import edu.jdr.DicePaper.models.table.CaracteristiqueListe;
-import edu.jdr.DicePaper.models.table.CaracteristiqueValeur;
-import edu.jdr.DicePaper.models.table.UtilitaireValeur;
+import edu.jdr.DicePaper.models.table.Liste.CaracteristiqueListe;
+import edu.jdr.DicePaper.models.table.Valeur.CaracteristiqueValeur;
 
 import java.util.ArrayList;
 
@@ -23,9 +25,9 @@ public class CaracteristiqueValeurDAO extends DAOBase{
     public static final String BASEVALUE = "valeur_base";
     public static final String MODIFIEDVALUE = "valeur_actuelle";
     public static final String TABLE_CREATE = "CREATE TABLE " + TABLE_NAME + " ( " + KEY + " INTEGER PRIMARY KEY AUTOINCREMENT," +
-            " "+BASEVALUE+" REAL, "+MODIFIEDVALUE+" REAL, "+CaracteristiqueListeDAO.KEY+
+            " "+BASEVALUE+" REAL, "+MODIFIEDVALUE+" REAL, "+ CaracteristiqueListeDAO.KEY+
             " INTEGER REFERENCES "+CaracteristiqueListeDAO.TABLE_NAME+"("+CaracteristiqueListeDAO.KEY+") ON DELETE CASCADE, "+
-            ""+FichePersonnageDAO.KEY+" TEXT NOT NULL REFERENCES "+FichePersonnageDAO.TABLE_NAME+"("+FichePersonnageDAO.KEY+") ON DELETE CASCADE);";
+            ""+ FichePersonnageDAO.KEY+" TEXT NOT NULL REFERENCES "+FichePersonnageDAO.TABLE_NAME+"("+FichePersonnageDAO.KEY+") ON DELETE CASCADE);";
     public static final String TABLE_DROP = "DROP TABLE IF EXIST " + TABLE_NAME + ";";
 
     public long createCaracteristiqueValeur(CaracteristiqueValeur carac){
@@ -73,7 +75,7 @@ public class CaracteristiqueValeurDAO extends DAOBase{
         String outerKey = CaracteristiqueListeDAO.KEY;
         String joinTable = CaracteristiqueListeDAO.TABLE_NAME;
         Cursor c = mDb.rawQuery("SELECT "+KEY+", "+BASEVALUE+", "+MODIFIEDVALUE+", "+FichePersonnageDAO.KEY+
-                ", "+joinTable+"."+outerKey+", "+CaracteristiqueListeDAO.NOM+", "+UniversDAO.KEY+
+                ", "+joinTable+"."+outerKey+", "+CaracteristiqueListeDAO.NOM+", "+ UniversDAO.KEY+
                 " FROM "+TABLE_NAME+" JOIN "+joinTable+" ON "+TABLE_NAME+"."+outerKey+" = "+joinTable+"."+outerKey+
                 " WHERE "+FichePersonnageDAO.KEY+" = ?", new String[]{charName});
         ArrayList<CaracteristiqueValeur> results = new ArrayList<CaracteristiqueValeur>();

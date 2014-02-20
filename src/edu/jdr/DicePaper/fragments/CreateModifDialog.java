@@ -1,7 +1,6 @@
 package edu.jdr.DicePaper.fragments;
 
 import android.app.DialogFragment;
-import android.app.Fragment;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,10 +10,8 @@ import android.widget.EditText;
 import android.widget.Toast;
 import edu.jdr.DicePaper.R;
 import edu.jdr.DicePaper.activity.CharSheetDefSwipper;
-import edu.jdr.DicePaper.models.DAO.CaracteristiqueListeDAO;
-import edu.jdr.DicePaper.models.DAO.ModificateurListeDAO;
-import edu.jdr.DicePaper.models.table.CaracteristiqueListe;
-import edu.jdr.DicePaper.models.table.ModificateurListe;
+import edu.jdr.DicePaper.models.DAO.Liste.ModificateurListeDAO;
+import edu.jdr.DicePaper.models.table.Liste.ModificateurListe;
 
 /**
  * Dialog class called inside CharSheetDefSwipper activity under CharSheetDefCaracList fragment

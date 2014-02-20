@@ -1,11 +1,15 @@
-package edu.jdr.DicePaper.models.DAO;
+package edu.jdr.DicePaper.models.DAO.Valeur;
 
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
+import edu.jdr.DicePaper.models.DAO.FichePersonnageDAO;
+import edu.jdr.DicePaper.models.DAO.Liste.CaracteristiqueListeDAO;
+import edu.jdr.DicePaper.models.DAO.Liste.ModificateurListeDAO;
+import edu.jdr.DicePaper.models.DAO.Liste.UtilitaireListeDAO;
 import edu.jdr.DicePaper.models.DAOBase;
-import edu.jdr.DicePaper.models.table.ModificateurListe;
-import edu.jdr.DicePaper.models.table.ModificateurValeur;
+import edu.jdr.DicePaper.models.table.Liste.ModificateurListe;
+import edu.jdr.DicePaper.models.table.Valeur.ModificateurValeur;
 
 import java.util.ArrayList;
 
@@ -20,9 +24,9 @@ public class ModificateurValeurDAO extends DAOBase {
     public static final String KEY = "modificateur_valeur_id";
     public static final String VALEUR = "valeur";
     public static final String TABLE_CREATE = "CREATE TABLE " + TABLE_NAME + " ( " + KEY + " INTEGER PRIMARY KEY AUTOINCREMENT," +
-            " "+VALEUR+" REAL, "+ModificateurListeDAO.KEY+
+            " "+VALEUR+" REAL, "+ ModificateurListeDAO.KEY+
             " INTEGER REFERENCES "+ModificateurListeDAO.TABLE_NAME+"("+ModificateurListeDAO.KEY+") ON DELETE CASCADE, "+
-            ""+FichePersonnageDAO.KEY+" TEXT NOT NULL REFERENCES "+FichePersonnageDAO.TABLE_NAME+"("+FichePersonnageDAO.KEY+") ON DELETE CASCADE);";
+            ""+ FichePersonnageDAO.KEY+" TEXT NOT NULL REFERENCES "+FichePersonnageDAO.TABLE_NAME+"("+FichePersonnageDAO.KEY+") ON DELETE CASCADE);";
     public static final String TABLE_DROP = "DROP TABLE IF EXIST " + TABLE_NAME + ";";
 
     public long createModificateurValeur(ModificateurValeur mod){
@@ -68,7 +72,7 @@ public class ModificateurValeurDAO extends DAOBase {
         String outerKey = ModificateurListeDAO.KEY;
         String joinTable = ModificateurListeDAO.TABLE_NAME;
         Cursor c = mDb.rawQuery("SELECT "+KEY+", "+VALEUR+", "+FichePersonnageDAO.KEY+
-                ", "+joinTable+"."+outerKey+", "+UtilitaireListeDAO.NOM+", "+CaracteristiqueListeDAO.KEY+
+                ", "+joinTable+"."+outerKey+", "+ UtilitaireListeDAO.NOM+", "+ CaracteristiqueListeDAO.KEY+
                 " FROM "+TABLE_NAME+" JOIN "+joinTable+" ON "+TABLE_NAME+"."+outerKey+" = "+joinTable+"."+outerKey+
                 " WHERE "+FichePersonnageDAO.KEY+" = ? "+" AND "+joinTable+"."+CaracteristiqueListeDAO.KEY+" = ?",
                 new String[]{charName, Integer.toString(caracId)});

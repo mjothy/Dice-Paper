@@ -1,30 +1,35 @@
-package edu.jdr.DicePaper.models.table;
+package edu.jdr.DicePaper.models.table.Valeur;
+
+import edu.jdr.DicePaper.models.table.Liste.CaracteristiqueListe;
+
+import java.util.ArrayList;
 
 /**
  * Created by paulyves on 2/19/14.
  */
-public class CompetenceValeur {
+public class CaracteristiqueValeur {
     protected int key;
     protected float baseValue;
     protected float modifiedValue;
     protected String fiche;
-    protected CompetenceListe relatedList;
+    protected CaracteristiqueListe relatedList;
+    protected ArrayList<ModificateurValeur> linkedModificateur;
 
-    public CompetenceValeur(float baseValue, float modifiedValue, String fiche, CompetenceListe relatedList) {
+    public CaracteristiqueValeur(float baseValue, float modifiedValue, String fiche, CaracteristiqueListe relatedList) {
         this.baseValue = baseValue;
         this.modifiedValue = modifiedValue;
         this.fiche = fiche;
         this.relatedList = relatedList;
     }
 
-    public CompetenceValeur(int key, float baseValue, float modifiedValue, String fiche) {
+    public CaracteristiqueValeur(int key, float baseValue, float modifiedValue, String fiche) {
         this.key = key;
         this.baseValue = baseValue;
         this.modifiedValue = modifiedValue;
         this.fiche = fiche;
     }
 
-    public CompetenceValeur(int key, float baseValue, float modifiedValue, String fiche, CompetenceListe relatedList) {
+    public CaracteristiqueValeur(int key, float baseValue, float modifiedValue, String fiche, CaracteristiqueListe relatedList) {
         this.key = key;
         this.baseValue = baseValue;
         this.modifiedValue = modifiedValue;
@@ -64,13 +69,22 @@ public class CompetenceValeur {
         this.fiche = fiche;
     }
 
-    public CompetenceListe getRelatedList() {
+    public CaracteristiqueListe getRelatedList() {
         return relatedList;
     }
 
-    public void setRelatedList(CompetenceListe relatedList) {
+    public void setRelatedList(CaracteristiqueListe relatedList) {
         this.relatedList = relatedList;
     }
+
+    public ArrayList<ModificateurValeur> getLinkedModificateur() {
+        return linkedModificateur;
+    }
+
+    public void setLinkedModificateur(ArrayList<ModificateurValeur> linkedModificateur) {
+        this.linkedModificateur = linkedModificateur;
+    }
+
     @Override
     public String toString(){
         return Float.toString(baseValue)+" ("+Float.toString(modifiedValue)+")";

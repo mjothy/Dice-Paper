@@ -1,11 +1,14 @@
-package edu.jdr.DicePaper.models.DAO;
+package edu.jdr.DicePaper.models.DAO.Valeur;
 
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
+import edu.jdr.DicePaper.models.DAO.FichePersonnageDAO;
+import edu.jdr.DicePaper.models.DAO.Liste.UtilitaireListeDAO;
+import edu.jdr.DicePaper.models.DAO.UniversDAO;
 import edu.jdr.DicePaper.models.DAOBase;
-import edu.jdr.DicePaper.models.table.UtilitaireListe;
-import edu.jdr.DicePaper.models.table.UtilitaireValeur;
+import edu.jdr.DicePaper.models.table.Liste.UtilitaireListe;
+import edu.jdr.DicePaper.models.table.Valeur.UtilitaireValeur;
 
 import java.util.ArrayList;
 
@@ -20,9 +23,9 @@ public class UtilitaireValeurDAO extends DAOBase {
     public static final String KEY = "utilitaire_valeur_id";
     public static final String VALEUR = "valeur";
     public static final String TABLE_CREATE = "CREATE TABLE " + TABLE_NAME + " ( " + KEY + " INTEGER PRIMARY KEY AUTOINCREMENT," +
-            " "+VALEUR+" TEXT, "+UtilitaireListeDAO.KEY+
+            " "+VALEUR+" TEXT, "+ UtilitaireListeDAO.KEY+
             " INTEGER REFERENCES "+UtilitaireListeDAO.TABLE_NAME+"("+UtilitaireListeDAO.KEY+") ON DELETE CASCADE, "+
-            ""+FichePersonnageDAO.KEY+" TEXT NOT NULL REFERENCES "+FichePersonnageDAO.TABLE_NAME+"("+FichePersonnageDAO.KEY+") ON DELETE CASCADE);";
+            ""+ FichePersonnageDAO.KEY+" TEXT NOT NULL REFERENCES "+FichePersonnageDAO.TABLE_NAME+"("+FichePersonnageDAO.KEY+") ON DELETE CASCADE);";
     public static final String TABLE_DROP = "DROP TABLE IF EXIST " + TABLE_NAME + ";";
 
     public long createUtilitaireValeur(UtilitaireValeur utilitaire){
@@ -68,7 +71,7 @@ public class UtilitaireValeurDAO extends DAOBase {
         String outerKey = UtilitaireListeDAO.KEY;
         String joinTable = UtilitaireListeDAO.TABLE_NAME;
         Cursor c = mDb.rawQuery("SELECT "+KEY+", "+VALEUR+", "+FichePersonnageDAO.KEY+
-                ", "+joinTable+"."+outerKey+", "+UtilitaireListeDAO.NOM+", "+UniversDAO.KEY+
+                ", "+joinTable+"."+outerKey+", "+UtilitaireListeDAO.NOM+", "+ UniversDAO.KEY+
                 " FROM "+TABLE_NAME+" JOIN "+joinTable+" ON "+TABLE_NAME+"."+outerKey+" = "+joinTable+"."+outerKey+
                 " WHERE "+FichePersonnageDAO.KEY+" = ?", new String[]{charName});
         ArrayList<UtilitaireValeur> results = new ArrayList<UtilitaireValeur>();

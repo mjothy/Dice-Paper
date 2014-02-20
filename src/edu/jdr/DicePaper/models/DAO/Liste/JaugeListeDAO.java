@@ -1,10 +1,11 @@
-package edu.jdr.DicePaper.models.DAO;
+package edu.jdr.DicePaper.models.DAO.Liste;
 
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
+import edu.jdr.DicePaper.models.DAO.UniversDAO;
 import edu.jdr.DicePaper.models.DAOBase;
-import edu.jdr.DicePaper.models.table.JaugeListe;
+import edu.jdr.DicePaper.models.table.Liste.JaugeListe;
 
 import java.util.ArrayList;
 
@@ -21,7 +22,7 @@ public class JaugeListeDAO extends DAOBase {
     public static final String MIN = "min";
     public static final String MAX = "max";
     public static final String TABLE_CREATE = "CREATE TABLE " + TABLE_NAME + " ( " + KEY + " INTEGER PRIMARY KEY AUTOINCREMENT," +
-            " "+NOM+" TEXT NOT NULL, "+MIN+" INTEGER ,"+MAX+" INTEGER ,"+UniversDAO.KEY+
+            " "+NOM+" TEXT NOT NULL, "+MIN+" INTEGER ,"+MAX+" INTEGER ,"+ UniversDAO.KEY+
             " TEXT REFERENCES "+UniversDAO.TABLE_NAME+"("+UniversDAO.KEY+") ON DELETE CASCADE);";
     public static final String TABLE_DROP = "DROP TABLE IF EXIST " + TABLE_NAME + ";";
 

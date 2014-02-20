@@ -1,11 +1,10 @@
-package edu.jdr.DicePaper.models.DAO;
+package edu.jdr.DicePaper.models.DAO.Liste;
 
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import edu.jdr.DicePaper.models.DAOBase;
-import edu.jdr.DicePaper.models.table.CaracteristiqueListe;
-import edu.jdr.DicePaper.models.table.ModificateurListe;
+import edu.jdr.DicePaper.models.table.Liste.ModificateurListe;
 
 import java.util.ArrayList;
 

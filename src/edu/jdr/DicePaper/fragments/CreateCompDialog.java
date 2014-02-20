@@ -9,8 +9,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 import edu.jdr.DicePaper.R;
-import edu.jdr.DicePaper.models.table.CompetenceListe;
-import edu.jdr.DicePaper.models.DAO.CompetenceListeDAO;
+import edu.jdr.DicePaper.models.table.Liste.CompetenceListe;
+import edu.jdr.DicePaper.models.DAO.Liste.CompetenceListeDAO;
 
 /**
  * Created by paulyves on 1/30/14.

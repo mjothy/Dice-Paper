@@ -15,7 +15,7 @@ import android.view.ViewGroup;
 import android.widget.BaseExpandableListAdapter;
 import android.widget.TextView;
 import edu.jdr.DicePaper.R;
-import edu.jdr.DicePaper.models.table.MasterListe;
+import edu.jdr.DicePaper.models.table.Liste.MasterListe;
 
 public class ExpandableListAdapter extends BaseExpandableListAdapter {
 

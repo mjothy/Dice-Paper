@@ -4,6 +4,11 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import edu.jdr.DicePaper.models.DAO.*;
+import edu.jdr.DicePaper.models.DAO.Liste.*;
+import edu.jdr.DicePaper.models.DAO.Valeur.CaracteristiqueValeurDAO;
+import edu.jdr.DicePaper.models.DAO.Valeur.CompetenceValeurDAO;
+import edu.jdr.DicePaper.models.DAO.Valeur.ModificateurValeurDAO;
+import edu.jdr.DicePaper.models.DAO.Valeur.UtilitaireValeurDAO;
 
 /**
  * Created by paulyves on 1/19/14.
@@ -28,6 +33,8 @@ public class DatabaseHandler extends SQLiteOpenHelper{
 
         db.execSQL(CaracteristiqueValeurDAO.TABLE_CREATE);
         db.execSQL(UtilitaireValeurDAO.TABLE_CREATE);
+        db.execSQL(CompetenceValeurDAO.TABLE_CREATE);
+        db.execSQL(ModificateurValeurDAO.TABLE_CREATE);
     }
 
     @Override
@@ -43,6 +50,8 @@ public class DatabaseHandler extends SQLiteOpenHelper{
 
         db.execSQL(CaracteristiqueValeurDAO.TABLE_DROP);
         db.execSQL(UtilitaireValeurDAO.TABLE_DROP);
+        db.execSQL(CompetenceValeurDAO.TABLE_DROP);
+        db.execSQL(ModificateurValeurDAO.TABLE_DROP);
 
         onCreate(db);
     }

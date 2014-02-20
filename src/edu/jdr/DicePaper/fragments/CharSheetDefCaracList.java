@@ -10,10 +10,10 @@ import android.view.ViewGroup;
 import android.widget.ExpandableListView;
 import android.widget.TextView;
 import edu.jdr.DicePaper.R;
-import edu.jdr.DicePaper.models.DAO.CaracteristiqueListeDAO;
-import edu.jdr.DicePaper.models.DAO.ModificateurListeDAO;
-import edu.jdr.DicePaper.models.table.CaracteristiqueListe;
-import edu.jdr.DicePaper.models.table.ModificateurListe;
+import edu.jdr.DicePaper.models.DAO.Liste.CaracteristiqueListeDAO;
+import edu.jdr.DicePaper.models.DAO.Liste.ModificateurListeDAO;
+import edu.jdr.DicePaper.models.table.Liste.CaracteristiqueListe;
+import edu.jdr.DicePaper.models.table.Liste.ModificateurListe;
 import edu.jdr.DicePaper.utils.CaracDefExpListAdapter;
 
 import java.util.ArrayList;

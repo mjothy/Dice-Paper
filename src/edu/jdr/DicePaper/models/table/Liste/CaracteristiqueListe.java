@@ -1,6 +1,4 @@
-package edu.jdr.DicePaper.models.table;
-
-import edu.jdr.DicePaper.models.DAO.ModificateurListeDAO;
+package edu.jdr.DicePaper.models.table.Liste;
 
 import java.util.ArrayList;
 import java.util.List;

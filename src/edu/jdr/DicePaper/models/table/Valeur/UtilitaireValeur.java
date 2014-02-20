@@ -1,4 +1,6 @@
-package edu.jdr.DicePaper.models.table;
+package edu.jdr.DicePaper.models.table.Valeur;
+
+import edu.jdr.DicePaper.models.table.Liste.UtilitaireListe;
 
 /**
  * Created by paulyves on 2/19/14.

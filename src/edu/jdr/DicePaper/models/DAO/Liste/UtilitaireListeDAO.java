@@ -1,10 +1,11 @@
-package edu.jdr.DicePaper.models.DAO;
+package edu.jdr.DicePaper.models.DAO.Liste;
 
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
+import edu.jdr.DicePaper.models.DAO.UniversDAO;
 import edu.jdr.DicePaper.models.DAOBase;
-import edu.jdr.DicePaper.models.table.UtilitaireListe;
+import edu.jdr.DicePaper.models.table.Liste.UtilitaireListe;
 
 import java.util.ArrayList;
 
@@ -19,7 +20,7 @@ public class UtilitaireListeDAO extends DAOBase {
     public static final String KEY = "utilitaire_liste_id";
     public static final String NOM = "nom";
     public static final String TABLE_CREATE = "CREATE TABLE " + TABLE_NAME + " ( " + KEY + " INTEGER PRIMARY KEY AUTOINCREMENT," +
-            " "+NOM+" TEXT NOT NULL, "+UniversDAO.KEY+
+            " "+NOM+" TEXT NOT NULL, "+ UniversDAO.KEY+
             " TEXT REFERENCES "+UniversDAO.TABLE_NAME+"("+UniversDAO.KEY+") ON DELETE CASCADE);";
     public static final String TABLE_DROP = "DROP TABLE IF EXIST " + TABLE_NAME + ";";
 

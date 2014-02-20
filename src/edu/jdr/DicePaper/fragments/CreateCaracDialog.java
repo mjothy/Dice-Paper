@@ -9,8 +9,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 import edu.jdr.DicePaper.R;
-import edu.jdr.DicePaper.models.table.CaracteristiqueListe;
-import edu.jdr.DicePaper.models.DAO.CaracteristiqueListeDAO;
+import edu.jdr.DicePaper.models.table.Liste.CaracteristiqueListe;
+import edu.jdr.DicePaper.models.DAO.Liste.CaracteristiqueListeDAO;
 
 /**
  * Created by paulyves on 1/30/14.

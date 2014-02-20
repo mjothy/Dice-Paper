@@ -14,8 +14,8 @@ import android.widget.TextView;
 import edu.jdr.DicePaper.R;
 import edu.jdr.DicePaper.activity.CharSheetDefSwipper;
 import edu.jdr.DicePaper.fragments.CreateModifDialog;
-import edu.jdr.DicePaper.models.table.CaracteristiqueListe;
-import edu.jdr.DicePaper.models.table.ModificateurListe;
+import edu.jdr.DicePaper.models.table.Liste.CaracteristiqueListe;
+import edu.jdr.DicePaper.models.table.Liste.ModificateurListe;
 
 import java.util.ArrayList;
 import java.util.HashMap;

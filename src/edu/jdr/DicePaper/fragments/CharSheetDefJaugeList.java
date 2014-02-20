@@ -9,14 +9,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.*;
-import android.widget.ExpandableListAdapter;
 import edu.jdr.DicePaper.*;
-import edu.jdr.DicePaper.models.DAO.CompetenceListeDAO;
-import edu.jdr.DicePaper.models.DAO.JaugeListeDAO;
-import edu.jdr.DicePaper.models.DAO.UtilitaireListeDAO;
-import edu.jdr.DicePaper.models.table.CompetenceListe;
-import edu.jdr.DicePaper.models.table.JaugeListe;
-import edu.jdr.DicePaper.models.table.UtilitaireListe;
+import edu.jdr.DicePaper.models.DAO.Liste.JaugeListeDAO;
+import edu.jdr.DicePaper.models.table.Liste.JaugeListe;
 
 import java.util.ArrayList;
 

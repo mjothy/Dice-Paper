@@ -10,10 +10,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.*;
 import edu.jdr.DicePaper.R;
-import edu.jdr.DicePaper.models.DAO.CompetenceListeDAO;
-import edu.jdr.DicePaper.models.DAO.UtilitaireListeDAO;
-import edu.jdr.DicePaper.models.table.CompetenceListe;
-import edu.jdr.DicePaper.models.table.JaugeListe;
+import edu.jdr.DicePaper.models.DAO.Liste.CompetenceListeDAO;
+import edu.jdr.DicePaper.models.table.Liste.CompetenceListe;
 
 import java.util.ArrayList;
 
