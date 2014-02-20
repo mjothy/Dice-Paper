@@ -8,7 +8,10 @@ import edu.jdr.DicePaper.models.DAO.Liste.CaracteristiqueListeDAO;
 import edu.jdr.DicePaper.models.DAO.Liste.CompetenceListeDAO;
 import edu.jdr.DicePaper.models.DAO.UniversDAO;
 import edu.jdr.DicePaper.models.DAOBase;
+import edu.jdr.DicePaper.models.table.FichePersonnage;
+import edu.jdr.DicePaper.models.table.Liste.CaracteristiqueListe;
 import edu.jdr.DicePaper.models.table.Liste.CompetenceListe;
+import edu.jdr.DicePaper.models.table.Valeur.CaracteristiqueValeur;
 import edu.jdr.DicePaper.models.table.Valeur.CompetenceValeur;
 
 import java.util.ArrayList;
@@ -25,7 +28,7 @@ public class CompetenceValeurDAO extends DAOBase {
     public static final String BASEVALUE = "valeur_base";
     public static final String MODIFIEDVALUE = "valeur_actuelle";
     public static final String TABLE_CREATE = "CREATE TABLE " + TABLE_NAME + " ( " + KEY + " INTEGER PRIMARY KEY AUTOINCREMENT," +
-            " "+BASEVALUE+" REAL, "+MODIFIEDVALUE+" REAL, "+ CaracteristiqueListeDAO.KEY+
+            " "+BASEVALUE+" REAL, "+MODIFIEDVALUE+" REAL, "+ CompetenceListeDAO.KEY+
             " INTEGER REFERENCES "+ CompetenceListeDAO.TABLE_NAME+"("+CompetenceListeDAO.KEY+") ON DELETE CASCADE, "+
             ""+ FichePersonnageDAO.KEY+" TEXT NOT NULL REFERENCES "+FichePersonnageDAO.TABLE_NAME+"("+FichePersonnageDAO.KEY+") ON DELETE CASCADE);";
     public static final String TABLE_DROP = "DROP TABLE IF EXIST " + TABLE_NAME + ";";
@@ -87,5 +90,33 @@ public class CompetenceValeurDAO extends DAOBase {
             results.add(compValeur);
         }
         return results;
+    }
+    /**
+     * Create new values of competence for CompetenceListe of the
+     * matching universe with no matching CompetenceValue
+     * @param character
+     */
+    public void initializeNewValues(FichePersonnage character){
+        String outerKey = CompetenceListeDAO.KEY;
+        String outerTable = CompetenceListeDAO.TABLE_NAME;
+        Cursor c = mDb.rawQuery("SELECT * FROM "+outerTable+
+                " WHERE "+outerKey+" NOT IN ( SELECT "+outerTable+"."+outerKey+" FROM "+
+                TABLE_NAME+" JOIN "+outerTable+" ON "+TABLE_NAME+"."+outerKey+" = "+outerTable+"."+outerKey+
+                " WHERE "+FichePersonnageDAO.KEY+" = ?) AND" +
+                UniversDAO.KEY+" = ?"
+                , new String[]{character.getNomFiche(), character.getNomUnivers()});
+        if(c.getCount()>0){
+            ArrayList<CompetenceListe> tempResults = new ArrayList<CompetenceListe>();
+            while (c.moveToNext()){
+                tempResults.add(new CompetenceListe(c.getInt(0), c.getString(1), c.getString(2)));
+            }
+            ArrayList<CompetenceValeur> newValues = new ArrayList<CompetenceValeur>();
+            for(CompetenceListe result : tempResults){
+                newValues.add(new CompetenceValeur(0,0,character.getNomFiche(),result));
+            }
+            for(CompetenceValeur newValue : newValues){
+                createCompetenceValeur(newValue);
+            }
+        }
     }
 }

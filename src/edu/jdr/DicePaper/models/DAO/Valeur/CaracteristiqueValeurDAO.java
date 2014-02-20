@@ -7,8 +7,10 @@ import edu.jdr.DicePaper.models.DAO.FichePersonnageDAO;
 import edu.jdr.DicePaper.models.DAO.Liste.CaracteristiqueListeDAO;
 import edu.jdr.DicePaper.models.DAO.UniversDAO;
 import edu.jdr.DicePaper.models.DAOBase;
+import edu.jdr.DicePaper.models.table.FichePersonnage;
 import edu.jdr.DicePaper.models.table.Liste.CaracteristiqueListe;
 import edu.jdr.DicePaper.models.table.Valeur.CaracteristiqueValeur;
+import edu.jdr.DicePaper.models.table.Valeur.CompetenceValeur;
 
 import java.util.ArrayList;
 
@@ -88,6 +90,35 @@ public class CaracteristiqueValeurDAO extends DAOBase{
             results.add(caracValeur);
         }
         return results;
+    }
+
+    /**
+     * Create new values of caracteristique for CaracteristiqueListe of the
+     * matching universe with no matching CaracteristiqueValue
+     * @param character
+     */
+    public void initializeNewValues(FichePersonnage character){
+        String outerKey = CaracteristiqueListeDAO.KEY;
+        String outerTable = CaracteristiqueListeDAO.TABLE_NAME;
+        Cursor c = mDb.rawQuery("SELECT * FROM "+outerTable+
+                " WHERE "+outerKey+" NOT IN ( SELECT "+outerTable+"."+outerKey+" FROM "+
+                    TABLE_NAME+" JOIN "+outerTable+" ON "+TABLE_NAME+"."+outerKey+" = "+outerTable+"."+outerKey+
+                    " WHERE "+FichePersonnageDAO.KEY+" = ?) AND" +
+                UniversDAO.KEY+" = ?"
+                , new String[]{character.getNomFiche(), character.getNomUnivers()});
+        if(c.getCount()>0){
+            ArrayList<CaracteristiqueListe> tempResults = new ArrayList<CaracteristiqueListe>();
+            while (c.moveToNext()){
+                tempResults.add(new CaracteristiqueListe(c.getInt(0), c.getString(1), c.getString(2)));
+            }
+            ArrayList<CaracteristiqueValeur> newValues = new ArrayList<CaracteristiqueValeur>();
+            for(CaracteristiqueListe result : tempResults){
+                newValues.add(new CaracteristiqueValeur(0,0,character.getNomFiche(),result));
+            }
+            for(CaracteristiqueValeur newValue : newValues){
+                createCaracteristiqueValeur(newValue);
+            }
+        }
     }
 
 }

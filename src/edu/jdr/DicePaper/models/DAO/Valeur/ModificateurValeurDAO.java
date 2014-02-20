@@ -7,7 +7,9 @@ import edu.jdr.DicePaper.models.DAO.FichePersonnageDAO;
 import edu.jdr.DicePaper.models.DAO.Liste.CaracteristiqueListeDAO;
 import edu.jdr.DicePaper.models.DAO.Liste.ModificateurListeDAO;
 import edu.jdr.DicePaper.models.DAO.Liste.UtilitaireListeDAO;
+import edu.jdr.DicePaper.models.DAO.UniversDAO;
 import edu.jdr.DicePaper.models.DAOBase;
+import edu.jdr.DicePaper.models.table.FichePersonnage;
 import edu.jdr.DicePaper.models.table.Liste.ModificateurListe;
 import edu.jdr.DicePaper.models.table.Valeur.ModificateurValeur;
 
@@ -85,6 +87,37 @@ public class ModificateurValeurDAO extends DAOBase {
             results.add(modValeur);
         }
         return results;
+    }
+
+    /**
+     * Create new values of modificateur for ModificateurListe of the
+     * matching universe with no matching ModificateurValue
+     * @param character
+     */
+    public void initializeNewValues(FichePersonnage character){
+        String outerKey = ModificateurListeDAO.KEY;
+        String outerTable = ModificateurListeDAO.TABLE_NAME;
+        Cursor c = mDb.rawQuery("SELECT * FROM "+outerTable+
+                " WHERE "+outerKey+" NOT IN ( SELECT "+outerTable+"."+outerKey+" FROM "+
+                TABLE_NAME+" JOIN "+outerTable+" ON "+TABLE_NAME+"."+outerKey+" = "+outerTable+"."+outerKey+
+                " JOIN "+CaracteristiqueListeDAO.TABLE_NAME+" ON "+outerTable+"."+CaracteristiqueListeDAO.KEY+" = "+
+                CaracteristiqueListeDAO.TABLE_NAME+"."+CaracteristiqueListeDAO.KEY+
+                " WHERE "+FichePersonnageDAO.KEY+" = ?) AND" +
+                UniversDAO.KEY+" = ?"
+                , new String[]{character.getNomFiche(), character.getNomUnivers()});
+        if(c.getCount()>0){
+            ArrayList<ModificateurListe> tempResults = new ArrayList<ModificateurListe>();
+            while (c.moveToNext()){
+                tempResults.add(new ModificateurListe(c.getInt(0), c.getString(1), c.getInt(2)));
+            }
+            ArrayList<ModificateurValeur> newValues = new ArrayList<ModificateurValeur>();
+            for(ModificateurListe result : tempResults){
+                newValues.add(new ModificateurValeur(0,character.getNomFiche(),result));
+            }
+            for(ModificateurValeur newValue : newValues){
+                createModificateurValeur(newValue);
+            }
+        }
     }
 
 }
