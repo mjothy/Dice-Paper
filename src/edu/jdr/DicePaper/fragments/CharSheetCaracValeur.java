@@ -37,8 +37,6 @@ public class CharSheetCaracValeur extends Fragment {
 
     private ArrayList<CaracteristiqueValeur> caracList;
     private ExpandableListView caracValeurView;
-    private int componentId;
-    private int componentPosition;
 
     /**
      * Method to instanciate this fragment

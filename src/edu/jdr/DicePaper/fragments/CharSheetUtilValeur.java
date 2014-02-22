@@ -27,8 +27,6 @@ public class CharSheetUtilValeur extends Fragment {
 
     private ArrayList<UtilitaireValeur> utilList;
     private ListView utilValeurView;
-    private int componentId;
-    private int componentPosition;
 
     /**
      * Method to instanciate this fragment
