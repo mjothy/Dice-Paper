@@ -70,14 +70,14 @@ public class ModificateurValeurDAO extends DAOBase {
      * @param charName the name of the character we want the Modificateurs
      * @return
      */
-    public ArrayList<ModificateurValeur> getAllModificateurValeur(String charName, int caracId){
+    public ArrayList<ModificateurValeur> getAllModificateurValeur(String charName, int caracListeId){
         String outerKey = ModificateurListeDAO.KEY;
         String joinTable = ModificateurListeDAO.TABLE_NAME;
         Cursor c = mDb.rawQuery("SELECT "+KEY+", "+VALEUR+", "+FichePersonnageDAO.KEY+
-                ", "+joinTable+"."+outerKey+", "+ UtilitaireListeDAO.NOM+", "+ CaracteristiqueListeDAO.KEY+
+                ", "+joinTable+"."+outerKey+", "+ ModificateurListeDAO.NOM+", "+ CaracteristiqueListeDAO.KEY+
                 " FROM "+TABLE_NAME+" JOIN "+joinTable+" ON "+TABLE_NAME+"."+outerKey+" = "+joinTable+"."+outerKey+
                 " WHERE "+FichePersonnageDAO.KEY+" = ? "+" AND "+joinTable+"."+CaracteristiqueListeDAO.KEY+" = ?",
-                new String[]{charName, Integer.toString(caracId)});
+                new String[]{charName, Integer.toString(caracListeId)});
         ArrayList<ModificateurValeur> results = new ArrayList<ModificateurValeur>();
         ModificateurListe modListe;
         ModificateurValeur modValeur;
@@ -107,6 +107,9 @@ public class ModificateurValeurDAO extends DAOBase {
                 " WHERE "+FichePersonnageDAO.KEY+" = ?) AND " +
                 UniversDAO.KEY+" = ?"
                 , new String[]{character.getNomFiche(), character.getNomUnivers()});
+
+        System.out.println("Requête initialize :" + c.getCount());
+
         if(c.getCount()>0){
             ArrayList<ModificateurListe> tempResults = new ArrayList<ModificateurListe>();
             while (c.moveToNext()){

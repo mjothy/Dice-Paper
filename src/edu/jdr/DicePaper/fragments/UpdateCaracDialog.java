@@ -42,7 +42,7 @@ public class UpdateCaracDialog extends DialogFragment {
         name.setText(String.valueOf(caracteristiqueValeur.getBaseValue()));
         validate.setOnClickListener(validateListener);
         cancel.setOnClickListener(cancelListener);
-        getDialog().setTitle(getString(R.string.updateCarac));
+        getDialog().setTitle(getString(R.string.update)+" "+caracteristiqueValeur.getRelatedList().getNom());
         return v;
     }
 
@@ -60,9 +60,9 @@ public class UpdateCaracDialog extends DialogFragment {
                 caracManager.close();
             }
             if(result != -1){
-                Toast.makeText(getActivity(), getText(R.string.successCreateCarac), Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), getText(R.string.successModifCarac), Toast.LENGTH_SHORT).show();
             } else {
-                Toast.makeText(getActivity(), getText(R.string.errorCreate), Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), getText(R.string.errorModif), Toast.LENGTH_SHORT).show();
             }
             dismiss();
         }

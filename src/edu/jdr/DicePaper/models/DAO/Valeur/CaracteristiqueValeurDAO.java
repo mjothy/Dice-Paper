@@ -45,7 +45,7 @@ public class CaracteristiqueValeurDAO extends DAOBase{
         ContentValues value = new ContentValues();
         value.put(BASEVALUE, carac.getBaseValue());
         value.put(MODIFIEDVALUE, carac.getModifiedValue());
-        return mDb.update(UtilitaireValeurDAO.TABLE_NAME, value, KEY+" = ?", new String[]{Integer.toString(carac.getKey())});
+        return mDb.update(TABLE_NAME, value, KEY+" = ?", new String[]{Integer.toString(carac.getKey())});
     }
 
     /**

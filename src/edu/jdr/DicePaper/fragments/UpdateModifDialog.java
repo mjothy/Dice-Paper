@@ -43,7 +43,7 @@ public class UpdateModifDialog extends DialogFragment {
         name.setText(String.valueOf(modificateurValeur.getValue()));
         validate.setOnClickListener(validateListener);
         cancel.setOnClickListener(cancelListener);
-        getDialog().setTitle(getString(R.string.modifModif));
+        getDialog().setTitle(getString(R.string.update)+" "+modificateurValeur.getRelatedList().getNomMod());
         return v;
     }
 
@@ -61,10 +61,9 @@ public class UpdateModifDialog extends DialogFragment {
                 manager.close();
             }
             if(result != -1){
-                Toast.makeText(getActivity(), getText(R.string.successCreateModif), Toast.LENGTH_SHORT).show();
-                ((CharSheetDefSwipper)getActivity()).getFragCaracList().setCarac();
+                Toast.makeText(getActivity(), getText(R.string.successModifModif), Toast.LENGTH_SHORT).show();
             } else {
-                Toast.makeText(getActivity(), getText(R.string.errorCreate), Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), getText(R.string.errorModif), Toast.LENGTH_SHORT).show();
             }
             dismiss();
         }

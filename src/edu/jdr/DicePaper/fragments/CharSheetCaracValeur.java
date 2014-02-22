@@ -75,7 +75,7 @@ public class CharSheetCaracValeur extends Fragment {
         modManager.open();
         modManager.initializeNewValues(fichePersonnage);
         for(CaracteristiqueValeur carac : caracList){
-            carac.setLinkedModificateur(modManager.getAllModificateurValeur(charName, carac.getKey()));
+            carac.setLinkedModificateur(modManager.getAllModificateurValeur(charName, carac.getRelatedList().getListeId()));
         }
         modManager.close();
 

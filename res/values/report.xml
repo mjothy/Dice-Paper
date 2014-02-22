@@ -2,13 +2,15 @@
 <resources>
     <string name="errorCreateUniverse">Erreur, échec de la création d\'univers</string>
     <string name="errorCreate">Echec de la création</string>
-
+    <string name="errorModif">Echec de la modification</string>
     <string name="successCreateJauge">Ajout de la jauge</string>
     <string name="successCreateUtilitaire">Ajout de l\'utilitaire</string>
     <string name="successCreateCarac">Ajout de la caractéristique</string>
     <string name="successCreateComp">Ajout de la compétence</string>
     <string name="successCreateModif">Ajout du modificateur</string>
 
+    <string name="successModifCarac">Modification de la caractéristique</string>
+    <string name="successModifModif">Modification du modificateur</string>
     <string name="askDeleteConfirmation">Êtes vous certain de vouloir supprimer </string>
 
     <string name="yes">Oui</string>
