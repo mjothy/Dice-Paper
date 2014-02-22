@@ -58,7 +58,7 @@ public class CharSheetCaracValeur extends Fragment {
         universeName = getActivity().getIntent().getExtras().getString("universeName");
         charName = getActivity().getIntent().getExtras().getString("charName");
         TextView title = (TextView) v.findViewById(R.id.univTitle);
-        title.setText(universeName);
+        title.setText(charName+" ("+universeName+")");
         caracValeurView = (ExpandableListView) v.findViewById(R.id.caracList);
         setCarac();
         return v;

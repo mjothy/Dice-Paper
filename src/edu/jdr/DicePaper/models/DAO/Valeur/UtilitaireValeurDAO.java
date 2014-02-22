@@ -7,6 +7,7 @@ import edu.jdr.DicePaper.models.DAO.FichePersonnageDAO;
 import edu.jdr.DicePaper.models.DAO.Liste.UtilitaireListeDAO;
 import edu.jdr.DicePaper.models.DAO.UniversDAO;
 import edu.jdr.DicePaper.models.DAOBase;
+import edu.jdr.DicePaper.models.table.FichePersonnage;
 import edu.jdr.DicePaper.models.table.Liste.UtilitaireListe;
 import edu.jdr.DicePaper.models.table.Valeur.UtilitaireValeur;
 
@@ -83,5 +84,34 @@ public class UtilitaireValeurDAO extends DAOBase {
             results.add(utilitaireValeur);
         }
         return results;
+    }
+
+    /**
+     * Create new values of utilitaire for UtilitaireListe of the
+     * matching universe with no matching UtilitaireValue
+     * @param character
+     */
+    public void initializeNewValues(FichePersonnage character){
+        String outerKey = UtilitaireListeDAO.KEY;
+        String outerTable = UtilitaireListeDAO.TABLE_NAME;
+        Cursor c = mDb.rawQuery("SELECT * FROM "+outerTable+
+                " WHERE "+outerKey+" NOT IN ( SELECT "+outerTable+"."+outerKey+" FROM "+
+                TABLE_NAME+" JOIN "+outerTable+" ON "+TABLE_NAME+"."+outerKey+" = "+outerTable+"."+outerKey+
+                " WHERE "+FichePersonnageDAO.KEY+" = ?) AND " +
+                UniversDAO.KEY+" = ?"
+                , new String[]{character.getNomFiche(), character.getNomUnivers()});
+        if(c.getCount()>0){
+            ArrayList<UtilitaireListe> tempResults = new ArrayList<UtilitaireListe>();
+            while (c.moveToNext()){
+                tempResults.add(new UtilitaireListe(c.getInt(0), c.getString(1), c.getString(2)));
+            }
+            ArrayList<UtilitaireValeur> newValues = new ArrayList<UtilitaireValeur>();
+            for(UtilitaireListe result : tempResults){
+                newValues.add(new UtilitaireValeur(" ",character.getNomFiche(),result));
+            }
+            for(UtilitaireValeur newValue : newValues){
+                createUtilitaireValeur(newValue);
+            }
+        }
     }
 }

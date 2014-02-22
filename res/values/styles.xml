@@ -10,6 +10,10 @@
         <item name="android:textStyle">italic</item>
         <item name="android:textSize">20dp</item>
     </style>
+    <style name="hList">
+        <item name="android:textStyle">italic</item>
+        <item name="android:textSize">20dp</item>
+    </style>
     <style name="list">
         <item name="android:gravity">center_horizontal</item>
         <item name="android:textSize">18dp</item>
