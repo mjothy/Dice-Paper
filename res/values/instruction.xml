@@ -8,4 +8,7 @@
 
     <string name="nameCharSheet">Nom du personnage :</string>
     <string name="listCharSheet">Liste des personnages :</string>
+
+    <string name="nbDice">Nombre de dés</string>
+    <string name="typeDice">Type de dé</string>
 </resources>

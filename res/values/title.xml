@@ -16,4 +16,5 @@
     <string name="modifUtil">Modifier utilitaire</string>
     <string name="modifJauge">Modifier jauge</string>
     <string name="update">Modifier :</string>
+    <string name="lancer">Lancer :</string>
 </resources>

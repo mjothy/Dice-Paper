@@ -8,4 +8,5 @@
         Dans ce menu, vous pouvez créer, supprimer, ou ouvrir une fiche de personnage correspondant
         au template créé pour cet univers.
     </string>
+    <string name="results">Resultats des dés :</string>
 </resources>
