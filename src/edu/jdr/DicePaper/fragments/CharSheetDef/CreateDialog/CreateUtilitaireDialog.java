@@ -1,4 +1,4 @@
-package edu.jdr.DicePaper.fragments;
+package edu.jdr.DicePaper.fragments.CharSheetDef.CreateDialog;
 
 import android.app.DialogFragment;
 import android.os.Bundle;
@@ -9,20 +9,20 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 import edu.jdr.DicePaper.R;
-import edu.jdr.DicePaper.models.table.Liste.CompetenceListe;
-import edu.jdr.DicePaper.models.DAO.Liste.CompetenceListeDAO;
+import edu.jdr.DicePaper.models.table.Liste.UtilitaireListe;
+import edu.jdr.DicePaper.models.DAO.Liste.UtilitaireListeDAO;
 
 /**
- * Created by paulyves on 1/30/14.
+ * Created by mario on 30/01/14.
  */
-public class CreateCompDialog extends DialogFragment {
+public class CreateUtilitaireDialog extends DialogFragment {
     private Button cancel = null;
     private Button validate = null;
     private EditText name = null;
     private String univName = null;
 
-    public static CreateCompDialog newInstance(int title, String univName){
-        CreateCompDialog dialog = new CreateCompDialog();
+    public static CreateUtilitaireDialog newInstance(int title, String univName){
+        CreateUtilitaireDialog dialog = new CreateUtilitaireDialog();
         Bundle args = new Bundle();
         args.putInt("title", title);
         dialog.setArguments(args);
@@ -38,24 +38,24 @@ public class CreateCompDialog extends DialogFragment {
         name = (EditText) v.findViewById(R.id.name);
         validate.setOnClickListener(validateListener);
         cancel.setOnClickListener(cancelListener);
-        getDialog().setTitle(getString(R.string.addComp));
+        getDialog().setTitle(getString(R.string.addUtil));
         return v;
     }
 
     private View.OnClickListener validateListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            String compName = name.getText().toString();
+            String utilitaireName = name.getText().toString();
             long result = -1;
-            if(!compName.isEmpty()){
-                CompetenceListe carac = new CompetenceListe(compName, univName);
-                CompetenceListeDAO caracManager = new CompetenceListeDAO(getActivity());
-                caracManager.open();
-                result = caracManager.createCompetenceListe(carac);
-                caracManager.close();
+            if(!utilitaireName.isEmpty()){
+                UtilitaireListe utilitaire = new UtilitaireListe(utilitaireName, univName);
+                UtilitaireListeDAO utilitaireManager = new UtilitaireListeDAO(getActivity());
+                utilitaireManager.open();
+                result = utilitaireManager.createUtilitaireListe(utilitaire);
+                utilitaireManager.close();
             }
             if(result != -1){
-                Toast.makeText(getActivity(), getText(R.string.successCreateComp), Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), getText(R.string.successCreateUtilitaire), Toast.LENGTH_SHORT).show();
             } else {
                 Toast.makeText(getActivity(), getText(R.string.errorCreate), Toast.LENGTH_SHORT).show();
             }

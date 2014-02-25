@@ -1,4 +1,4 @@
-package edu.jdr.DicePaper.fragments;
+package edu.jdr.DicePaper.fragments.CharSheet;
 
 import android.app.Fragment;
 import android.app.FragmentTransaction;
@@ -9,10 +9,10 @@ import android.view.ViewGroup;
 import android.widget.ListView;
 import android.widget.TextView;
 import edu.jdr.DicePaper.R;
+import edu.jdr.DicePaper.fragments.CharSheet.UpdateDialog.UpdateJaugeDialog;
 import edu.jdr.DicePaper.models.DAO.Valeur.JaugeValeurDAO;
 import edu.jdr.DicePaper.models.table.FichePersonnage;
 import edu.jdr.DicePaper.models.table.Valeur.JaugeValeur;
-import edu.jdr.DicePaper.models.table.Valeur.UtilitaireValeur;
 import edu.jdr.DicePaper.utils.JaugeValeurAdapter;
 
 import java.util.ArrayList;

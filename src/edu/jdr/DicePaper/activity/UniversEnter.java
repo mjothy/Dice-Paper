@@ -9,10 +9,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import edu.jdr.DicePaper.R;
-import edu.jdr.DicePaper.fragments.CreateCharSheetDialog;
-import edu.jdr.DicePaper.fragments.CreateUniversDialog;
-import edu.jdr.DicePaper.fragments.ListCharSheetDialog;
-import edu.jdr.DicePaper.fragments.ListUniverseDialog;
+import edu.jdr.DicePaper.fragments.CharSheetDef.CreateDialog.CreateCharSheetDialog;
+import edu.jdr.DicePaper.fragments.CharSheet.ListCharSheetDialog;
 
 /**
  * Created by mario on 16/02/14.

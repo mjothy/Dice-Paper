@@ -1,23 +1,16 @@
-package edu.jdr.DicePaper.fragments;
+package edu.jdr.DicePaper.fragments.CharSheet;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.app.DialogFragment;
-import android.app.Fragment;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Toast;
 import edu.jdr.DicePaper.R;
 import edu.jdr.DicePaper.activity.CharSheetSwipper;
-import edu.jdr.DicePaper.activity.UniversDefinition;
-import edu.jdr.DicePaper.activity.UniversEnter;
 import edu.jdr.DicePaper.models.DAO.FichePersonnageDAO;
-import edu.jdr.DicePaper.models.DAO.UniversDAO;
 import edu.jdr.DicePaper.models.table.FichePersonnage;
 
 import java.util.ArrayList;

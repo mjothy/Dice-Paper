@@ -1,7 +1,6 @@
-package edu.jdr.DicePaper.fragments;
+package edu.jdr.DicePaper.fragments.CharSheet.UpdateDialog;
 
 import android.app.DialogFragment;
-import android.app.Fragment;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,9 +9,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 import edu.jdr.DicePaper.R;
-import edu.jdr.DicePaper.models.DAO.Liste.CaracteristiqueListeDAO;
 import edu.jdr.DicePaper.models.DAO.Valeur.CaracteristiqueValeurDAO;
-import edu.jdr.DicePaper.models.table.Liste.CaracteristiqueListe;
 import edu.jdr.DicePaper.models.table.Valeur.CaracteristiqueValeur;
 
 /**

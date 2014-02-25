@@ -1,4 +1,4 @@
-package edu.jdr.DicePaper.fragments;
+package edu.jdr.DicePaper.fragments.CharSheetDef.CreateDialog;
 
 import android.app.DialogFragment;
 import android.os.Bundle;
@@ -9,22 +9,20 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 import edu.jdr.DicePaper.R;
-import edu.jdr.DicePaper.models.table.Liste.JaugeListe;
-import edu.jdr.DicePaper.models.DAO.Liste.JaugeListeDAO;
+import edu.jdr.DicePaper.models.table.Liste.CaracteristiqueListe;
+import edu.jdr.DicePaper.models.DAO.Liste.CaracteristiqueListeDAO;
 
 /**
- * Created by mario on 30/01/14.
+ * Created by paulyves on 1/30/14.
  */
-public class CreateJaugeDialog extends DialogFragment {
+public class CreateCaracDialog extends DialogFragment {
     private Button cancel = null;
     private Button validate = null;
     private EditText name = null;
-    private EditText min = null;
-    private EditText max = null;
     private String univName = null;
 
-    public static CreateJaugeDialog newInstance(int title, String univName){
-        CreateJaugeDialog dialog = new CreateJaugeDialog();
+    public static CreateCaracDialog newInstance(int title, String univName){
+        CreateCaracDialog dialog = new CreateCaracDialog();
         Bundle args = new Bundle();
         args.putInt("title", title);
         dialog.setArguments(args);
@@ -34,41 +32,30 @@ public class CreateJaugeDialog extends DialogFragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View v = inflater.inflate(R.layout.create_jauge_dialog, container, false);
+        View v = inflater.inflate(R.layout.create_component_dialog, container, false);
         cancel = (Button) v.findViewById(R.id.cancel);
         validate = (Button) v.findViewById(R.id.validate);
         name = (EditText) v.findViewById(R.id.name);
-        min = (EditText) v.findViewById(R.id.min);
-        max = (EditText) v.findViewById(R.id.max);
         validate.setOnClickListener(validateListener);
         cancel.setOnClickListener(cancelListener);
-        getDialog().setTitle(getString(R.string.addJauge));
+        getDialog().setTitle(getString(R.string.addCharac));
         return v;
     }
 
     private View.OnClickListener validateListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            String jaugeName = name.getText().toString();
-            String minValueS = min.getText().toString();
-            String maxValueS = max.getText().toString();
-            int minValue=0, maxValue=100;
-            if(!minValueS.isEmpty()){
-                minValue = Integer.valueOf(minValueS);
-            }
-            if(!maxValueS.isEmpty()){
-                maxValue = Integer.valueOf(maxValueS);
-            }
+            String caracName = name.getText().toString();
             long result = -1;
-            if(!jaugeName.isEmpty()){
-                JaugeListe jauge = new JaugeListe(jaugeName, univName, minValue, maxValue);
-                JaugeListeDAO jaugeManager = new JaugeListeDAO(getActivity());
-                jaugeManager.open();
-                result = jaugeManager.createJaugeListe(jauge);
-                jaugeManager.close();
+            if(!caracName.isEmpty()){
+                CaracteristiqueListe carac = new CaracteristiqueListe(caracName, univName);
+                CaracteristiqueListeDAO caracManager = new CaracteristiqueListeDAO(getActivity());
+                caracManager.open();
+                result = caracManager.createCaracListe(carac);
+                caracManager.close();
             }
             if(result != -1){
-                Toast.makeText(getActivity(), getText(R.string.successCreateJauge), Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), getText(R.string.successCreateCarac), Toast.LENGTH_SHORT).show();
             } else {
                 Toast.makeText(getActivity(), getText(R.string.errorCreate), Toast.LENGTH_SHORT).show();
             }
@@ -82,4 +69,5 @@ public class CreateJaugeDialog extends DialogFragment {
             dismiss();
         }
     };
+
 }

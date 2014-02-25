@@ -1,4 +1,4 @@
-package edu.jdr.DicePaper.fragments;
+package edu.jdr.DicePaper.fragments.CharSheet.UpdateDialog;
 
 import android.app.DialogFragment;
 import android.os.Bundle;
@@ -9,39 +9,37 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 import edu.jdr.DicePaper.R;
-import edu.jdr.DicePaper.models.DAO.Valeur.CaracteristiqueValeurDAO;
-import edu.jdr.DicePaper.models.DAO.Valeur.UtilitaireValeurDAO;
-import edu.jdr.DicePaper.models.table.Valeur.CaracteristiqueValeur;
-import edu.jdr.DicePaper.models.table.Valeur.UtilitaireValeur;
+import edu.jdr.DicePaper.models.DAO.Valeur.JaugeValeurDAO;
+import edu.jdr.DicePaper.models.table.Valeur.JaugeValeur;
 
 /**
- * Created by paulyves on 2/22/14.
+ * Created by paulyves on 2/25/14.
  */
-public class UpdateUtilDialog extends DialogFragment {
+public class UpdateJaugeDialog extends DialogFragment {
     private Button cancel = null;
     private Button validate = null;
     private EditText value = null;
-    private UtilitaireValeur utilitaireValeur = null;
+    private JaugeValeur jaugeValeur = null;
 
-    public static UpdateUtilDialog newInstance(int title, UtilitaireValeur utilitaireValeur){
-        UpdateUtilDialog dialog = new UpdateUtilDialog();
+    public static UpdateJaugeDialog newInstance(int title, JaugeValeur jaugeValeur){
+        UpdateJaugeDialog dialog = new UpdateJaugeDialog();
         Bundle args = new Bundle();
         args.putInt("title", title);
         dialog.setArguments(args);
-        dialog.utilitaireValeur = utilitaireValeur;
+        dialog.jaugeValeur = jaugeValeur;
         return dialog;
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View v = inflater.inflate(R.layout.create_component_dialog, container, false);
+        View v = inflater.inflate(R.layout.create_carac_valeur_dialog, container, false);
         cancel = (Button) v.findViewById(R.id.cancel);
         validate = (Button) v.findViewById(R.id.validate);
         value = (EditText) v.findViewById(R.id.name);
-        value.setText(utilitaireValeur.getValue());
+        value.setText(String.valueOf(jaugeValeur.getMaxValue()));
         validate.setOnClickListener(validateListener);
         cancel.setOnClickListener(cancelListener);
-        getDialog().setTitle(getString(R.string.update)+" "+utilitaireValeur.getRelatedList().getNom());
+        getDialog().setTitle(getString(R.string.update) + " " + jaugeValeur.getRelatedList().getNom());
         return v;
     }
 
@@ -51,14 +49,14 @@ public class UpdateUtilDialog extends DialogFragment {
             String tempValue = value.getText().toString();
             long result = -1;
             if(!tempValue.isEmpty()){
-                utilitaireValeur.setValue(tempValue);
-                UtilitaireValeurDAO manager = new UtilitaireValeurDAO(getActivity());
+                jaugeValeur.setMaxValue(Integer.parseInt(tempValue));
+                JaugeValeurDAO manager = new JaugeValeurDAO(getActivity());
                 manager.open();
-                result = manager.updateUtilitaireValeur(utilitaireValeur);
+                result = manager.updateJaugeValeur(jaugeValeur);
                 manager.close();
             }
             if(result != -1){
-                Toast.makeText(getActivity(), getText(R.string.successModifUtil), Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), getText(R.string.successModifJauge), Toast.LENGTH_SHORT).show();
             } else {
                 Toast.makeText(getActivity(), getText(R.string.errorModif), Toast.LENGTH_SHORT).show();
             }

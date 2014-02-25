@@ -1,4 +1,4 @@
-package edu.jdr.DicePaper.fragments;
+package edu.jdr.DicePaper.fragments.CharSheetDef;
 
 import android.app.AlertDialog;
 import android.app.Dialog;

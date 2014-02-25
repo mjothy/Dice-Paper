@@ -1,4 +1,4 @@
-package edu.jdr.DicePaper.fragments;
+package edu.jdr.DicePaper.fragments.CharSheetDef.CreateDialog;
 
 import android.app.DialogFragment;
 import android.os.Bundle;
@@ -9,24 +9,27 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 import edu.jdr.DicePaper.R;
-import edu.jdr.DicePaper.models.table.Liste.UtilitaireListe;
-import edu.jdr.DicePaper.models.DAO.Liste.UtilitaireListeDAO;
+import edu.jdr.DicePaper.activity.CharSheetDefSwipper;
+import edu.jdr.DicePaper.models.DAO.Liste.ModificateurListeDAO;
+import edu.jdr.DicePaper.models.table.Liste.ModificateurListe;
 
 /**
- * Created by mario on 30/01/14.
+ * Dialog class called inside CharSheetDefSwipper activity under CharSheetDefCaracList fragment
+ * Called by the button defined by the expandableListView adapter
+ * Created by paulyves on 2/9/14.
  */
-public class CreateUtilitaireDialog extends DialogFragment {
+public class CreateModifDialog extends DialogFragment {
     private Button cancel = null;
     private Button validate = null;
     private EditText name = null;
-    private String univName = null;
+    private int caracListId;
 
-    public static CreateUtilitaireDialog newInstance(int title, String univName){
-        CreateUtilitaireDialog dialog = new CreateUtilitaireDialog();
+    public static CreateModifDialog newInstance(int title, int caracListId){
+        CreateModifDialog dialog = new CreateModifDialog();
         Bundle args = new Bundle();
         args.putInt("title", title);
         dialog.setArguments(args);
-        dialog.univName = univName;
+        dialog.caracListId = caracListId;
         return dialog;
     }
 
@@ -38,24 +41,25 @@ public class CreateUtilitaireDialog extends DialogFragment {
         name = (EditText) v.findViewById(R.id.name);
         validate.setOnClickListener(validateListener);
         cancel.setOnClickListener(cancelListener);
-        getDialog().setTitle(getString(R.string.addUtil));
+        getDialog().setTitle(getString(R.string.addModif));
         return v;
     }
 
     private View.OnClickListener validateListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            String utilitaireName = name.getText().toString();
+            String modName = name.getText().toString();
             long result = -1;
-            if(!utilitaireName.isEmpty()){
-                UtilitaireListe utilitaire = new UtilitaireListe(utilitaireName, univName);
-                UtilitaireListeDAO utilitaireManager = new UtilitaireListeDAO(getActivity());
-                utilitaireManager.open();
-                result = utilitaireManager.createUtilitaireListe(utilitaire);
-                utilitaireManager.close();
+            if(!modName.isEmpty()){
+                ModificateurListe modificateur = new ModificateurListe(modName, caracListId);
+                ModificateurListeDAO manager = new ModificateurListeDAO(getActivity());
+                manager.open();
+                result = manager.createModListe(modificateur);
+                manager.close();
             }
             if(result != -1){
-                Toast.makeText(getActivity(), getText(R.string.successCreateUtilitaire), Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), getText(R.string.successCreateModif), Toast.LENGTH_SHORT).show();
+                ((CharSheetDefSwipper)getActivity()).getFragCaracList().setCarac();
             } else {
                 Toast.makeText(getActivity(), getText(R.string.errorCreate), Toast.LENGTH_SHORT).show();
             }

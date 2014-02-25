@@ -8,7 +8,7 @@ import android.os.Bundle;
 import android.view.MotionEvent;
 import android.widget.FrameLayout;
 import edu.jdr.DicePaper.R;
-import edu.jdr.DicePaper.fragments.*;
+import edu.jdr.DicePaper.fragments.CharSheetDef.*;
 import edu.jdr.DicePaper.utils.OnSwipeTouchListener;
 
 

@@ -1,27 +1,17 @@
 package edu.jdr.DicePaper.utils;
 
-import android.app.Activity;
-import android.app.Fragment;
-import android.app.FragmentTransaction;
 import android.content.Context;
 import android.graphics.Typeface;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.BaseExpandableListAdapter;
 import android.widget.Button;
 import android.widget.TextView;
 import edu.jdr.DicePaper.R;
-import edu.jdr.DicePaper.activity.CharSheetDefSwipper;
 import edu.jdr.DicePaper.activity.CharSheetSwipper;
-import edu.jdr.DicePaper.fragments.CharSheetCaracValeur;
-import edu.jdr.DicePaper.fragments.CreateModifDialog;
-import edu.jdr.DicePaper.models.table.Liste.CaracteristiqueListe;
-import edu.jdr.DicePaper.models.table.Liste.ModificateurListe;
 import edu.jdr.DicePaper.models.table.Valeur.CaracteristiqueValeur;
 import edu.jdr.DicePaper.models.table.Valeur.ModificateurValeur;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
