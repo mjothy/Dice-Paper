@@ -19,7 +19,7 @@ public class CharSheetSwipper extends Activity{
     private String charName;
     private FrameLayout mFrameLayout;
     //private CharSheetDef fragCompoDef;
-    //private CharSheetDefJaugeList fragJaugeList;
+    private CharSheetJaugeValeur fragJaugeValeur;
     private CharSheetUtilValeur fragUtilValeur;
     private CharSheetCaracValeur fragCaracValeur;
     //private CharSheetDefCompList fragCompList;
@@ -57,10 +57,10 @@ public class CharSheetSwipper extends Activity{
         /*
         if (this.fragCompoDef == null) {
             this.fragCompoDef = CharSheetDef.newInstance();
-        }
-        if(fragJaugeList == null) {
-            fragJaugeList = CharSheetDefJaugeList.newInstance();
         }*/
+        if(fragJaugeValeur == null) {
+            fragJaugeValeur = CharSheetJaugeValeur.newInstance();
+        }
         if(fragUtilValeur == null) {
             fragUtilValeur = CharSheetUtilValeur.newInstance();
         }
@@ -90,11 +90,12 @@ public class CharSheetSwipper extends Activity{
         ft.replace(R.id.Switcher, fragment);
         ft.commit();
     }
-/*
+
     public void goToJaugeList(int i) {
         currentFrag = 2;
-        showFragment(fragJaugeList, i);
+        showFragment(fragJaugeValeur, i);
     }
+    /*
     public void goToCompoDefine(int i){
         currentFrag = 0;
         showFragment(fragCompoDef, i);
@@ -116,7 +117,7 @@ public class CharSheetSwipper extends Activity{
     */
 
     public void switchFragment(int i){
-        currentFrag = (currentFrag+2+i)%2;
+        currentFrag = (currentFrag+3+i)%3;
         switch (currentFrag){
             /*
             case 0 :
@@ -126,16 +127,15 @@ public class CharSheetSwipper extends Activity{
             case 0 :
                 goToCaracList(i);
                 break;
-
             case 1 :
                 goToUtilList(i);
+                break;
+            case 2 :
+                goToJaugeList(i);
                 break;
                 /*
             case 3 :
                 goToCompList(i);
-                break;
-            case 4 :
-                goToUtilList(i);
                 break;
                 */
         }
@@ -154,5 +154,9 @@ public class CharSheetSwipper extends Activity{
 
     public CharSheetUtilValeur getFragUtilValeur() {
         return fragUtilValeur;
+    }
+
+    public CharSheetJaugeValeur getFragJaugeValeur() {
+        return fragJaugeValeur;
     }
 }

@@ -4,12 +4,16 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import edu.jdr.DicePaper.models.DAO.FichePersonnageDAO;
+import edu.jdr.DicePaper.models.DAO.Liste.CompetenceListeDAO;
 import edu.jdr.DicePaper.models.DAO.Liste.JaugeListeDAO;
 import edu.jdr.DicePaper.models.DAO.Liste.UtilitaireListeDAO;
 import edu.jdr.DicePaper.models.DAO.UniversDAO;
 import edu.jdr.DicePaper.models.DAOBase;
+import edu.jdr.DicePaper.models.table.FichePersonnage;
+import edu.jdr.DicePaper.models.table.Liste.CompetenceListe;
 import edu.jdr.DicePaper.models.table.Liste.JaugeListe;
 import edu.jdr.DicePaper.models.table.Liste.UtilitaireListe;
+import edu.jdr.DicePaper.models.table.Valeur.CompetenceValeur;
 import edu.jdr.DicePaper.models.table.Valeur.JaugeValeur;
 import edu.jdr.DicePaper.models.table.Valeur.UtilitaireValeur;
 
@@ -91,5 +95,34 @@ public class JaugeValeurDAO extends DAOBase {
             results.add(jaugeValeur);
         }
         return results;
+    }
+
+    /**
+     * Create new values of jauge for JaugeListe of the
+     * matching universe with no matching JaugeValue
+     * @param character
+     */
+    public void initializeNewValues(FichePersonnage character){
+        String outerKey = JaugeListeDAO.KEY;
+        String outerTable = JaugeListeDAO.TABLE_NAME;
+        Cursor c = mDb.rawQuery("SELECT * FROM "+outerTable+
+                " WHERE "+outerKey+" NOT IN ( SELECT "+outerTable+"."+outerKey+" FROM "+
+                TABLE_NAME+" JOIN "+outerTable+" ON "+TABLE_NAME+"."+outerKey+" = "+outerTable+"."+outerKey+
+                " WHERE "+FichePersonnageDAO.KEY+" = ?) AND " +
+                UniversDAO.KEY+" = ?"
+                , new String[]{character.getNomFiche(), character.getNomUnivers()});
+        if(c.getCount()>0){
+            ArrayList<JaugeListe> tempResults = new ArrayList<JaugeListe>();
+            while (c.moveToNext()){
+                tempResults.add(new JaugeListe(c.getInt(0), c.getString(1), c.getString(4), c.getInt(2), c.getInt(3)));
+            }
+            ArrayList<JaugeValeur> newValues = new ArrayList<JaugeValeur>();
+            for(JaugeListe result : tempResults){
+                newValues.add(new JaugeValeur(result.getMin(),result.getMin(),character.getNomFiche(),result));
+            }
+            for(JaugeValeur newValue : newValues){
+                createJaugeValeur(newValue);
+            }
+        }
     }
 }

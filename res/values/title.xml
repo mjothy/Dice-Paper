@@ -14,5 +14,6 @@
     <string name="modifCarac">Modifier caractéristique</string>
     <string name="modifModif">Modifier modificateur</string>
     <string name="modifUtil">Modifier utilitaire</string>
+    <string name="modifJauge">Modifier jauge</string>
     <string name="update">Modifier :</string>
 </resources>

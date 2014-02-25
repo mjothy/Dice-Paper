@@ -12,6 +12,7 @@
     <string name="successModifCarac">Modification de la caractéristique</string>
     <string name="successModifModif">Modification du modificateur</string>
     <string name="successModifUtil">Modification de l\'utilitaire</string>
+    <string name="successModifJauge">Modification de la jauge</string>
     <string name="askDeleteConfirmation">Êtes vous certain de vouloir supprimer </string>
 
     <string name="yes">Oui</string>
