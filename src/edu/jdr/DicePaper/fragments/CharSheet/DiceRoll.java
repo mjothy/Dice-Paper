@@ -84,7 +84,7 @@ public class DiceRoll extends Fragment {
      */
     private int diceRoll(int typeDice){
         if(RNG==null){
-            RNG = new Random();
+            RNG = new Random(System.currentTimeMillis());
         }
         return (RNG.nextInt(typeDice)+1);
     }
