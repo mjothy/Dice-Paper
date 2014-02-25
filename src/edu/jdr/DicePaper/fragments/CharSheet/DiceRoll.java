@@ -31,6 +31,7 @@ public class DiceRoll extends Fragment {
     private NumberPicker nbDice;
     private NumberPicker typeDice;
     private TextView viewResults;
+    private Random RNG;
 
     /**
      * Method to instanciate this fragment
@@ -82,8 +83,10 @@ public class DiceRoll extends Fragment {
      * @return a random number between 1 and typeDice
      */
     private int diceRoll(int typeDice){
-        Random random = new Random();
-        return (random.nextInt(typeDice)+1);
+        if(RNG==null){
+            RNG = new Random();
+        }
+        return (RNG.nextInt(typeDice)+1);
     }
 
     /**
