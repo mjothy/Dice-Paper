@@ -2,6 +2,8 @@ package edu.jdr.DicePaper.models.table.Valeur;
 
 import edu.jdr.DicePaper.models.table.Liste.CompetenceListe;
 
+import java.util.ArrayList;
+
 /**
  * Created by paulyves on 2/19/14.
  */
@@ -11,6 +13,7 @@ public class CompetenceValeur {
     protected float modifiedValue;
     protected String fiche;
     protected CompetenceListe relatedList;
+    protected ArrayList<Specialisation> linkedSpecialisation;
 
     public CompetenceValeur(float baseValue, float modifiedValue, String fiche, CompetenceListe relatedList) {
         this.baseValue = baseValue;
@@ -73,6 +76,15 @@ public class CompetenceValeur {
     public void setRelatedList(CompetenceListe relatedList) {
         this.relatedList = relatedList;
     }
+
+    public ArrayList<Specialisation> getLinkedSpecialisation() {
+        return linkedSpecialisation;
+    }
+
+    public void setLinkedSpecialisation(ArrayList<Specialisation> linkedSpecialisation) {
+        this.linkedSpecialisation = linkedSpecialisation;
+    }
+
     @Override
     public String toString(){
         return Float.toString(baseValue)+" ("+Float.toString(modifiedValue)+")";

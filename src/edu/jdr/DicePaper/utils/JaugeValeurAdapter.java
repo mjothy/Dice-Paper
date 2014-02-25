@@ -56,6 +56,7 @@ public class JaugeValeurAdapter<T> extends ArrayAdapter<T> {
                 return Integer.toString(index + tempValue.getRelatedList().getMin());
             }
         });
+        jaugeValue.setDescendantFocusability(NumberPicker.FOCUS_BLOCK_DESCENDANTS);
         jaugeValue.setOnValueChangedListener(new NumberPicker.OnValueChangeListener() {
             @Override
             public void onValueChange(NumberPicker picker, int oldVal, int newVal) {

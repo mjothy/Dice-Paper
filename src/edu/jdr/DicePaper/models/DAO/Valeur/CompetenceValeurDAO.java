@@ -46,7 +46,7 @@ public class CompetenceValeurDAO extends DAOBase {
         ContentValues value = new ContentValues();
         value.put(BASEVALUE, comp.getBaseValue());
         value.put(MODIFIEDVALUE, comp.getModifiedValue());
-        return mDb.update(UtilitaireValeurDAO.TABLE_NAME, value, KEY+" = ?", new String[]{Integer.toString(comp.getKey())});
+        return mDb.update(TABLE_NAME, value, KEY+" = ?", new String[]{Integer.toString(comp.getKey())});
     }
 
     /**
@@ -79,7 +79,7 @@ public class CompetenceValeurDAO extends DAOBase {
         Cursor c = mDb.rawQuery("SELECT "+KEY+", "+BASEVALUE+", "+MODIFIEDVALUE+", "+FichePersonnageDAO.KEY+
                 ", "+joinTable+"."+outerKey+", "+CompetenceListeDAO.NOM+", "+ UniversDAO.KEY+
                 " FROM "+TABLE_NAME+" JOIN "+joinTable+" ON "+TABLE_NAME+"."+outerKey+" = "+joinTable+"."+outerKey+
-                " WHERE "+FichePersonnageDAO.KEY+" = ?", new String[]{charName});
+                " WHERE "+FichePersonnageDAO.KEY+" = ? ORDER BY "+CompetenceListeDAO.NOM, new String[]{charName});
         ArrayList<CompetenceValeur> results = new ArrayList<CompetenceValeur>();
         CompetenceListe compListe;
         CompetenceValeur compValeur;

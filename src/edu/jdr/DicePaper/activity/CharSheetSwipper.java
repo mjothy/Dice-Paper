@@ -9,6 +9,7 @@ import android.view.MotionEvent;
 import android.widget.FrameLayout;
 import edu.jdr.DicePaper.R;
 import edu.jdr.DicePaper.fragments.CharSheet.CharSheetCaracValeur;
+import edu.jdr.DicePaper.fragments.CharSheet.CharSheetCompValeur;
 import edu.jdr.DicePaper.fragments.CharSheet.CharSheetJaugeValeur;
 import edu.jdr.DicePaper.fragments.CharSheet.CharSheetUtilValeur;
 import edu.jdr.DicePaper.utils.OnSwipeTouchListener;
@@ -24,7 +25,7 @@ public class CharSheetSwipper extends Activity{
     private CharSheetJaugeValeur fragJaugeValeur;
     private CharSheetUtilValeur fragUtilValeur;
     private CharSheetCaracValeur fragCaracValeur;
-    //private CharSheetDefCompList fragCompList;
+    private CharSheetCompValeur fragCompValeur;
     public OnSwipeTouchListener onSwipeTouchListener;
     private int currentFrag;
 
@@ -70,11 +71,9 @@ public class CharSheetSwipper extends Activity{
         if(this.fragCaracValeur == null){
             fragCaracValeur = CharSheetCaracValeur.newInstance();
         }
-        /*
-        if(this.fragCompList == null){
-            fragCompList = CharSheetDefCompList.newInstance();
+        if(this.fragCompValeur == null){
+            fragCompValeur = CharSheetCompValeur.newInstance();
         }
-        */
     }
 
     private void showFragment(final Fragment fragment, int i) {
@@ -111,15 +110,15 @@ public class CharSheetSwipper extends Activity{
         currentFrag = 0;
         showFragment(fragCaracValeur, i);
     }
-    /*
+
     public void goToCompList(int i){
         currentFrag = 3;
-        showFragment(fragCompList, i);
+        showFragment(fragCompValeur, i);
     }
-    */
+
 
     public void switchFragment(int i){
-        currentFrag = (currentFrag+3+i)%3;
+        currentFrag = (currentFrag+4+i)%4;
         switch (currentFrag){
             /*
             case 0 :
@@ -135,11 +134,9 @@ public class CharSheetSwipper extends Activity{
             case 2 :
                 goToJaugeList(i);
                 break;
-                /*
             case 3 :
                 goToCompList(i);
                 break;
-                */
         }
     }
 
@@ -160,5 +157,9 @@ public class CharSheetSwipper extends Activity{
 
     public CharSheetJaugeValeur getFragJaugeValeur() {
         return fragJaugeValeur;
+    }
+
+    public CharSheetCompValeur getFragCompValeur() {
+        return fragCompValeur;
     }
 }

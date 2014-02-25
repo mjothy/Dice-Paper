@@ -69,7 +69,7 @@ public class SpecialisationDAO extends DAOBase {
      * @param compId the id of the CaracteristiqueListe
      * @return ArrayList of ModificateurListe
      */
-    public ArrayList<Specialisation> getAllModList(int compId){
+    public ArrayList<Specialisation> getAllSpecialisation(int compId){
         Cursor c = mDb.rawQuery("SELECT * FROM "+TABLE_NAME+" WHERE "+CompetenceValeurDAO.KEY+" = ?",
                 new String[]{String.valueOf(compId)});
 

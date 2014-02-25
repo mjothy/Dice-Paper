@@ -15,7 +15,7 @@
             android:text="@string/skillList"
             android:layout_marginTop="25dp"
             style="@style/h2"/>
-    <ListView
+    <ExpandableListView
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
             android:layout_gravity="center_horizontal"

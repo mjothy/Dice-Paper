@@ -51,7 +51,7 @@ public class CaracteristiqueListeDAO extends DAOBase {
     }
 
     public ArrayList<CaracteristiqueListe> getAllCaracList(String univ){
-        Cursor c = mDb.rawQuery("SELECT * FROM "+TABLE_NAME+" WHERE "+UniversDAO.KEY+" = ?"+" GROUP BY "+NOM, new String[]{univ});
+        Cursor c = mDb.rawQuery("SELECT * FROM "+TABLE_NAME+" WHERE "+UniversDAO.KEY+" = ?"+" ORDER BY "+NOM, new String[]{univ});
         ArrayList<CaracteristiqueListe> results = new ArrayList<CaracteristiqueListe>();
         while (c.moveToNext()){
             results.add(new CaracteristiqueListe(c.getInt(0), c.getString(1), c.getString(2)));

@@ -79,7 +79,7 @@ public class CaracteristiqueValeurDAO extends DAOBase{
         Cursor c = mDb.rawQuery("SELECT "+KEY+", "+BASEVALUE+", "+MODIFIEDVALUE+", "+FichePersonnageDAO.KEY+
                 ", "+joinTable+"."+outerKey+", "+CaracteristiqueListeDAO.NOM+", "+ UniversDAO.KEY+
                 " FROM "+TABLE_NAME+" JOIN "+joinTable+" ON "+TABLE_NAME+"."+outerKey+" = "+joinTable+"."+outerKey+
-                " WHERE "+FichePersonnageDAO.KEY+" = ?", new String[]{charName});
+                " WHERE "+FichePersonnageDAO.KEY+" = ? ORDER BY "+CaracteristiqueListeDAO.NOM, new String[]{charName});
         ArrayList<CaracteristiqueValeur> results = new ArrayList<CaracteristiqueValeur>();
         CaracteristiqueListe caracListe;
         CaracteristiqueValeur caracValeur;
