@@ -18,4 +18,5 @@
     <string name="modifComp">Modifier compétence</string>
     <string name="modifSpe">Modifier spécialisation</string>
     <string name="update">Modifier :</string>
+    <string name="lancer">Lancer :</string>
 </resources>

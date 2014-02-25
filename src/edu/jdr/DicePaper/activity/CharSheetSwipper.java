@@ -12,28 +12,25 @@ import edu.jdr.DicePaper.fragments.CharSheet.CharSheetCaracValeur;
 import edu.jdr.DicePaper.fragments.CharSheet.CharSheetCompValeur;
 import edu.jdr.DicePaper.fragments.CharSheet.CharSheetJaugeValeur;
 import edu.jdr.DicePaper.fragments.CharSheet.CharSheetUtilValeur;
+import edu.jdr.DicePaper.fragments.CharSheet.DiceRoll;
 import edu.jdr.DicePaper.utils.OnSwipeTouchListener;
 
 /**
  * Created by mario on 20/02/14.
  */
 public class CharSheetSwipper extends Activity{
-    private String universeName;
-    private String charName;
     private FrameLayout mFrameLayout;
-    //private CharSheetDef fragCompoDef;
     private CharSheetJaugeValeur fragJaugeValeur;
     private CharSheetUtilValeur fragUtilValeur;
     private CharSheetCaracValeur fragCaracValeur;
     private CharSheetCompValeur fragCompValeur;
+    private DiceRoll fragDiceRoll;
     public OnSwipeTouchListener onSwipeTouchListener;
     private int currentFrag;
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.swipper);
-        universeName = getIntent().getExtras().getString("universeName");
-        charName = getIntent().getExtras().getString("charName");
         mFrameLayout = (FrameLayout) findViewById(R.id.Switcher);
         setupFragments();
         onSwipeTouchListener = new OnSwipeTouchListener(this){
@@ -57,10 +54,6 @@ public class CharSheetSwipper extends Activity{
     }
 
     private void setupFragments() {
-        /*
-        if (this.fragCompoDef == null) {
-            this.fragCompoDef = CharSheetDef.newInstance();
-        }*/
         if(fragJaugeValeur == null) {
             fragJaugeValeur = CharSheetJaugeValeur.newInstance();
         }
@@ -68,11 +61,14 @@ public class CharSheetSwipper extends Activity{
             fragUtilValeur = CharSheetUtilValeur.newInstance();
         }
 
-        if(this.fragCaracValeur == null){
+        if(fragCaracValeur == null){
             fragCaracValeur = CharSheetCaracValeur.newInstance();
         }
         if(this.fragCompValeur == null){
             fragCompValeur = CharSheetCompValeur.newInstance();
+        }
+        if(this.fragDiceRoll == null){
+            fragDiceRoll = DiceRoll.newInstance();
         }
     }
 
@@ -92,23 +88,25 @@ public class CharSheetSwipper extends Activity{
         ft.commit();
     }
 
-    public void goToJaugeList(int i) {
-        currentFrag = 2;
-        showFragment(fragJaugeValeur, i);
-    }
     /*
     public void goToCompoDefine(int i){
         currentFrag = 0;
         showFragment(fragCompoDef, i);
     }*/
+
+    public void goToCaracList(int i){
+        currentFrag = 0;
+        showFragment(fragCaracValeur, i);
+    }
+
     public void goToUtilList(int i){
         currentFrag = 1;
         showFragment(fragUtilValeur, i);
     }
 
-    public void goToCaracList(int i){
-        currentFrag = 0;
-        showFragment(fragCaracValeur, i);
+    public void goToJaugeList(int i) {
+        currentFrag = 2;
+        showFragment(fragJaugeValeur, i);
     }
 
     public void goToCompList(int i){
@@ -116,15 +114,14 @@ public class CharSheetSwipper extends Activity{
         showFragment(fragCompValeur, i);
     }
 
+    public void goToDiceRoll(int i){
+        currentFrag = 4;
+        showFragment(fragDiceRoll, i);
+    }
 
     public void switchFragment(int i){
-        currentFrag = (currentFrag+4+i)%4;
+        currentFrag = (currentFrag+5+i)%5;
         switch (currentFrag){
-            /*
-            case 0 :
-                goToCompoDefine(i);
-                break;
-                */
             case 0 :
                 goToCaracList(i);
                 break;
@@ -136,6 +133,9 @@ public class CharSheetSwipper extends Activity{
                 break;
             case 3 :
                 goToCompList(i);
+                break;
+            case 4 :
+                goToDiceRoll(i);
                 break;
         }
     }
