@@ -9,6 +9,7 @@
     <string name="successCreateComp">Ajout de la compétence</string>
     <string name="successCreateModif">Ajout du modificateur</string>
     <string name="successCreateSpe">Ajout de la spécialité</string>
+    <string name="successCreateInv">Ajout de l\'équipement</string>
 
     <string name="successModifCarac">Modification de la caractéristique</string>
     <string name="successModifModif">Modification du modificateur</string>
@@ -16,6 +17,7 @@
     <string name="successModifJauge">Modification de la jauge</string>
     <string name="successModifComp">Modification de la compétence</string>
     <string name="successModifSpe">Modification de la spécialité</string>
+    <string name="successModifInv">Modification de l\'équipement</string>
     <string name="askDeleteConfirmation">Êtes vous certain de vouloir supprimer </string>
 
     <string name="yes">Oui</string>

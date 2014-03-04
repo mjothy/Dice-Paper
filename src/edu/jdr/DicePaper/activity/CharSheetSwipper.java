@@ -8,11 +8,7 @@ import android.os.Bundle;
 import android.view.MotionEvent;
 import android.widget.FrameLayout;
 import edu.jdr.DicePaper.R;
-import edu.jdr.DicePaper.fragments.CharSheet.CharSheetCaracValeur;
-import edu.jdr.DicePaper.fragments.CharSheet.CharSheetCompValeur;
-import edu.jdr.DicePaper.fragments.CharSheet.CharSheetJaugeValeur;
-import edu.jdr.DicePaper.fragments.CharSheet.CharSheetUtilValeur;
-import edu.jdr.DicePaper.fragments.CharSheet.DiceRoll;
+import edu.jdr.DicePaper.fragments.CharSheet.*;
 import edu.jdr.DicePaper.utils.OnSwipeTouchListener;
 
 /**
@@ -24,6 +20,7 @@ public class CharSheetSwipper extends Activity{
     private CharSheetUtilValeur fragUtilValeur;
     private CharSheetCaracValeur fragCaracValeur;
     private CharSheetCompValeur fragCompValeur;
+    private CharSheetInventory fragInventory;
     private DiceRoll fragDiceRoll;
     public OnSwipeTouchListener onSwipeTouchListener;
     private int currentFrag;
@@ -60,12 +57,14 @@ public class CharSheetSwipper extends Activity{
         if(fragUtilValeur == null) {
             fragUtilValeur = CharSheetUtilValeur.newInstance();
         }
-
         if(fragCaracValeur == null){
             fragCaracValeur = CharSheetCaracValeur.newInstance();
         }
         if(this.fragCompValeur == null){
             fragCompValeur = CharSheetCompValeur.newInstance();
+        }
+        if(this.fragInventory == null){
+            fragInventory = CharSheetInventory.newInstance();
         }
         if(this.fragDiceRoll == null){
             fragDiceRoll = DiceRoll.newInstance();
@@ -88,11 +87,6 @@ public class CharSheetSwipper extends Activity{
         ft.commit();
     }
 
-    /*
-    public void goToCompoDefine(int i){
-        currentFrag = 0;
-        showFragment(fragCompoDef, i);
-    }*/
 
     public void goToCaracList(int i){
         currentFrag = 0;
@@ -114,13 +108,18 @@ public class CharSheetSwipper extends Activity{
         showFragment(fragCompValeur, i);
     }
 
-    public void goToDiceRoll(int i){
+    public void goToInventory(int i){
         currentFrag = 4;
+        showFragment(fragInventory, i);
+    }
+
+    public void goToDiceRoll(int i){
+        currentFrag = 5;
         showFragment(fragDiceRoll, i);
     }
 
     public void switchFragment(int i){
-        currentFrag = (currentFrag+5+i)%5;
+        currentFrag = (currentFrag+6+i)%6;
         switch (currentFrag){
             case 0 :
                 goToCaracList(i);
@@ -135,6 +134,9 @@ public class CharSheetSwipper extends Activity{
                 goToCompList(i);
                 break;
             case 4 :
+                goToInventory(i);
+                break;
+            case 5 :
                 goToDiceRoll(i);
                 break;
         }
@@ -161,5 +163,9 @@ public class CharSheetSwipper extends Activity{
 
     public CharSheetCompValeur getFragCompValeur() {
         return fragCompValeur;
+    }
+
+    public CharSheetInventory getFragInventaire() {
+        return fragInventory;
     }
 }
