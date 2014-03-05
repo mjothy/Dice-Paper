@@ -9,6 +9,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 import edu.jdr.DicePaper.R;
+import edu.jdr.DicePaper.activity.CharSheetSwipper;
 import edu.jdr.DicePaper.models.DAO.Liste.UtilitaireListeDAO;
 import edu.jdr.DicePaper.models.DAO.Valeur.EquipementDAO;
 import edu.jdr.DicePaper.models.table.Liste.UtilitaireListe;
@@ -63,6 +64,7 @@ public class CreateInventaireDialog extends DialogFragment {
             }
             if(result != -1){
                 Toast.makeText(getActivity(), getText(R.string.successCreateInv), Toast.LENGTH_SHORT).show();
+                ((CharSheetSwipper)getActivity()).getFragInventaire().setInventaire();
             } else {
                 Toast.makeText(getActivity(), getText(R.string.errorCreate), Toast.LENGTH_SHORT).show();
             }

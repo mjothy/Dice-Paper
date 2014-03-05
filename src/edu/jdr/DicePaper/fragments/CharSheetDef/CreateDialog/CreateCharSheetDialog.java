@@ -65,7 +65,7 @@ public class CreateCharSheetDialog extends DialogFragment {
                 charSheetBuilder.putExtra("charName", ficheName);
                 startActivity(charSheetBuilder);
             } else {
-                Toast.makeText(getActivity(), getText(R.string.errorCreateUniverse), Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), getText(R.string.errorCreateChar), Toast.LENGTH_SHORT).show();
             }
             dismiss();
         }

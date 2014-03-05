@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="errorCreateUniverse">Erreur, échec de la création d\'univers</string>
+    <string name="errorCreateChar">Erreur, échec de la création du personnage</string>
     <string name="errorCreate">Echec de la création</string>
     <string name="errorModif">Echec de la modification</string>
     <string name="successCreateJauge">Ajout de la jauge</string>
