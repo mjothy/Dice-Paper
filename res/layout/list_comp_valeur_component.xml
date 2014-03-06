@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:layout_width="fill_parent"
               android:layout_height="wrap_content"
               android:orientation="horizontal"
@@ -8,26 +8,28 @@
               android:padding="8dp"
               android:background="#000000">
 
+    <Button
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:layout_alignParentRight="true"
+            android:id="@+id/addSpeButton"
+            android:text="+"/>
 
+    <Button
+            android:layout_marginLeft="15dp"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:id="@+id/modifyButton"
+            android:layout_toLeftOf="@id/addSpeButton"
+            android:text="->"/>
     <TextView
             android:id="@+id/components"
-            android:layout_width="wrap_content"
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
+            android:layout_toLeftOf="@id/modifyButton"
             android:layout_gravity="center"
             android:gravity="center_horizontal"
             android:paddingLeft="?android:attr/expandableListPreferredItemPaddingLeft"
             android:textSize="17dp"/>
-    <Button
-            android:layout_marginLeft="75dp"
-            android:layout_height="wrap_content"
-            android:layout_width="wrap_content"
-            android:id="@+id/modifyButton"
-            android:text="->"/>
-    <Button
-            android:layout_marginLeft="25dp"
-            android:layout_height="wrap_content"
-            android:layout_width="wrap_content"
-            android:id="@+id/addSpeButton"
-            android:text="+"/>
 
-</LinearLayout>
+</RelativeLayout>
