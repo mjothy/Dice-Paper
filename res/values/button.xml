@@ -21,4 +21,6 @@
     <string name="newCharSheet">Créer une fiche de perso</string>
     <string name="loadCharSheet">Ouvrir une fiche de perso</string>
     <string name="deleteCharSheet">Supprimer une fiche de perso</string>
+
+    <string name="roll">Lancer</string>
 </resources>

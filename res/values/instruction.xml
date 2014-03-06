@@ -14,4 +14,6 @@
 
     <string name="nbDice">Nombre de dés</string>
     <string name="typeDice">Type de dé</string>
+    <string name="orderDice">Trier les résultats</string>
+    <string name="sumDice">Afficher la somme</string>
 </resources>

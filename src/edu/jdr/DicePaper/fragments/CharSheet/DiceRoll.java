@@ -30,9 +30,11 @@ public class DiceRoll extends Fragment {
     private Button validate;
     private NumberPicker nbDice;
     private NumberPicker typeDice;
+    private CheckBox sortDice;
+    private CheckBox sumDice;
     private TextView viewResults;
     private Random RNG;
-
+    private Bundle tempConf;
     /**
      * Method to instanciate this fragment
      * Only this method should be used to create this kind of fragment
@@ -40,7 +42,7 @@ public class DiceRoll extends Fragment {
      */
     public static DiceRoll newInstance(){
         DiceRoll fragment = new DiceRoll();
-        Bundle args = new Bundle();
+        fragment.tempConf = new Bundle();
         return fragment;
     }
 
@@ -57,14 +59,38 @@ public class DiceRoll extends Fragment {
         nbDice = (NumberPicker) v.findViewById(R.id.editNbDice);
         nbDice.setMinValue(1);
         nbDice.setMaxValue(50);
+        if(tempConf.containsKey("nbDice")){
+            nbDice.setValue(tempConf.getInt("nbDice"));
+        }
+        nbDice.setOnValueChangedListener(new NumberPicker.OnValueChangeListener() {
+            @Override
+            public void onValueChange(NumberPicker picker, int oldVal, int newVal) {
+                tempConf.putInt("nbDice", newVal);
+            }
+        });
 
         typeDice = (NumberPicker) v.findViewById(R.id.typeDice);
-        typeDice.setMinValue(1);
+        typeDice.setMinValue(2);
         typeDice.setMaxValue(100);
-
+        if(tempConf.containsKey("typeDice")){
+            typeDice.setValue(tempConf.getInt("typeDice"));
+        } else {
+            typeDice.setValue(6);
+        }
+        typeDice.setOnValueChangedListener(new NumberPicker.OnValueChangeListener() {
+            @Override
+            public void onValueChange(NumberPicker picker, int oldVal, int newVal) {
+                tempConf.putInt("typeDice", typeDice.getValue());
+            }
+        });
+        sortDice = (CheckBox) v.findViewById(R.id.sortDice);
+        sumDice = (CheckBox) v.findViewById(R.id.sumDice);
         validate.setOnClickListener(validateListener);
 
         viewResults = (TextView) v.findViewById(R.id.results);
+        if(tempConf.containsKey("results")){
+            viewResults.setText(tempConf.getString("results"));
+        }
         return v;
     }
 
@@ -73,7 +99,9 @@ public class DiceRoll extends Fragment {
         public void onClick(View v) {
             int numberDice = nbDice.getValue();
             int typeOfDice = typeDice.getValue();
-            viewResults.setText(diceRolls(numberDice, typeOfDice));
+            String results = diceRolls(numberDice, typeOfDice);
+            tempConf.putString("results", results);
+            viewResults.setText(results);
         }
     };
 
@@ -108,7 +136,9 @@ public class DiceRoll extends Fragment {
                 somme += rand;
             }
             //sorting the array for visibility
-            Collections.sort(resultArray);
+            if(sortDice.isChecked()){
+                Collections.sort(resultArray);
+            }
             //printing the string
             for(int i=0; i<nbDice; i++){
                 result += "[" + resultArray.get(i) + "]  ";
@@ -128,8 +158,10 @@ public class DiceRoll extends Fragment {
                 }
             }
         }
-        //printing the sum
-        result+="\n Somme = "+ somme;
+        if(sumDice.isChecked()){
+            //printing the sum
+            result+="\n Somme = "+ somme;
+        }
         return result;
     }
 }
