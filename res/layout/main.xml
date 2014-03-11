@@ -4,11 +4,6 @@
               android:layout_width="fill_parent"
               android:layout_height="fill_parent"
         >
-    <TextView
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:text="Hello World, MainMenu"
-            />
     <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -20,10 +15,5 @@
             android:text="@string/Univers"
             android:id="@+id/univers" android:layout_gravity="center" android:layout_marginTop="20dp"
             android:enabled="true" android:clickable="false"/>
-    <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="New Button"
-            android:id="@+id/button1" android:layout_gravity="center"/>
 </LinearLayout>
 
