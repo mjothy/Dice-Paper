@@ -23,4 +23,6 @@
     <string name="deleteCharSheet">Supprimer une fiche de perso</string>
 
     <string name="roll">Lancer</string>
+
+    <string name="refreshPeers">Trouver d\'autres utilisateurs</string>
 </resources>

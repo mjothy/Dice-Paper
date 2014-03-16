@@ -16,4 +16,8 @@
     <string name="typeDice">Type de dé</string>
     <string name="orderDice">Trier les résultats</string>
     <string name="sumDice">Afficher la somme</string>
+
+
+    <string name="sendUniv">Envoyer l\'univers : </string>
+    <string name="send">go</string>
 </resources>

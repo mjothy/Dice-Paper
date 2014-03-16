@@ -10,6 +10,7 @@ import edu.jdr.DicePaper.R;
 public class MainMenu extends Activity {
 
     protected Button versUnivers;
+    protected Button versPartage;
     /**
      * Called when the activity is first created.
      */
@@ -24,6 +25,14 @@ public class MainMenu extends Activity {
             public void onClick(View v) {
                 Intent intent = new Intent(MainMenu.this, UniversMaster.class);
                 startActivity(intent);
+            }
+        });
+        versPartage = (Button) findViewById(R.id.sharing);
+        versPartage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intentSharing = new Intent(MainMenu.this, SharingMenu.class);
+                startActivity(intentSharing);
             }
         });
     }

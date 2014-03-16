@@ -21,4 +21,6 @@
     <string name="update">Modifier :</string>
     <string name="updateEquipement">Modifier l\'équipement :</string>
     <string name="lancer">Lancer :</string>
+
+    <string name="sharing">Communication et partage</string>
 </resources>

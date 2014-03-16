@@ -9,4 +9,5 @@
         au template créé pour cet univers.
     </string>
     <string name="results">Resultats des dés :</string>
+    <string name="connectedTo">Connecté à : </string>
 </resources>

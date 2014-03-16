@@ -4,8 +4,15 @@ import android.app.Activity;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.net.wifi.p2p.WifiP2pConfig;
+import android.net.wifi.p2p.WifiP2pDevice;
+import android.net.wifi.p2p.WifiP2pDeviceList;
 import android.net.wifi.p2p.WifiP2pManager;
 import android.widget.Toast;
+import edu.jdr.DicePaper.activity.SharingMenu;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by paulyves on 3/7/14.
@@ -14,6 +21,27 @@ public class WiFiDirectBroadcastReceiver extends BroadcastReceiver {
     private WifiP2pManager mManager;
     private WifiP2pManager.Channel mChannel;
     private Activity mActivity;
+    private List<WifiP2pDevice> peers = new ArrayList<WifiP2pDevice>();
+    WifiP2pManager.PeerListListener myPeerListListener = new WifiP2pManager.PeerListListener() {
+        @Override
+        public void onPeersAvailable(WifiP2pDeviceList peerList) {
+
+            // Out with the old, in with the new.
+            peers.clear();
+            peers.addAll(peerList.getDeviceList());
+
+            // If an AdapterView is backed by this data, notify it
+            // of the change.  For instance, if you have a ListView of available
+            // peers, trigger an update.
+            ((SharingMenu) mActivity).getPeersAdapter().notifyDataSetChanged();
+        }
+    };
+
+
+
+    public WiFiDirectBroadcastReceiver(){
+        super();
+    }
 
     public WiFiDirectBroadcastReceiver(WifiP2pManager manager, WifiP2pManager.Channel channel,
                                        Activity activity) {
@@ -36,7 +64,13 @@ public class WiFiDirectBroadcastReceiver extends BroadcastReceiver {
                 Toast.makeText(mActivity, "erreur : wifi p2p non activé", Toast.LENGTH_SHORT).show();
             }
         }else if (WifiP2pManager.WIFI_P2P_PEERS_CHANGED_ACTION.equals(action)) {
-            // Call WifiP2pManager.requestPeers() to get a list of current peers
+            // request available peers from the wifi p2p manager. This is an
+            // asynchronous call and the calling activity is notified with a
+            // callback on PeerListListener.onPeersAvailable()
+            if (mManager != null) {
+                mManager.requestPeers(mChannel, myPeerListListener);
+            }
+
         } else if (WifiP2pManager.WIFI_P2P_CONNECTION_CHANGED_ACTION.equals(action)) {
             // Respond to new connection or disconnections
         } else if (WifiP2pManager.WIFI_P2P_THIS_DEVICE_CHANGED_ACTION.equals(action)) {
@@ -44,4 +78,26 @@ public class WiFiDirectBroadcastReceiver extends BroadcastReceiver {
         }
     }
 
+    public List getPeers() {
+        return peers;
+    }
+
+    public void connectTo(final WifiP2pDevice device){
+        WifiP2pConfig config = new WifiP2pConfig();
+        config.deviceAddress = device.deviceAddress;
+        mManager.connect(mChannel, config, new WifiP2pManager.ActionListener() {
+
+            @Override
+            public void onSuccess() {
+                //success logic
+                ((SharingMenu) mActivity).connectedTo(device);
+            }
+
+            @Override
+            public void onFailure(int reason) {
+                //failure logic
+                Toast.makeText(mActivity, "Echec de la connection à "+device.toString(), Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
 }
