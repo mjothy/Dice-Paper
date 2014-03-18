@@ -73,7 +73,7 @@ public class SharingMenu extends Activity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 WifiP2pDevice device = (WifiP2pDevice) parent.getItemAtPosition(position);
-                Toast.makeText(getApplicationContext(), "Connecté à " + device.toString(), Toast.LENGTH_SHORT).show();
+                mReceiver.connectTo(device);
             }
         });
         connectedTo = (TextView) findViewById(R.id.connectedTo);

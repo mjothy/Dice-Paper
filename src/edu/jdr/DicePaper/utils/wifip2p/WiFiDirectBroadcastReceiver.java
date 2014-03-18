@@ -27,12 +27,13 @@ public class WiFiDirectBroadcastReceiver extends BroadcastReceiver {
         public void onPeersAvailable(WifiP2pDeviceList peerList) {
 
             // Out with the old, in with the new.
-            peers.clear();
-            peers.addAll(peerList.getDeviceList());
+            ((SharingMenu) mActivity).getPeersAdapter().clear();
+            ((SharingMenu) mActivity).getPeersAdapter().addAll(peerList.getDeviceList());
 
             // If an AdapterView is backed by this data, notify it
             // of the change.  For instance, if you have a ListView of available
             // peers, trigger an update.
+
             ((SharingMenu) mActivity).getPeersAdapter().notifyDataSetChanged();
         }
     };
@@ -91,6 +92,7 @@ public class WiFiDirectBroadcastReceiver extends BroadcastReceiver {
             public void onSuccess() {
                 //success logic
                 ((SharingMenu) mActivity).connectedTo(device);
+                Toast.makeText(mActivity, "Connecté à " + device.toString(), Toast.LENGTH_SHORT).show();
             }
 
             @Override
