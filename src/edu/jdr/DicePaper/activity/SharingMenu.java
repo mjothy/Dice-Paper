@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.*;
 import edu.jdr.DicePaper.R;
 import edu.jdr.DicePaper.models.DAO.UniversDAO;
+import edu.jdr.DicePaper.utils.wifip2p.PeersAdapter;
 import edu.jdr.DicePaper.utils.wifip2p.WiFiDirectBroadcastReceiver;
 
 import java.util.ArrayList;
@@ -66,8 +67,7 @@ public class SharingMenu extends Activity {
         });
 
         listPeer = (ListView) findViewById(R.id.listPeers);
-        peersAdapter = new ArrayAdapter<WifiP2pDevice>(this,R.layout.list_univers_dialog, R.id.univList);
-        peersAdapter.addAll(mReceiver.getPeers());
+        peersAdapter = new PeersAdapter<WifiP2pDevice>(this,R.layout.list_univers_dialog, mReceiver.getPeers());
         listPeer.setAdapter(peersAdapter);
         listPeer.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -109,7 +109,11 @@ public class SharingMenu extends Activity {
     }
 
     public void connectedTo(WifiP2pDevice device){
-        connectedTo.setText(device.toString());
+        connectedTo.setText(" " +device.toString().split("\n")[0]);
+    }
+
+    public void connectedTo(String message){
+        connectedTo.setText(" " + message);
     }
 
 }

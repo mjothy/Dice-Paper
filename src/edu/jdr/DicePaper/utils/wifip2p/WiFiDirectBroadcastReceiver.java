@@ -4,10 +4,7 @@ import android.app.Activity;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import android.net.wifi.p2p.WifiP2pConfig;
-import android.net.wifi.p2p.WifiP2pDevice;
-import android.net.wifi.p2p.WifiP2pDeviceList;
-import android.net.wifi.p2p.WifiP2pManager;
+import android.net.wifi.p2p.*;
 import android.widget.Toast;
 import edu.jdr.DicePaper.activity.SharingMenu;
 
@@ -73,7 +70,7 @@ public class WiFiDirectBroadcastReceiver extends BroadcastReceiver {
             }
 
         } else if (WifiP2pManager.WIFI_P2P_CONNECTION_CHANGED_ACTION.equals(action)) {
-            // Respond to new connection or disconnections
+            // Respond to new connection or disconnection
         } else if (WifiP2pManager.WIFI_P2P_THIS_DEVICE_CHANGED_ACTION.equals(action)) {
             // Respond to this device's wifi state changing
         }
@@ -92,13 +89,13 @@ public class WiFiDirectBroadcastReceiver extends BroadcastReceiver {
             public void onSuccess() {
                 //success logic
                 ((SharingMenu) mActivity).connectedTo(device);
-                Toast.makeText(mActivity, "Connecté à " + device.toString(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(mActivity, "Connecté à " + device.toString().split("\n")[0], Toast.LENGTH_SHORT).show();
             }
 
             @Override
             public void onFailure(int reason) {
                 //failure logic
-                Toast.makeText(mActivity, "Echec de la connection à "+device.toString(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(mActivity, "Echec de la connection à "+device.toString().split("\n")[0], Toast.LENGTH_SHORT).show();
             }
         });
     }
