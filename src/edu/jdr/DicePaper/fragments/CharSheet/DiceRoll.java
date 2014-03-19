@@ -34,7 +34,7 @@ public class DiceRoll extends Fragment {
     private CheckBox sumDice;
     private TextView viewResults;
     private Random RNG;
-    private Bundle tempConf;
+    private Bundle tempConf = new Bundle();
     /**
      * Method to instanciate this fragment
      * Only this method should be used to create this kind of fragment
@@ -42,7 +42,6 @@ public class DiceRoll extends Fragment {
      */
     public static DiceRoll newInstance(){
         DiceRoll fragment = new DiceRoll();
-        fragment.tempConf = new Bundle();
         return fragment;
     }
 
