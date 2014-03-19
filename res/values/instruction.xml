@@ -19,5 +19,7 @@
 
 
     <string name="sendUniv">Envoyer l\'univers : </string>
+    <string name="importUniv">Importer l\'univers :</string>
+    <string name="exportUniv">Exporter l\'univers :</string>
     <string name="send">go</string>
 </resources>

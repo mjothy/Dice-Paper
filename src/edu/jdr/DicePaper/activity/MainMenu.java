@@ -11,6 +11,7 @@ public class MainMenu extends Activity {
 
     protected Button versUnivers;
     protected Button versPartage;
+    protected Button versUniversio;
     /**
      * Called when the activity is first created.
      */
@@ -33,6 +34,14 @@ public class MainMenu extends Activity {
             public void onClick(View v) {
                 Intent intentSharing = new Intent(MainMenu.this, SharingMenu.class);
                 startActivity(intentSharing);
+            }
+        });
+        versUniversio = (Button) findViewById(R.id.io);
+        versUniversio.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intentIO = new Intent(MainMenu.this, UniversIO.class);
+                startActivity(intentIO);
             }
         });
     }
