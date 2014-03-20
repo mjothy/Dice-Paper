@@ -66,10 +66,10 @@ public class UniversIO extends Activity {
             String univName = (String) univSpinner.getSelectedItem();
             Generator generator = new Generator(univName, this);
             if(generator.generate()){
-                Toast.makeText(getApplicationContext(), "Univers exporté", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), getString(R.string.successUnivExport), Toast.LENGTH_SHORT).show();
             }
         }else{
-            Toast.makeText(getApplicationContext(), "Impossible d'écrire sur le disque", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), getString(R.string.failureUnivExport), Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -78,10 +78,10 @@ public class UniversIO extends Activity {
             String univName = univToImport.getText().toString();
             Parser parser = new Parser(univName, this);
             if(parser.parse()){
-                Toast.makeText(getApplicationContext(), "Univers importé", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), getString(R.string.successUnivImport), Toast.LENGTH_SHORT).show();
             }
         }else{
-            Toast.makeText(getApplicationContext(), "Impossible de lire sur le disque", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), getString(R.string.failureUnivImport), Toast.LENGTH_SHORT).show();
         }
     }
 

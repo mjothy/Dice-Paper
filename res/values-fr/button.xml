@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="ok">Ok</string>
+    <string name="cancel">Annuler</string>
+
+    <string name="newUniverse">Créer un Univers</string>
+    <string name="loadUniverse">Modifier un Univers</string>
+    <string name="deleteUniverse">Supprimer un Univers</string>
+    <string name="enterUniverse">Entrer dans un Univers</string>
+
+    <string name="defineUnivTitle">Définition de l\'univers</string>
+    <string name="defineCharSheet">Définir le template de fiche de personnage</string>
+    <string name="defineDiceRoll">Définir les jets de dés</string>
+
+    <string name="addCharac">Ajouter une caractéristique</string>
+    <string name="addJauge">Ajouter une Jauge</string>
+    <string name="addComp">Ajouter une compétence</string>
+    <string name="addUtil">Ajouter un utilitaire</string>
+    <string name="addEquipement">Ajouter un equipement</string>
+
+    <string name="newCharSheet">Créer une fiche de perso</string>
+    <string name="loadCharSheet">Ouvrir une fiche de perso</string>
+    <string name="deleteCharSheet">Supprimer une fiche de perso</string>
+
+    <string name="roll">Lancer</string>
+
+    <string name="refreshPeers">Trouver d\'autres utilisateurs</string>
+</resources>

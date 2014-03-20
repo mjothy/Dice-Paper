@@ -159,7 +159,7 @@ public class DiceRoll extends Fragment {
         }
         if(sumDice.isChecked()){
             //printing the sum
-            result+="\n Somme = "+ somme;
+            result+="\n "+getString(R.string.sum)+" = "+ somme;
         }
         return result;
     }

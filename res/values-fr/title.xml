@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">DicePaper</string>
+    <string name="Univers">Univers</string>
+    <string name="charSheetBuildTitle">Définition de la fiche de personnage</string>
+    <string name="jaugeList">Liste des jauges</string>
+    <string name="utilList">Liste des utilitaires</string>
+    <string name="caracList">Liste des caractéristiques</string>
+    <string name="skillList">Liste des compétences</string>
+    <string name="jaugeName">Nom de la jauge</string>
+    <string name="inventaire">Inventaire :</string>
+
+    <string name="addModif">Nouveau modificateur</string>
+    <string name="addSpe">Nouvelle spécialisation</string>
+    <string name="modifCarac">Modifier caractéristique</string>
+    <string name="modifModif">Modifier modificateur</string>
+    <string name="modifUtil">Modifier utilitaire</string>
+    <string name="modifJauge">Modifier jauge</string>
+    <string name="modifComp">Modifier compétence</string>
+    <string name="modifSpe">Modifier spécialisation</string>
+    <string name="update">Modifier :</string>
+    <string name="updateEquipement">Modifier l\'équipement :</string>
+    <string name="lancer">Lancer :</string>
+
+    <string name="sharing">Communication et partage</string>
+    <string name="io">Univers Import/Export</string>
+</resources>

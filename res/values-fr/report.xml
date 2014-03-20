@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="errorCreateUniverse">Erreur, échec de la création d\'univers</string>
+    <string name="errorCreateChar">Erreur, échec de la création du personnage</string>
+    <string name="errorCreate">Echec de la création</string>
+    <string name="errorModif">Echec de la modification</string>
+    <string name="successCreateJauge">Ajout de la jauge</string>
+    <string name="successCreateUtilitaire">Ajout de l\'utilitaire</string>
+    <string name="successCreateCarac">Ajout de la caractéristique</string>
+    <string name="successCreateComp">Ajout de la compétence</string>
+    <string name="successCreateModif">Ajout du modificateur</string>
+    <string name="successCreateSpe">Ajout de la spécialité</string>
+    <string name="successCreateInv">Ajout de l\'équipement</string>
+
+    <string name="successModifCarac">Modification de la caractéristique</string>
+    <string name="successModifModif">Modification du modificateur</string>
+    <string name="successModifUtil">Modification de l\'utilitaire</string>
+    <string name="successModifJauge">Modification de la jauge</string>
+    <string name="successModifComp">Modification de la compétence</string>
+    <string name="successModifSpe">Modification de la spécialité</string>
+    <string name="successModifInv">Modification de l\'équipement</string>
+    <string name="askDeleteConfirmation">Êtes vous certain de vouloir supprimer </string>
+
+    <string name="yes">Oui</string>
+    <string name="no">Non</string>
+
+    <string name="successUnivImport">Univers importé</string>
+    <string name="successUnivExport">Univers exporté</string>
+    <string name="failureUnivImport">Impossible de lire sur le disque</string>
+    <string name="failureUnivExport">Impossible d\'écrire sur le disque</string>
+</resources>

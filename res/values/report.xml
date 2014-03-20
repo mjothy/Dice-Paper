@@ -1,26 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="errorCreateUniverse">Erreur, échec de la création d\'univers</string>
-    <string name="errorCreateChar">Erreur, échec de la création du personnage</string>
-    <string name="errorCreate">Echec de la création</string>
-    <string name="errorModif">Echec de la modification</string>
-    <string name="successCreateJauge">Ajout de la jauge</string>
-    <string name="successCreateUtilitaire">Ajout de l\'utilitaire</string>
-    <string name="successCreateCarac">Ajout de la caractéristique</string>
-    <string name="successCreateComp">Ajout de la compétence</string>
-    <string name="successCreateModif">Ajout du modificateur</string>
-    <string name="successCreateSpe">Ajout de la spécialité</string>
-    <string name="successCreateInv">Ajout de l\'équipement</string>
+    <string name="errorCreateUniverse">Error, universe creation failure</string>
+    <string name="errorCreateChar">Error, character creation failure</string>
+    <string name="errorCreate">Creation failure</string>
+    <string name="errorModif">Modification failure</string>
+    <string name="successCreateJauge">Gauge added</string>
+    <string name="successCreateUtilitaire">Utility added</string>
+    <string name="successCreateCarac">Characteristic added</string>
+    <string name="successCreateComp">Skill added</string>
+    <string name="successCreateModif">Modificator added</string>
+    <string name="successCreateSpe">Specialization added</string>
+    <string name="successCreateInv">Item added</string>
 
-    <string name="successModifCarac">Modification de la caractéristique</string>
-    <string name="successModifModif">Modification du modificateur</string>
-    <string name="successModifUtil">Modification de l\'utilitaire</string>
-    <string name="successModifJauge">Modification de la jauge</string>
-    <string name="successModifComp">Modification de la compétence</string>
-    <string name="successModifSpe">Modification de la spécialité</string>
-    <string name="successModifInv">Modification de l\'équipement</string>
-    <string name="askDeleteConfirmation">Êtes vous certain de vouloir supprimer </string>
+    <string name="successModifCarac">Characteristic modified</string>
+    <string name="successModifModif">Modificator modified</string>
+    <string name="successModifUtil">Utility modified</string>
+    <string name="successModifJauge">Gauge modified</string>
+    <string name="successModifComp">Skill modified</string>
+    <string name="successModifSpe">Specialization modified</string>
+    <string name="successModifInv">Item modified</string>
+    <string name="askDeleteConfirmation">Do you really want to delete </string>
 
-    <string name="yes">Oui</string>
-    <string name="no">Non</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+
+    <string name="successUnivImport">Universe successfuly imported</string>
+    <string name="successUnivExport">Universe successfulyt exported</string>
+    <string name="failureUnivImport">Universe importation failed</string>
+    <string name="failureUnivExport">Universe exportation failed</string>
 </resources>

@@ -1,28 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="ok">Ok</string>
-    <string name="cancel">Annuler</string>
+    <string name="cancel">Cancel</string>
 
-    <string name="newUniverse">Créer un Univers</string>
-    <string name="loadUniverse">Modifier un Univers</string>
-    <string name="deleteUniverse">Supprimer un Univers</string>
-    <string name="enterUniverse">Entrer dans un Univers</string>
+    <string name="newUniverse">Create a Univers</string>
+    <string name="loadUniverse">Modify a Universe</string>
+    <string name="deleteUniverse">Delete a Universe</string>
+    <string name="enterUniverse">Enter a Universe</string>
 
-    <string name="defineUnivTitle">Définition de l\'univers</string>
-    <string name="defineCharSheet">Définir le template de fiche de personnage</string>
-    <string name="defineDiceRoll">Définir les jets de dés</string>
+    <string name="defineUnivTitle">Define the universe</string>
+    <string name="defineCharSheet">Define the character sheet template</string>
+    <string name="defineDiceRoll">Define the dice rolls</string>
 
-    <string name="addCharac">Ajouter une caractéristique</string>
-    <string name="addJauge">Ajouter une Jauge</string>
-    <string name="addComp">Ajouter une compétence</string>
-    <string name="addUtil">Ajouter un utilitaire</string>
-    <string name="addEquipement">Ajouter un equipement</string>
+    <string name="addCharac">Add a characteristic</string>
+    <string name="addJauge">Add a gauge</string>
+    <string name="addComp">Add a skill</string>
+    <string name="addUtil">Add an utility</string>
+    <string name="addEquipement">Add an item</string>
 
-    <string name="newCharSheet">Créer une fiche de perso</string>
-    <string name="loadCharSheet">Ouvrir une fiche de perso</string>
-    <string name="deleteCharSheet">Supprimer une fiche de perso</string>
+    <string name="newCharSheet">Create new character sheet</string>
+    <string name="loadCharSheet">Open a character sheet</string>
+    <string name="deleteCharSheet">Delete a character sheet</string>
 
-    <string name="roll">Lancer</string>
+    <string name="roll">Roll</string>
 
-    <string name="refreshPeers">Trouver d\'autres utilisateurs</string>
+    <string name="refreshPeers">Find other users</string>
 </resources>
