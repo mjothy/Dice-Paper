@@ -12,10 +12,10 @@
     <string name="nameStuff">Item\'s name</string>
     <string name="descriptionStuff">Item\'s description</string>
 
-    <string name="nbDice">Number of dice</string>
-    <string name="typeDice">Number of face</string>
-    <string name="orderDice">Sort the results</string>
-    <string name="sumDice">Sum the results</string>
+    <string name="nbDice">Dice number</string>
+    <string name="typeDice">Face number</string>
+    <string name="orderDice">Sort results</string>
+    <string name="sumDice">Sum results</string>
 
 
     <string name="sendUniv">Send the universe : </string>
