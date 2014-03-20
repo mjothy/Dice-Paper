@@ -5,25 +5,31 @@
               android:layout_width="match_parent"
               android:layout_height="match_parent">
 
-    <LinearLayout
+    <RelativeLayout
             android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-        <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/exportUniv"/>
-        <Spinner
-                android:layout_width="200dp"
-                android:layout_height="wrap_content"
-                android:id="@+id/univList">
-        </Spinner>
+            android:layout_height="wrap_content">
         <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/send"
-                android:id="@+id/exportUniv"/>
-    </LinearLayout>
+                android:layout_alignParentRight="true"
+                android:id="@+id/exportUniv"
+                android:layout_centerVertical="true"/>
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/exportUniv"
+                android:layout_alignParentLeft="true"
+                android:id="@+id/exportUnivTitle"
+                android:layout_centerVertical="true"/>
+        <Spinner
+                android:layout_height="wrap_content"
+                android:layout_width="fill_parent"
+                android:id="@+id/univList"
+                android:layout_toLeftOf="@+id/exportUniv"
+                android:layout_toRightOf="@+id/exportUnivTitle"
+                android:layout_centerVertical="true"/>
+    </RelativeLayout>
 
     <LinearLayout
             android:layout_width="fill_parent"
