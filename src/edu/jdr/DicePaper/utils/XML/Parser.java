@@ -7,7 +7,6 @@ import edu.jdr.DicePaper.models.DAO.UniversDAO;
 import edu.jdr.DicePaper.models.table.Liste.*;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
-import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
@@ -21,8 +20,8 @@ import java.io.IOException;
  * Created by mario on 19/03/14.
  */
 public class Parser {
-    String nomUnivers;
-    Context pContext;
+    private String nomUnivers;
+    private Context pContext;
 
     public Parser(String nomUnivers, Context pContext) {
         this.nomUnivers = nomUnivers;
@@ -144,9 +143,7 @@ public class Parser {
         // Get the directory for the user's public pictures directory.
         File file = new File(Environment.getExternalStoragePublicDirectory(
                 Environment.DIRECTORY_DOWNLOADS), albumName);
-        if (file.mkdirs()) {
-            //display a message?
-        }
+        file.mkdirs();
 
         return file;
     }

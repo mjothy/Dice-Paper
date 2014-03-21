@@ -8,8 +8,7 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:gravity="center_horizontal"
-            android:textStyle="bold"
-            android:textSize="25dp"
+            style="@style/h1"
             android:id="@+id/univTitle"/>
     <TextView
             android:layout_width="wrap_content"

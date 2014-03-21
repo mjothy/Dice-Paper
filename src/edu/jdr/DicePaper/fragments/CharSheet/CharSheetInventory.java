@@ -9,28 +9,17 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.*;
+import android.widget.Button;
+import android.widget.ListView;
+import android.widget.TextView;
 import edu.jdr.DicePaper.R;
 import edu.jdr.DicePaper.fragments.CharSheet.UpdateDialog.CreateInventaireDialog;
 import edu.jdr.DicePaper.fragments.CharSheet.UpdateDialog.UpdateInventaireDialog;
-import edu.jdr.DicePaper.fragments.CharSheet.UpdateDialog.UpdateUtilDialog;
-import edu.jdr.DicePaper.fragments.CharSheetDef.CreateDialog.CreateUtilitaireDialog;
-import edu.jdr.DicePaper.models.DAO.Liste.CaracteristiqueListeDAO;
 import edu.jdr.DicePaper.models.DAO.Valeur.EquipementDAO;
-import edu.jdr.DicePaper.models.DAO.Valeur.UtilitaireValeurDAO;
-import edu.jdr.DicePaper.models.table.FichePersonnage;
-import edu.jdr.DicePaper.models.table.Liste.CaracteristiqueListe;
-import edu.jdr.DicePaper.models.table.Valeur.CompetenceValeur;
 import edu.jdr.DicePaper.models.table.Valeur.Equipement;
-import edu.jdr.DicePaper.models.table.Valeur.Specialisation;
-import edu.jdr.DicePaper.models.table.Valeur.UtilitaireValeur;
-import edu.jdr.DicePaper.utils.CompValeurExpListAdapter;
 import edu.jdr.DicePaper.utils.InventaireAdapter;
-import edu.jdr.DicePaper.utils.UtilitaireValeurAdapter;
 
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
 
 /**
  * Created by mario on 04/03/14.
@@ -38,8 +27,6 @@ import java.util.List;
 public class CharSheetInventory extends Fragment {
     private String universeName;
     private String charName;
-    private Button addEquipement;
-    private ArrayList<Equipement> invList;
     private ListView equipementView;
 
     /**
@@ -61,7 +48,7 @@ public class CharSheetInventory extends Fragment {
         charName = getActivity().getIntent().getExtras().getString("charName");
         TextView title = (TextView) v.findViewById(R.id.univTitle);
         title.setText(charName+" ("+universeName+")");
-        addEquipement= (Button) v.findViewById(R.id.addEquipement);
+        Button addEquipement = (Button) v.findViewById(R.id.addEquipement);
         addEquipement.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -72,9 +59,9 @@ public class CharSheetInventory extends Fragment {
                 }
                 ft.addToBackStack(null);
 
-                DialogFragment dial = null;
+                DialogFragment dial;
                 dial = CreateInventaireDialog.newInstance(R.string.addEquipement, universeName, charName);
-                dial.show(getFragmentManager(),"dialog");
+                dial.show(getFragmentManager(), "dialog");
             }
         });
         equipementView = (ListView) v.findViewById(R.id.inventaire);
@@ -83,14 +70,13 @@ public class CharSheetInventory extends Fragment {
     }
 
     public void setInventaire(){
-        FichePersonnage fichePersonnage = new FichePersonnage(charName,0,universeName);
         EquipementDAO manager = new EquipementDAO(getActivity());
         manager.open();
-        invList = manager.getAllEquipement(charName);
+        ArrayList<Equipement> invList = manager.getAllEquipement(charName);
         manager.close();
 
         InventaireAdapter<Equipement> inventaireAdapter = new InventaireAdapter<Equipement>(getActivity(),
-                R.layout.list_utilitaire_valeur_component,invList);
+                R.layout.list_utilitaire_valeur_component, invList);
 
         equipementView.setAdapter(inventaireAdapter);
 

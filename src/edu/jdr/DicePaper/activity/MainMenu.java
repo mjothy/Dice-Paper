@@ -9,8 +9,6 @@ import edu.jdr.DicePaper.R;
 
 public class MainMenu extends Activity {
 
-    protected Button versUnivers;
-    protected Button versUniversio;
     /**
      * Called when the activity is first created.
      */
@@ -19,7 +17,7 @@ public class MainMenu extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
 
-        versUnivers = (Button) findViewById(R.id.univers);
+        Button versUnivers = (Button) findViewById(R.id.univers);
         versUnivers.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -27,7 +25,7 @@ public class MainMenu extends Activity {
                 startActivity(intent);
             }
         });
-        versUniversio = (Button) findViewById(R.id.io);
+        Button versUniversio = (Button) findViewById(R.id.io);
         versUniversio.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -4,8 +4,8 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import edu.jdr.DicePaper.models.DAO.UniversDAO;
-import edu.jdr.DicePaper.models.table.Liste.CompetenceListe;
 import edu.jdr.DicePaper.models.DAOBase;
+import edu.jdr.DicePaper.models.table.Liste.CompetenceListe;
 
 import java.util.ArrayList;
 
@@ -34,8 +34,7 @@ public class CompetenceListeDAO extends DAOBase {
     public CompetenceListe getCompetenceListe(int id){
         Cursor c = mDb.rawQuery("SELECT * FROM "+TABLE_NAME+" WHERE "+KEY+" = ?", new String[]{String.valueOf(id)});
         if(c.moveToFirst()){
-            CompetenceListe result = new CompetenceListe(c.getInt(0), c.getString(1), c.getString(2));
-            return result;
+            return new CompetenceListe(c.getInt(0), c.getString(1), c.getString(2));
         } else {
             return null;
         }

@@ -10,7 +10,6 @@ import edu.jdr.DicePaper.models.DAOBase;
 import edu.jdr.DicePaper.models.table.FichePersonnage;
 import edu.jdr.DicePaper.models.table.Liste.CaracteristiqueListe;
 import edu.jdr.DicePaper.models.table.Valeur.CaracteristiqueValeur;
-import edu.jdr.DicePaper.models.table.Valeur.CompetenceValeur;
 
 import java.util.ArrayList;
 
@@ -60,8 +59,7 @@ public class CaracteristiqueValeurDAO extends DAOBase{
     public CaracteristiqueValeur getCaracteristiqueValeur(int id){
         Cursor c = mDb.rawQuery("SELECT * FROM "+TABLE_NAME+" WHERE "+KEY+" = ?", new String[]{String.valueOf(id)});
         if(c.moveToFirst()){
-            CaracteristiqueValeur result = new CaracteristiqueValeur(c.getInt(0), c.getFloat(1), c.getFloat(2), c.getString(4));
-            return result;
+            return new CaracteristiqueValeur(c.getInt(0), c.getFloat(1), c.getFloat(2), c.getString(4));
         } else {
             return null;
         }

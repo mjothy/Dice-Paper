@@ -16,8 +16,6 @@ import edu.jdr.DicePaper.models.table.Valeur.JaugeValeur;
  * Created by paulyves on 2/25/14.
  */
 public class UpdateJaugeDialog extends DialogFragment {
-    private Button cancel = null;
-    private Button validate = null;
     private EditText value = null;
     private JaugeValeur jaugeValeur = null;
 
@@ -33,8 +31,8 @@ public class UpdateJaugeDialog extends DialogFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.create_carac_valeur_dialog, container, false);
-        cancel = (Button) v.findViewById(R.id.cancel);
-        validate = (Button) v.findViewById(R.id.validate);
+        Button cancel = (Button) v.findViewById(R.id.cancel);
+        Button validate = (Button) v.findViewById(R.id.validate);
         value = (EditText) v.findViewById(R.id.name);
         value.setText(String.valueOf(jaugeValeur.getMaxValue()));
         validate.setOnClickListener(validateListener);

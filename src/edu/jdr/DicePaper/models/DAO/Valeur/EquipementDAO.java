@@ -4,9 +4,7 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import edu.jdr.DicePaper.models.DAO.FichePersonnageDAO;
-import edu.jdr.DicePaper.models.DAO.UniversDAO;
 import edu.jdr.DicePaper.models.DAOBase;
-import edu.jdr.DicePaper.models.table.Liste.CaracteristiqueListe;
 import edu.jdr.DicePaper.models.table.Valeur.Equipement;
 
 import java.util.ArrayList;
@@ -46,8 +44,7 @@ public class EquipementDAO extends DAOBase {
     public Equipement getEquipement(int id){
         Cursor c = mDb.rawQuery("SELECT * FROM "+TABLE_NAME+" WHERE "+KEY+" = ?", new String[]{String.valueOf(id)});
         if(c.moveToFirst()){
-            Equipement result = new Equipement(c.getInt(0), c.getString(1), c.getString(2), c.getString(3));
-            return result;
+            return new Equipement(c.getInt(0), c.getString(1), c.getString(2), c.getString(3));
         } else {
             return null;
         }

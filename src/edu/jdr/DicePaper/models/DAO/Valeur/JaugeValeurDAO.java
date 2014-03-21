@@ -4,18 +4,12 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import edu.jdr.DicePaper.models.DAO.FichePersonnageDAO;
-import edu.jdr.DicePaper.models.DAO.Liste.CompetenceListeDAO;
 import edu.jdr.DicePaper.models.DAO.Liste.JaugeListeDAO;
-import edu.jdr.DicePaper.models.DAO.Liste.UtilitaireListeDAO;
 import edu.jdr.DicePaper.models.DAO.UniversDAO;
 import edu.jdr.DicePaper.models.DAOBase;
 import edu.jdr.DicePaper.models.table.FichePersonnage;
-import edu.jdr.DicePaper.models.table.Liste.CompetenceListe;
 import edu.jdr.DicePaper.models.table.Liste.JaugeListe;
-import edu.jdr.DicePaper.models.table.Liste.UtilitaireListe;
-import edu.jdr.DicePaper.models.table.Valeur.CompetenceValeur;
 import edu.jdr.DicePaper.models.table.Valeur.JaugeValeur;
-import edu.jdr.DicePaper.models.table.Valeur.UtilitaireValeur;
 
 import java.util.ArrayList;
 
@@ -65,8 +59,7 @@ public class JaugeValeurDAO extends DAOBase {
     public JaugeValeur getJaugeValeur(int id){
         Cursor c = mDb.rawQuery("SELECT * FROM "+TABLE_NAME+" WHERE "+KEY+" = ?", new String[]{String.valueOf(id)});
         if(c.moveToFirst()){
-            JaugeValeur result = new JaugeValeur(c.getInt(0), c.getInt(1), c.getInt(2), c.getString(4));
-            return result;
+            return new JaugeValeur(c.getInt(0), c.getInt(1), c.getInt(2), c.getString(4));
         } else {
             return null;
         }

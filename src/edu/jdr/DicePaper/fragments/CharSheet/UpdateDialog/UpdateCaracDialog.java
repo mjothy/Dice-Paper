@@ -16,8 +16,6 @@ import edu.jdr.DicePaper.models.table.Valeur.CaracteristiqueValeur;
  * Created by mario on 20/02/14.
  */
 public class UpdateCaracDialog extends DialogFragment {
-    private Button cancel = null;
-    private Button validate = null;
     private EditText name = null;
     private CaracteristiqueValeur caracteristiqueValeur = null;
 
@@ -33,8 +31,8 @@ public class UpdateCaracDialog extends DialogFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.create_carac_valeur_dialog, container, false);
-        cancel = (Button) v.findViewById(R.id.cancel);
-        validate = (Button) v.findViewById(R.id.validate);
+        Button cancel = (Button) v.findViewById(R.id.cancel);
+        Button validate = (Button) v.findViewById(R.id.validate);
         name = (EditText) v.findViewById(R.id.name);
         name.setText(String.valueOf(caracteristiqueValeur.getBaseValue()));
         validate.setOnClickListener(validateListener);

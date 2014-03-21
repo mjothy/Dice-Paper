@@ -12,7 +12,7 @@
             android:layout_centerVertical="true"
             android:layout_gravity="center"
             android:id="@+id/delButton"
-            android:text="-"/>
+            android:text="@string/removeLogo"/>
     <Button
             android:layout_marginLeft="5dp"
             android:layout_height="wrap_content"
@@ -21,7 +21,7 @@
             android:layout_toLeftOf="@id/delButton"
             android:layout_gravity="center"
             android:id="@+id/modifyButton"
-            android:text="->"/>
+            android:text="@string/modifyLogo"/>
     <TextView
         android:id="@+id/childs"
         android:layout_width="fill_parent"
@@ -29,9 +29,6 @@
         android:layout_gravity="center"
         android:layout_toLeftOf="@id/modifyButton"
         android:layout_centerVertical="true"
-        android:textSize="17dip"
-        android:paddingTop="5dp"
-        android:paddingBottom="5dp"
-        android:paddingLeft="?android:attr/expandableListPreferredChildPaddingLeft" />
+        style="@style/sublist"/>
 
 </RelativeLayout>

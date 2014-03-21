@@ -13,16 +13,11 @@ import android.widget.TextView;
 import edu.jdr.DicePaper.R;
 import edu.jdr.DicePaper.fragments.CharSheet.UpdateDialog.UpdateCompetenceDialog;
 import edu.jdr.DicePaper.fragments.CharSheet.UpdateDialog.UpdateSpeDialog;
-import edu.jdr.DicePaper.models.DAO.Valeur.CaracteristiqueValeurDAO;
 import edu.jdr.DicePaper.models.DAO.Valeur.CompetenceValeurDAO;
-import edu.jdr.DicePaper.models.DAO.Valeur.ModificateurValeurDAO;
 import edu.jdr.DicePaper.models.DAO.Valeur.SpecialisationDAO;
 import edu.jdr.DicePaper.models.table.FichePersonnage;
-import edu.jdr.DicePaper.models.table.Valeur.CaracteristiqueValeur;
 import edu.jdr.DicePaper.models.table.Valeur.CompetenceValeur;
-import edu.jdr.DicePaper.models.table.Valeur.ModificateurValeur;
 import edu.jdr.DicePaper.models.table.Valeur.Specialisation;
-import edu.jdr.DicePaper.utils.CaracValeurExpListAdapter;
 import edu.jdr.DicePaper.utils.CompValeurExpListAdapter;
 
 import java.util.ArrayList;
@@ -36,7 +31,6 @@ public class CharSheetCompValeur extends Fragment {
     private String universeName;
     private String charName;
 
-    private ArrayList<CompetenceValeur> compList;
     private ExpandableListView compValeurView;
 
     /**
@@ -68,7 +62,7 @@ public class CharSheetCompValeur extends Fragment {
         FichePersonnage fichePersonnage = new FichePersonnage(charName,0,universeName);
         manager.open();
         manager.initializeNewValues(fichePersonnage);
-        compList = manager.getAllCompetenceValeur(charName);
+        ArrayList<CompetenceValeur> compList = manager.getAllCompetenceValeur(charName);
         manager.close();
         SpecialisationDAO speManager = new SpecialisationDAO(getActivity());
         speManager.open();

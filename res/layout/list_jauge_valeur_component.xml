@@ -10,7 +10,7 @@
             android:layout_alignParentRight="true"
             android:id="@+id/modifyButton"
             android:layout_centerVertical="true"
-            android:text="->"
+            android:text="@string/modifyLogo"
             />
 
     <TextView
@@ -26,7 +26,7 @@
             android:layout_toLeftOf="@id/jaugeMax"
             android:id="@+id/slash"
             android:layout_centerVertical="true"
-            android:text=" / "/>
+            android:text="@string/separator"/>
 
     <NumberPicker
             android:layout_width="wrap_content"
@@ -40,7 +40,7 @@
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_toLeftOf="@id/jaugeValue"
-            android:text=" : "
+            android:text="@string/explanation"
             android:id="@+id/separator"/>
     <TextView
             android:layout_width="fill_parent"
@@ -49,6 +49,4 @@
             android:id="@+id/jaugeTitle"
             android:layout_toLeftOf="@id/separator"
             style="@style/hList"/>
-
-
 </RelativeLayout>

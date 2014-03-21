@@ -50,8 +50,7 @@ public class UtilitaireListeDAO extends DAOBase {
     public UtilitaireListe getUtilitaireListe(int id){
         Cursor c = mDb.rawQuery("SELECT * FROM "+TABLE_NAME+" WHERE "+KEY+" = ?", new String[]{String.valueOf(id)});
         if(c.moveToFirst()){
-            UtilitaireListe result = new UtilitaireListe(c.getInt(0), c.getString(1), c.getString(2));
-            return result;
+            return new UtilitaireListe(c.getInt(0), c.getString(1), c.getString(2));
         } else {
             return null;
         }

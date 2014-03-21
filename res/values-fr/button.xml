@@ -10,7 +10,6 @@
 
     <string name="defineUnivTitle">Définition de l\'univers</string>
     <string name="defineCharSheet">Définir le template de fiche de personnage</string>
-    <string name="defineDiceRoll">Définir les jets de dés</string>
 
     <string name="addCharac">Ajouter une caractéristique</string>
     <string name="addJauge">Ajouter une Jauge</string>

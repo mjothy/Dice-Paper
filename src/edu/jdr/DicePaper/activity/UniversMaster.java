@@ -1,6 +1,9 @@
 package edu.jdr.DicePaper.activity;
 
-import android.app.*;
+import android.app.Activity;
+import android.app.DialogFragment;
+import android.app.Fragment;
+import android.app.FragmentTransaction;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -16,10 +19,6 @@ import edu.jdr.DicePaper.fragments.ListUniverseDialog;
  * To change this template use File | Settings | File Templates.
  */
 public class UniversMaster extends Activity {
-    private Button createUniverse;
-    private Button loadUniverse;
-    private Button deleteUniverse;
-    private Button enterUniverse;
     private final int CREATEDIALOG = 1;
     private final int LOADIALOG = 2;
     private final int DELETEDIALOG = 3;
@@ -29,10 +28,10 @@ public class UniversMaster extends Activity {
         setContentView(R.layout.univers_master);
 
         //initializing buttons
-        createUniverse = (Button) findViewById(R.id.NewUniverse);
-        loadUniverse = (Button) findViewById(R.id.LoadUniverse);
-        deleteUniverse = (Button) findViewById(R.id.DeleteUniverse);
-        enterUniverse = (Button) findViewById(R.id.EnterUniverse);
+        Button createUniverse = (Button) findViewById(R.id.NewUniverse);
+        Button loadUniverse = (Button) findViewById(R.id.LoadUniverse);
+        Button deleteUniverse = (Button) findViewById(R.id.DeleteUniverse);
+        Button enterUniverse = (Button) findViewById(R.id.EnterUniverse);
         createUniverse.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

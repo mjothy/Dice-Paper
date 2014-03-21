@@ -9,17 +9,14 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import edu.jdr.DicePaper.R;
-import edu.jdr.DicePaper.fragments.CharSheetDef.CreateDialog.CreateCharSheetDialog;
 import edu.jdr.DicePaper.fragments.CharSheet.ListCharSheetDialog;
+import edu.jdr.DicePaper.fragments.CharSheetDef.CreateDialog.CreateCharSheetDialog;
 
 /**
  * Created by mario on 16/02/14.
  */
 public class UniversEnter extends Activity {
     private String universeName;
-    protected Button createCharSheet;
-    protected Button loadCharSheet;
-    protected Button deleteCharSheet;
 
     private final int CREATEDIALOG = 1;
     private final int LOADIALOG = 2;
@@ -33,9 +30,9 @@ public class UniversEnter extends Activity {
         title.setText(universeName);
 
         //initializing buttons
-        createCharSheet = (Button) findViewById(R.id.NewCharSheet);
-        loadCharSheet = (Button) findViewById(R.id.LoadCharSheet);
-        deleteCharSheet = (Button) findViewById(R.id.DeleteCharSheet);
+        Button createCharSheet = (Button) findViewById(R.id.NewCharSheet);
+        Button loadCharSheet = (Button) findViewById(R.id.LoadCharSheet);
+        Button deleteCharSheet = (Button) findViewById(R.id.DeleteCharSheet);
 
         createCharSheet.setOnClickListener(new View.OnClickListener() {
             @Override

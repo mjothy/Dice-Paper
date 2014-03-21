@@ -11,4 +11,6 @@
     <string name="results">Rolls\' results :</string>
     <string name="connectedTo">Connected to : </string>
     <string name="sum">Sum</string>
+    <string name="separator"> / </string>
+    <string name="explanation"> : </string>
 </resources>

@@ -17,20 +17,19 @@ import edu.jdr.DicePaper.utils.OnSwipeTouchListener;
  */
 public class CharSheetDefSwipper extends Activity {
     private String universeName;
-    private FrameLayout mFrameLayout;
     private CharSheetDef fragCompoDef;
     private CharSheetDefJaugeList fragJaugeList;
     private CharSheetDefUtilList fragUtilList;
     private CharSheetDefCaracList fragCaracList;
     private CharSheetDefCompList fragCompList;
-    public OnSwipeTouchListener onSwipeTouchListener;
+    private OnSwipeTouchListener onSwipeTouchListener;
     private int currentFrag;
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.swipper);
         universeName = getIntent().getExtras().getString("universeName");
-        mFrameLayout = (FrameLayout) findViewById(R.id.Switcher);
+        FrameLayout mFrameLayout = (FrameLayout) findViewById(R.id.Switcher);
         setupFragments();
         onSwipeTouchListener = new OnSwipeTouchListener(this){
             public void onSwipeRight() {
@@ -39,12 +38,6 @@ public class CharSheetDefSwipper extends Activity {
 
             public void onSwipeLeft() {
                 switchFragment(1);
-            }
-
-            public void onSwipeTop() {
-            }
-
-            public void onSwipeBottom() {
             }
         };
         mFrameLayout.setOnTouchListener(onSwipeTouchListener);

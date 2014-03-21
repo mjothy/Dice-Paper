@@ -9,15 +9,13 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 import edu.jdr.DicePaper.R;
-import edu.jdr.DicePaper.models.table.Liste.JaugeListe;
 import edu.jdr.DicePaper.models.DAO.Liste.JaugeListeDAO;
+import edu.jdr.DicePaper.models.table.Liste.JaugeListe;
 
 /**
  * Created by mario on 30/01/14.
  */
 public class CreateJaugeDialog extends DialogFragment {
-    private Button cancel = null;
-    private Button validate = null;
     private EditText name = null;
     private EditText min = null;
     private EditText max = null;
@@ -35,8 +33,8 @@ public class CreateJaugeDialog extends DialogFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.create_jauge_dialog, container, false);
-        cancel = (Button) v.findViewById(R.id.cancel);
-        validate = (Button) v.findViewById(R.id.validate);
+        Button cancel = (Button) v.findViewById(R.id.cancel);
+        Button validate = (Button) v.findViewById(R.id.validate);
         name = (EditText) v.findViewById(R.id.name);
         min = (EditText) v.findViewById(R.id.min);
         max = (EditText) v.findViewById(R.id.max);

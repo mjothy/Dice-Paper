@@ -1,21 +1,15 @@
 package edu.jdr.DicePaper.fragments.CharSheet;
 
 import android.app.Fragment;
-import android.app.FragmentTransaction;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.*;
+import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.NumberPicker;
+import android.widget.TextView;
 import edu.jdr.DicePaper.R;
-import edu.jdr.DicePaper.activity.UniversMaster;
-import edu.jdr.DicePaper.fragments.CharSheet.UpdateDialog.UpdateUtilDialog;
-import edu.jdr.DicePaper.models.DAO.Valeur.JaugeValeurDAO;
-import edu.jdr.DicePaper.models.DAO.Valeur.UtilitaireValeurDAO;
-import edu.jdr.DicePaper.models.table.FichePersonnage;
-import edu.jdr.DicePaper.models.table.Valeur.UtilitaireValeur;
-import edu.jdr.DicePaper.utils.UtilitaireValeurAdapter;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -27,7 +21,6 @@ import java.util.Random;
 public class DiceRoll extends Fragment {
     private String universeName;
     private String charName;
-    private Button validate;
     private NumberPicker nbDice;
     private NumberPicker typeDice;
     private CheckBox sortDice;
@@ -41,8 +34,7 @@ public class DiceRoll extends Fragment {
      * @return
      */
     public static DiceRoll newInstance(){
-        DiceRoll fragment = new DiceRoll();
-        return fragment;
+        return new DiceRoll();
     }
 
     @Override
@@ -53,7 +45,7 @@ public class DiceRoll extends Fragment {
         TextView title = (TextView) v.findViewById(R.id.univTitle);
         title.setText(charName + " (" + universeName + ")");
 
-        validate = (Button) v.findViewById(R.id.validateRoll);
+        Button validate = (Button) v.findViewById(R.id.validateRoll);
 
         nbDice = (NumberPicker) v.findViewById(R.id.editNbDice);
         nbDice.setMinValue(1);
@@ -145,7 +137,7 @@ public class DiceRoll extends Fragment {
         }else{
             int[] resultArray = new int[typeDice];
             //feeding the array and computing the sum
-            for(int i=0; i<nbDice; i++){;
+            for(int i=0; i<nbDice; i++){
                 int temp = diceRoll(typeDice);
                 resultArray[temp-1]++;
                 somme += temp;

@@ -21,8 +21,8 @@ import java.util.ArrayList;
  * Created by paulyves on 1/21/14.
  */
 public class ListUniverseDialog extends DialogFragment {
-    ArrayList<String> listUniv = null;
-    int goal;
+    private ArrayList<String> listUniv = null;
+    private int goal;
     public static final int LOAD = 1;
     public static final int DELETE = 2;
     public static final int ENTER = 3;

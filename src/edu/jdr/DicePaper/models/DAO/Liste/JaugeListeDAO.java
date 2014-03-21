@@ -56,8 +56,7 @@ public class JaugeListeDAO extends DAOBase {
     public JaugeListe getJaugeListe(int id){
         Cursor c = mDb.rawQuery("SELECT * FROM "+TABLE_NAME+" WHERE "+KEY+" = ?", new String[]{String.valueOf(id)});
         if(c.moveToFirst()){
-            JaugeListe result = new JaugeListe(c.getInt(0), c.getString(1), c.getString(4), c.getInt(2), c.getInt(3));
-            return result;
+            return new JaugeListe(c.getInt(0), c.getString(1), c.getString(4), c.getInt(2), c.getInt(3));
         } else {
             return null;
         }

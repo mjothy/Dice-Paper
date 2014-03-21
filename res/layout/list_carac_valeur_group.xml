@@ -14,7 +14,7 @@
             android:layout_centerVertical="true"
             android:layout_alignParentRight="true"
             android:id="@+id/modifyButton"
-            android:text="->"/>
+            android:text="@string/modifyLogo"/>
     <TextView
             android:id="@+id/components"
             android:layout_width="fill_parent"

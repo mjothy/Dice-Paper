@@ -3,8 +3,9 @@ package edu.jdr.DicePaper.models;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import edu.jdr.DicePaper.models.DAO.*;
+import edu.jdr.DicePaper.models.DAO.FichePersonnageDAO;
 import edu.jdr.DicePaper.models.DAO.Liste.*;
+import edu.jdr.DicePaper.models.DAO.UniversDAO;
 import edu.jdr.DicePaper.models.DAO.Valeur.*;
 
 /**

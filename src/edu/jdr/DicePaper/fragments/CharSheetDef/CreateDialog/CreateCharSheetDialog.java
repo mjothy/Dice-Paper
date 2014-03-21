@@ -18,8 +18,6 @@ import edu.jdr.DicePaper.models.table.FichePersonnage;
  * Created by mario on 20/02/14.
  */
 public class CreateCharSheetDialog extends DialogFragment {
-    private Button cancel = null;
-    private Button validate = null;
     private EditText name = null;
     private String univName;
 
@@ -35,8 +33,8 @@ public class CreateCharSheetDialog extends DialogFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.create_univers_dialog, container, false);
-        cancel = (Button) v.findViewById(R.id.cancel);
-        validate = (Button) v.findViewById(R.id.validUniverse);
+        Button cancel = (Button) v.findViewById(R.id.cancel);
+        Button validate = (Button) v.findViewById(R.id.validUniverse);
         name = (EditText) v.findViewById(R.id.univName);
         validate.setOnClickListener(validateListener);
         cancel.setOnClickListener(cancelListener);

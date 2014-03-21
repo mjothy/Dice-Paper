@@ -14,7 +14,7 @@
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:id="@+id/delButton"
-            android:text="-"
+            android:text="@string/removeLogo"
             android:layout_alignParentRight="true"/>
 
     <Button
@@ -23,7 +23,7 @@
             android:layout_width="wrap_content"
             android:layout_centerVertical="true"
             android:id="@+id/addButton"
-            android:text="+"
+            android:text="@string/addLogo"
             android:layout_alignRight="@id/delButton"/>
     <TextView
             android:id="@+id/components"
@@ -32,7 +32,6 @@
             android:layout_toLeftOf="@id/addButton"
             android:gravity="center"
             android:layout_centerVertical="true"
-            android:paddingLeft="?android:attr/expandableListPreferredItemPaddingLeft"
-            android:textSize="17dp"/>
+            style="@style/sublist"/>
 
 </RelativeLayout>

@@ -14,7 +14,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/lancer"
-            android:id="@+id/lancer" android:textSize="20dp"/>
+            android:id="@+id/lancer"
+            style="@style/p"/>
 
     <LinearLayout
             android:layout_marginBottom="15dp"
@@ -30,7 +31,7 @@
                     android:layout_height="wrap_content"
                     android:text="@string/nbDice"
                     android:id="@+id/nbDice"
-                    android:textSize="18dp"/>
+                    style="@style/p"/>
             <NumberPicker
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -49,7 +50,7 @@
                     android:layout_height="wrap_content"
                     android:text="@string/typeDice"
                     android:id="@+id/deftypedice"
-                    android:textSize="18dp"/>
+                    style="@style/p"/>
             <NumberPicker
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -66,7 +67,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/orderDice"
-                    android:textSize="18dp"/>
+                    style="@style/p"/>
             <CheckBox
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -75,7 +76,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/sumDice"
-                    android:textSize="18dp"/>
+                    style="@style/p"/>
             <CheckBox
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -94,11 +95,13 @@
     <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/diceare" android:text="@string/results" android:textSize="20dp"/>
+            android:id="@+id/diceare"
+            android:text="@string/results"
+            style="@style/p"/>
     <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="18dp"
-            android:id="@+id/results"/>
+            android:id="@+id/results"
+            style="@style/p"/>
 
 </LinearLayout>

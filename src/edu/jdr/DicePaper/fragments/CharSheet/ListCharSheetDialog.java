@@ -19,8 +19,8 @@ import java.util.ArrayList;
  * Created by mario on 20/02/14.
  */
 public class ListCharSheetDialog extends DialogFragment {
-    ArrayList<FichePersonnage> listCharSheet = null;
-    int goal;
+    private ArrayList<FichePersonnage> listCharSheet = null;
+    private int goal;
     public static final int LOAD = 1;
     public static final int DELETE = 2;
     private String charSheetToDelete;

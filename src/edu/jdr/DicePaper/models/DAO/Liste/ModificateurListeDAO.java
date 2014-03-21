@@ -33,8 +33,7 @@ public class ModificateurListeDAO extends DAOBase {
     public ModificateurListe getModListe(int id){
         Cursor c = mDb.rawQuery("SELECT * FROM "+TABLE_NAME+" WHERE "+KEY+" = ?", new String[]{String.valueOf(id)});
         if(c.moveToFirst()){
-            ModificateurListe result = new ModificateurListe(c.getInt(0), c.getString(1), c.getInt(2));
-            return result;
+            return new ModificateurListe(c.getInt(0), c.getString(1), c.getInt(2));
         } else {
             return null;
         }

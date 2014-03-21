@@ -8,12 +8,12 @@ import java.util.ArrayList;
  * Created by paulyves on 2/19/14.
  */
 public class CaracteristiqueValeur {
-    protected int key;
-    protected float baseValue;
-    protected float modifiedValue;
-    protected String fiche;
-    protected CaracteristiqueListe relatedList;
-    protected ArrayList<ModificateurValeur> linkedModificateur;
+    private int key;
+    private float baseValue;
+    private float modifiedValue;
+    private String fiche;
+    private CaracteristiqueListe relatedList;
+    private ArrayList<ModificateurValeur> linkedModificateur;
 
     public CaracteristiqueValeur(float baseValue, float modifiedValue, String fiche, CaracteristiqueListe relatedList) {
         this.baseValue = baseValue;

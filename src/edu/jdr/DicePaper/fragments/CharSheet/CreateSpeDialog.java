@@ -17,8 +17,6 @@ import edu.jdr.DicePaper.models.table.Valeur.Specialisation;
  * Created by paulyves on 2/25/14.
  */
 public class CreateSpeDialog extends DialogFragment {
-    private Button cancel = null;
-    private Button validate = null;
     private EditText name = null;
     private int compId;
 
@@ -34,8 +32,8 @@ public class CreateSpeDialog extends DialogFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.create_component_dialog, container, false);
-        cancel = (Button) v.findViewById(R.id.cancel);
-        validate = (Button) v.findViewById(R.id.validate);
+        Button cancel = (Button) v.findViewById(R.id.cancel);
+        Button validate = (Button) v.findViewById(R.id.validate);
         name = (EditText) v.findViewById(R.id.name);
         validate.setOnClickListener(validateListener);
         cancel.setOnClickListener(cancelListener);

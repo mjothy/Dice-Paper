@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="ok">Ok</string>
+    <string name="ok">OK</string>
     <string name="cancel">Cancel</string>
 
     <string name="newUniverse">Create a Univers</string>
@@ -10,7 +10,6 @@
 
     <string name="defineUnivTitle">Define the universe</string>
     <string name="defineCharSheet">Define the character sheet template</string>
-    <string name="defineDiceRoll">Define the dice rolls</string>
 
     <string name="addCharac">Add a characteristic</string>
     <string name="addJauge">Add a gauge</string>
@@ -25,4 +24,8 @@
     <string name="roll">Roll</string>
 
     <string name="refreshPeers">Find other users</string>
+
+    <string name="modifyLogo">-></string>
+    <string name="addLogo">+</string>
+    <string name="removeLogo">-</string>
 </resources>

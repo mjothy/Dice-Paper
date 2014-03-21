@@ -24,10 +24,6 @@ import edu.jdr.DicePaper.fragments.CharSheetDef.CreateDialog.CreateUtilitaireDia
 public class CharSheetDef extends Fragment {
 
     private String universeName;
-    private Button addCharac;
-    private Button addJauge;
-    private Button addComp;
-    private Button addUtil;
     private static final int CREATECARAC = 0;
     private static final int CREATEJAUGE = 1;
     private static final int CREATECOMP  = 2;
@@ -52,31 +48,28 @@ public class CharSheetDef extends Fragment {
         TextView title = (TextView) v.findViewById(R.id.univTitle);
         title.setText(universeName);
 
-        addCharac = (Button) v.findViewById(R.id.addCharac);
-
+        Button addCharac = (Button) v.findViewById(R.id.addCharac);
         addCharac.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 showDialogType(CREATECARAC);
             }
         });
-
-        addJauge = (Button) v.findViewById((R.id.addJauge));
-
+        Button addJauge = (Button) v.findViewById((R.id.addJauge));
         addJauge.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 showDialogType(CREATEJAUGE);
             }
         });
-        addUtil = (Button) v.findViewById((R.id.addUtil));
+        Button addUtil = (Button) v.findViewById((R.id.addUtil));
         addUtil.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 showDialogType(CREATEUTIL);
             }
         });
-        addComp = (Button) v.findViewById((R.id.addComp));
+        Button addComp = (Button) v.findViewById((R.id.addComp));
         addComp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

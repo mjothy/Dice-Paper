@@ -6,7 +6,6 @@ import android.database.Cursor;
 import edu.jdr.DicePaper.models.DAO.FichePersonnageDAO;
 import edu.jdr.DicePaper.models.DAO.Liste.CaracteristiqueListeDAO;
 import edu.jdr.DicePaper.models.DAO.Liste.ModificateurListeDAO;
-import edu.jdr.DicePaper.models.DAO.Liste.UtilitaireListeDAO;
 import edu.jdr.DicePaper.models.DAO.UniversDAO;
 import edu.jdr.DicePaper.models.DAOBase;
 import edu.jdr.DicePaper.models.table.FichePersonnage;
@@ -57,8 +56,7 @@ public class ModificateurValeurDAO extends DAOBase {
     public ModificateurValeur getModificateurValeur(int id){
         Cursor c = mDb.rawQuery("SELECT * FROM "+TABLE_NAME+" WHERE "+KEY+" = ?", new String[]{String.valueOf(id)});
         if(c.moveToFirst()){
-            ModificateurValeur result = new ModificateurValeur(c.getInt(0), c.getFloat(1), c.getString(3));
-            return result;
+            return new ModificateurValeur(c.getInt(0), c.getFloat(1), c.getString(3));
         } else {
             return null;
         }

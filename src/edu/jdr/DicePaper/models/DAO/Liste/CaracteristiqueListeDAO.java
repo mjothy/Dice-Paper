@@ -4,8 +4,8 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import edu.jdr.DicePaper.models.DAO.UniversDAO;
-import edu.jdr.DicePaper.models.table.Liste.CaracteristiqueListe;
 import edu.jdr.DicePaper.models.DAOBase;
+import edu.jdr.DicePaper.models.table.Liste.CaracteristiqueListe;
 
 import java.util.ArrayList;
 
@@ -34,15 +34,13 @@ public class CaracteristiqueListeDAO extends DAOBase {
     public CaracteristiqueListe getCaracListe(int id){
         Cursor c = mDb.rawQuery("SELECT * FROM "+TABLE_NAME+" WHERE "+KEY+" = ?", new String[]{String.valueOf(id)});
         if(c.moveToFirst()){
-            CaracteristiqueListe result = new CaracteristiqueListe(c.getInt(0), c.getString(1), c.getString(2));
-            return result;
+            return new CaracteristiqueListe(c.getInt(0), c.getString(1), c.getString(2));
         } else {
             return null;
         }
     }
 
     /**
-     *
      * @param caracId
      * @return number of rows affected
      */

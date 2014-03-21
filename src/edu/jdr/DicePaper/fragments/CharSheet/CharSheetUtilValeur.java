@@ -24,7 +24,6 @@ public class CharSheetUtilValeur extends Fragment {
     private String universeName;
     private String charName;
 
-    private ArrayList<UtilitaireValeur> utilList;
     private ListView utilValeurView;
 
     /**
@@ -56,10 +55,10 @@ public class CharSheetUtilValeur extends Fragment {
         UtilitaireValeurDAO manager = new UtilitaireValeurDAO(getActivity());
         manager.open();
         manager.initializeNewValues(fichePersonnage);
-        utilList = manager.getAllUtilitaireValeur(charName);
+        ArrayList<UtilitaireValeur> utilList = manager.getAllUtilitaireValeur(charName);
         manager.close();
         UtilitaireValeurAdapter<UtilitaireValeur> adapter = new UtilitaireValeurAdapter<UtilitaireValeur>(getActivity(),
-                                                                    R.layout.list_utilitaire_valeur_component,utilList);
+                                                                    R.layout.list_utilitaire_valeur_component, utilList);
         utilValeurView.setAdapter(adapter);
     }
 

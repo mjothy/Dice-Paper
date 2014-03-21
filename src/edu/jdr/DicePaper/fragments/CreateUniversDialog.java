@@ -17,8 +17,6 @@ import edu.jdr.DicePaper.models.DAO.UniversDAO;
  * Created by paulyves on 1/21/14.
  */
 public class CreateUniversDialog extends DialogFragment {
-    private Button cancel = null;
-    private Button validate = null;
     private EditText name = null;
 
     public static CreateUniversDialog newInstance(int title){
@@ -32,8 +30,8 @@ public class CreateUniversDialog extends DialogFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.create_univers_dialog, container, false);
-        cancel = (Button) v.findViewById(R.id.cancel);
-        validate = (Button) v.findViewById(R.id.validUniverse);
+        Button cancel = (Button) v.findViewById(R.id.cancel);
+        Button validate = (Button) v.findViewById(R.id.validUniverse);
         name = (EditText) v.findViewById(R.id.univName);
         validate.setOnClickListener(validateListener);
         cancel.setOnClickListener(cancelListener);

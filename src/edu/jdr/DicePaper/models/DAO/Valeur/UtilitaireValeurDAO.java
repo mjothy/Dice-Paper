@@ -55,8 +55,7 @@ public class UtilitaireValeurDAO extends DAOBase {
     public UtilitaireValeur getUtilitaireValeur(int id){
         Cursor c = mDb.rawQuery("SELECT * FROM "+TABLE_NAME+" WHERE "+KEY+" = ?", new String[]{String.valueOf(id)});
         if(c.moveToFirst()){
-            UtilitaireValeur result = new UtilitaireValeur(c.getInt(0), c.getString(1), c.getString(3));
-            return result;
+            return new UtilitaireValeur(c.getInt(0), c.getString(1), c.getString(3));
         } else {
             return null;
         }

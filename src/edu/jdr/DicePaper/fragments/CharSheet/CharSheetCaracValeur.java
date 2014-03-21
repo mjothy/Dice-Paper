@@ -29,7 +29,6 @@ public class CharSheetCaracValeur extends Fragment {
     private String universeName;
     private String charName;
 
-    private ArrayList<CaracteristiqueValeur> caracList;
     private ExpandableListView caracValeurView;
 
     /**
@@ -61,7 +60,7 @@ public class CharSheetCaracValeur extends Fragment {
         FichePersonnage fichePersonnage = new FichePersonnage(charName,0,universeName);
         caracManager.open();
         caracManager.initializeNewValues(fichePersonnage);
-        caracList = caracManager.getAllCaracteristiqueValeur(charName);
+        ArrayList<CaracteristiqueValeur> caracList = caracManager.getAllCaracteristiqueValeur(charName);
         caracManager.close();
         ModificateurValeurDAO modManager = new ModificateurValeurDAO(getActivity());
         modManager.open();

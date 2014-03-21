@@ -26,7 +26,6 @@ import java.util.List;
 public class CharSheetDefCaracList extends Fragment {
     private String universeName;
 
-    private ArrayList<CaracteristiqueListe> caracList;
     private ExpandableListView caracListView;
     private int componentId;
     private int componentPosition;
@@ -57,7 +56,7 @@ public class CharSheetDefCaracList extends Fragment {
     public void setCarac(){
         CaracteristiqueListeDAO caracManager = new CaracteristiqueListeDAO(getActivity());
         caracManager.open();
-        caracList = caracManager.getAllCaracList(universeName);
+        ArrayList<CaracteristiqueListe> caracList = caracManager.getAllCaracList(universeName);
         caracManager.close();
         ModificateurListeDAO modManager = new ModificateurListeDAO(getActivity());
         modManager.open();

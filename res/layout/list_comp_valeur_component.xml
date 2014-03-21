@@ -13,7 +13,7 @@
             android:layout_width="wrap_content"
             android:layout_alignParentRight="true"
             android:id="@+id/addSpeButton"
-            android:text="+"/>
+            android:text="@string/addLogo"/>
 
     <Button
             android:layout_marginLeft="15dp"
@@ -21,15 +21,13 @@
             android:layout_width="wrap_content"
             android:id="@+id/modifyButton"
             android:layout_toLeftOf="@id/addSpeButton"
-            android:text="->"/>
+            android:text="@string/modifyLogo"/>
     <TextView
             android:id="@+id/components"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_toLeftOf="@id/modifyButton"
             android:layout_gravity="center"
-            android:gravity="center_horizontal"
-            android:paddingLeft="?android:attr/expandableListPreferredItemPaddingLeft"
-            android:textSize="17dp"/>
+            style="@style/sublist"/>
 
 </RelativeLayout>

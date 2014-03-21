@@ -8,11 +8,8 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.TextView;
 import edu.jdr.DicePaper.R;
-import edu.jdr.DicePaper.activity.CharSheetDefSwipper;
 import edu.jdr.DicePaper.activity.CharSheetSwipper;
-import edu.jdr.DicePaper.models.table.Liste.ModificateurListe;
 import edu.jdr.DicePaper.models.table.Valeur.Equipement;
-import edu.jdr.DicePaper.models.table.Valeur.UtilitaireValeur;
 
 import java.util.List;
 

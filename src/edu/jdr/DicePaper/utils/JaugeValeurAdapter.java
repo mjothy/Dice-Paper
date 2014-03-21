@@ -11,7 +11,6 @@ import android.widget.TextView;
 import edu.jdr.DicePaper.R;
 import edu.jdr.DicePaper.activity.CharSheetSwipper;
 import edu.jdr.DicePaper.models.table.Valeur.JaugeValeur;
-import edu.jdr.DicePaper.models.table.Valeur.UtilitaireValeur;
 
 import java.util.List;
 

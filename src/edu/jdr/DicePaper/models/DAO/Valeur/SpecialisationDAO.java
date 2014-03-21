@@ -3,12 +3,7 @@ package edu.jdr.DicePaper.models.DAO.Valeur;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
-import edu.jdr.DicePaper.models.DAO.FichePersonnageDAO;
-import edu.jdr.DicePaper.models.DAO.Liste.CaracteristiqueListeDAO;
-import edu.jdr.DicePaper.models.DAO.Liste.JaugeListeDAO;
 import edu.jdr.DicePaper.models.DAOBase;
-import edu.jdr.DicePaper.models.table.Liste.ModificateurListe;
-import edu.jdr.DicePaper.models.table.Valeur.JaugeValeur;
 import edu.jdr.DicePaper.models.table.Valeur.Specialisation;
 
 import java.util.ArrayList;
@@ -48,8 +43,7 @@ public class SpecialisationDAO extends DAOBase {
     public Specialisation getSpecialisation(int id){
         Cursor c = mDb.rawQuery("SELECT * FROM "+TABLE_NAME+" WHERE "+KEY+" = ?", new String[]{String.valueOf(id)});
         if(c.moveToFirst()){
-            Specialisation result = new Specialisation(c.getInt(0), c.getString(1), c.getFloat(2), c.getInt(3));
-            return result;
+            return new Specialisation(c.getInt(0), c.getString(1), c.getFloat(2), c.getInt(3));
         } else {
             return null;
         }

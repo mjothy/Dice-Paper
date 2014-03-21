@@ -9,9 +9,7 @@ import android.widget.Button;
 import android.widget.TextView;
 import edu.jdr.DicePaper.R;
 import edu.jdr.DicePaper.activity.CharSheetSwipper;
-import edu.jdr.DicePaper.models.table.Valeur.CaracteristiqueValeur;
 import edu.jdr.DicePaper.models.table.Valeur.CompetenceValeur;
-import edu.jdr.DicePaper.models.table.Valeur.ModificateurValeur;
 import edu.jdr.DicePaper.models.table.Valeur.Specialisation;
 
 import java.util.HashMap;

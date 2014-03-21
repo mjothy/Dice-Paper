@@ -24,7 +24,6 @@ public class CharSheetJaugeValeur extends Fragment {
     private String universeName;
     private String charName;
 
-    private ArrayList<JaugeValeur> jaugeList;
     private ListView jaugeValeurView;
 
     /**
@@ -56,10 +55,10 @@ public class CharSheetJaugeValeur extends Fragment {
         JaugeValeurDAO manager = new JaugeValeurDAO(getActivity());
         manager.open();
         manager.initializeNewValues(fichePersonnage);
-        jaugeList = manager.getAllJaugeValeur(charName);
+        ArrayList<JaugeValeur> jaugeList = manager.getAllJaugeValeur(charName);
         manager.close();
         JaugeValeurAdapter<JaugeValeur> adapter = new JaugeValeurAdapter<JaugeValeur>(getActivity(),
-                R.layout.list_jauge_valeur_component,jaugeList);
+                R.layout.list_jauge_valeur_component, jaugeList);
         jaugeValeurView.setAdapter(adapter);
     }
 

@@ -1,6 +1,5 @@
 package edu.jdr.DicePaper.fragments.CharSheet.UpdateDialog;
 
-import android.app.Activity;
 import android.app.DialogFragment;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -12,16 +11,12 @@ import android.widget.Toast;
 import edu.jdr.DicePaper.R;
 import edu.jdr.DicePaper.activity.CharSheetSwipper;
 import edu.jdr.DicePaper.models.DAO.Valeur.EquipementDAO;
-import edu.jdr.DicePaper.models.DAO.Valeur.UtilitaireValeurDAO;
 import edu.jdr.DicePaper.models.table.Valeur.Equipement;
-import edu.jdr.DicePaper.models.table.Valeur.UtilitaireValeur;
 
 /**
  * Created by mario on 04/03/14.
  */
 public class UpdateInventaireDialog extends DialogFragment {
-    private Button cancel = null;
-    private Button validate = null;
     private EditText name = null;
     private EditText description = null;
     private Equipement equipement = null;
@@ -38,8 +33,8 @@ public class UpdateInventaireDialog extends DialogFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.create_equipement_dialog, container, false);
-        cancel = (Button) v.findViewById(R.id.cancel);
-        validate = (Button) v.findViewById(R.id.validate);
+        Button cancel = (Button) v.findViewById(R.id.cancel);
+        Button validate = (Button) v.findViewById(R.id.validate);
         name = (EditText) v.findViewById(R.id.name);
         name.setText(equipement.getNom());
         description = (EditText) v.findViewById(R.id.description);
