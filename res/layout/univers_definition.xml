@@ -31,9 +31,4 @@
             android:layout_height="wrap_content"
             android:id="@+id/defineCharSheet"
             android:text="@string/defineCharSheet"/>
-    <Button
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/defineDiceRoll"
-            android:text="@string/defineDiceRoll"/>
 </LinearLayout>

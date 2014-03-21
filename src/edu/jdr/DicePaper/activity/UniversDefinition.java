@@ -17,7 +17,6 @@ import edu.jdr.DicePaper.R;
 public class UniversDefinition extends Activity {
     private String universeName;
     private Button defineCharSheet;
-    private Button defineDiceRoll;
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,7 +27,6 @@ public class UniversDefinition extends Activity {
 
         //initializing buttons
         defineCharSheet = (Button) findViewById(R.id.defineCharSheet);
-        defineDiceRoll = (Button) findViewById(R.id.defineDiceRoll);
         defineCharSheet.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
