@@ -14,16 +14,17 @@ import edu.jdr.DicePaper.models.table.Valeur.Specialisation;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.TreeMap;
 
 /**
  * Created by paulyves on 2/25/14.
  */
 public class CompValeurExpListAdapter<T,S> extends ExpListAdapter {
     public CompValeurExpListAdapter(Context context, List<T> listDataHeader,
-                                     HashMap<T, List<S>> listChildData) {
+                                    TreeMap<T, List<S>> listChildData) {
         super(context,listDataHeader,listChildData);
     }
-    public CompValeurExpListAdapter(Context context, HashMap<T, List<S>> listChildData) {
+    public CompValeurExpListAdapter(Context context, TreeMap<T, List<S>> listChildData) {
         super(context,listChildData);
     }
 

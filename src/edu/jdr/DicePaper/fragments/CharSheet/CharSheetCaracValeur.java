@@ -21,6 +21,7 @@ import edu.jdr.DicePaper.utils.CaracValeurExpListAdapter;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.TreeMap;
 
 /**
  * Created by mario on 20/02/14.
@@ -70,7 +71,7 @@ public class CharSheetCaracValeur extends Fragment {
         }
         modManager.close();
 
-        HashMap<CaracteristiqueValeur,List<ModificateurValeur>> theMap = new HashMap<CaracteristiqueValeur, List<ModificateurValeur>>();
+        TreeMap<CaracteristiqueValeur,List<ModificateurValeur>> theMap = new TreeMap<CaracteristiqueValeur, List<ModificateurValeur>>();
         for(CaracteristiqueValeur carac : caracList){
             theMap.put(carac, carac.getLinkedModificateur());
         }

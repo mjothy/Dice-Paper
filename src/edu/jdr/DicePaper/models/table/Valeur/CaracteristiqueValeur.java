@@ -7,7 +7,7 @@ import java.util.ArrayList;
 /**
  * Created by paulyves on 2/19/14.
  */
-public class CaracteristiqueValeur {
+public class CaracteristiqueValeur implements Comparable<CaracteristiqueValeur>{
     private int key;
     private float baseValue;
     private float modifiedValue;
@@ -88,5 +88,10 @@ public class CaracteristiqueValeur {
     @Override
     public String toString(){
         return relatedList.toString()+" : "+Float.toString(baseValue);
+    }
+
+    @Override
+    public int compareTo(CaracteristiqueValeur other){
+        return relatedList.compareTo(other.relatedList);
     }
 }

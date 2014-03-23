@@ -19,6 +19,7 @@ import edu.jdr.DicePaper.utils.CaracDefExpListAdapter;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.TreeMap;
 
 /**
  * Created by paulyves on 2/8/14.
@@ -65,7 +66,7 @@ public class CharSheetDefCaracList extends Fragment {
         }
         modManager.close();
 
-        HashMap<CaracteristiqueListe,List<ModificateurListe>> theMap = new HashMap<CaracteristiqueListe, List<ModificateurListe>>();
+        TreeMap<CaracteristiqueListe,List<ModificateurListe>> theMap = new TreeMap<CaracteristiqueListe, List<ModificateurListe>>();
         for(CaracteristiqueListe carac : caracList){
             theMap.put(carac, carac.getLinkedModificateur());
         }

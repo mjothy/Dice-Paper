@@ -18,6 +18,7 @@ import edu.jdr.DicePaper.models.table.Liste.ModificateurListe;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.TreeMap;
 
 /**
  * Created by paulyves on 2/9/14.
@@ -27,10 +28,10 @@ import java.util.List;
  */
 public class CaracDefExpListAdapter<T,S> extends ExpListAdapter {
     public CaracDefExpListAdapter(Context context, List<T> listDataHeader,
-                                  HashMap<T, List<S>> listChildData) {
+                                  TreeMap<T, List<S>> listChildData) {
         super(context,listDataHeader,listChildData);
     }
-    public CaracDefExpListAdapter(Context context, HashMap<T, List<S>> listChildData) {
+    public CaracDefExpListAdapter(Context context, TreeMap<T, List<S>> listChildData) {
         super(context,listChildData);
     }
 

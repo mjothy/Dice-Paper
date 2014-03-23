@@ -78,7 +78,7 @@ public class JaugeValeurDAO extends DAOBase {
                 ", "+joinTable+"."+outerKey+", "+JaugeListeDAO.NOM+", "+UniversDAO.KEY+", "+
                 JaugeListeDAO.MIN+", "+JaugeListeDAO.MAX+
                 " FROM "+TABLE_NAME+" JOIN "+joinTable+" ON "+TABLE_NAME+"."+outerKey+" = "+joinTable+"."+outerKey+
-                " WHERE "+FichePersonnageDAO.KEY+" = ?", new String[]{charName});
+                " WHERE "+FichePersonnageDAO.KEY+" = ? ORDER BY "+JaugeListeDAO.NOM, new String[]{charName});
         ArrayList<JaugeValeur> results = new ArrayList<JaugeValeur>();
         JaugeListe jaugeListe;
         JaugeValeur jaugeValeur;

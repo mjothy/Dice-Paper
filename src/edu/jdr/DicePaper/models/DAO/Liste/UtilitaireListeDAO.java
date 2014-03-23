@@ -57,7 +57,8 @@ public class UtilitaireListeDAO extends DAOBase {
     }
 
     public ArrayList<UtilitaireListe> getAllUtilitaireListe(String univ){
-        Cursor c = mDb.rawQuery("SELECT * FROM "+TABLE_NAME+" WHERE "+UniversDAO.KEY+" = ?", new String[]{univ});
+        Cursor c = mDb.rawQuery("SELECT * FROM "+TABLE_NAME+" WHERE "+UniversDAO.KEY+" = ? ORDER BY "+NOM,
+                                new String[]{univ});
         ArrayList<UtilitaireListe> results = new ArrayList<UtilitaireListe>();
         while (c.moveToNext()){
             results.add(new UtilitaireListe(c.getInt(0), c.getString(1), c.getString(2)));

@@ -60,7 +60,7 @@ public class EquipementDAO extends DAOBase {
     }
 
     public ArrayList<Equipement> getAllEquipement(String charName){
-        Cursor c = mDb.rawQuery("SELECT * FROM "+TABLE_NAME+" WHERE "+FichePersonnageDAO.KEY+" = ? "+" GROUP BY "+NOM, new String[]{charName});
+        Cursor c = mDb.rawQuery("SELECT * FROM "+TABLE_NAME+" WHERE "+FichePersonnageDAO.KEY+" = ? "+" ORDER BY "+NOM, new String[]{charName});
         ArrayList<Equipement> results = new ArrayList<Equipement>();
         while (c.moveToNext()){
             results.add(new Equipement(c.getInt(0), c.getString(1), c.getString(2), c.getString(3)));

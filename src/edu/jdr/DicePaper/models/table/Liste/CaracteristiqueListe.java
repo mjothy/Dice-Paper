@@ -6,7 +6,7 @@ import java.util.List;
 /**
  * Created by paulyves on 1/28/14.
  */
-public class CaracteristiqueListe extends MasterListe{
+public class CaracteristiqueListe extends MasterListe {
     private List<ModificateurListe> linkedModificateur;
 
     public CaracteristiqueListe(String nom, String nomUnivers) {

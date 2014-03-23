@@ -23,6 +23,7 @@ import edu.jdr.DicePaper.utils.CompValeurExpListAdapter;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.TreeMap;
 
 /**
  * Created by paulyves on 2/25/14.
@@ -71,7 +72,7 @@ public class CharSheetCompValeur extends Fragment {
         }
         speManager.close();
 
-        HashMap<CompetenceValeur,List<Specialisation>> theMap = new HashMap<CompetenceValeur, List<Specialisation>>();
+        TreeMap<CompetenceValeur,List<Specialisation>> theMap = new TreeMap<CompetenceValeur, List<Specialisation>>();
         for(CompetenceValeur comp : compList){
             theMap.put(comp, comp.getLinkedSpecialisation());
         }

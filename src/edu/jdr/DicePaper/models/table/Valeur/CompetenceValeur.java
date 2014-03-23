@@ -7,7 +7,7 @@ import java.util.ArrayList;
 /**
  * Created by paulyves on 2/19/14.
  */
-public class CompetenceValeur {
+public class CompetenceValeur implements Comparable<CompetenceValeur>{
     protected int key;
     protected float baseValue;
     protected float modifiedValue;
@@ -88,5 +88,10 @@ public class CompetenceValeur {
     @Override
     public String toString(){
         return Float.toString(baseValue)+" ("+Float.toString(modifiedValue)+")";
+    }
+
+    @Override
+    public int compareTo(CompetenceValeur other){
+        return relatedList.compareTo(other.relatedList);
     }
 }

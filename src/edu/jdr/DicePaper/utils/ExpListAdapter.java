@@ -8,6 +8,7 @@ import android.widget.BaseExpandableListAdapter;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.TreeMap;
 
 /**
  * Created by mario on 20/02/14.
@@ -17,15 +18,15 @@ public abstract class ExpListAdapter <T,S> extends BaseExpandableListAdapter {
     protected Context _context;
     protected List<T> _listDataHeader; // header titles
     // child data in format of header title, child title
-    protected HashMap<T, List<S>> _listDataChild;
+    protected TreeMap<T, List<S>> _listDataChild;
 
     public ExpListAdapter(Context context, List<T> listDataHeader,
-                                     HashMap<T, List<S>> listChildData) {
+                          TreeMap<T, List<S>> listChildData) {
         this._context = context;
         this._listDataHeader = listDataHeader;
         this._listDataChild = listChildData;
     }
-    public ExpListAdapter(Context context, HashMap<T, List<S>> listChildData) {
+    public ExpListAdapter(Context context, TreeMap<T, List<S>> listChildData) {
         this._context = context;
         _listDataHeader = new ArrayList<T>();
         for(T key : listChildData.keySet()){

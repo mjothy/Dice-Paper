@@ -14,16 +14,17 @@ import edu.jdr.DicePaper.models.table.Valeur.ModificateurValeur;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.TreeMap;
 
 /**
  * Created by mario on 20/02/14.
  */
 public class CaracValeurExpListAdapter<T,S> extends ExpListAdapter {
     public CaracValeurExpListAdapter(Context context, List<T> listDataHeader,
-                                  HashMap<T, List<S>> listChildData) {
+                                     TreeMap<T, List<S>> listChildData) {
         super(context,listDataHeader,listChildData);
     }
-    public CaracValeurExpListAdapter(Context context, HashMap<T, List<S>> listChildData) {
+    public CaracValeurExpListAdapter(Context context, TreeMap<T, List<S>> listChildData) {
         super(context,listChildData);
     }
 

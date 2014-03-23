@@ -73,7 +73,7 @@ public class UtilitaireValeurDAO extends DAOBase {
         Cursor c = mDb.rawQuery("SELECT "+KEY+", "+VALEUR+", "+FichePersonnageDAO.KEY+
                 ", "+joinTable+"."+outerKey+", "+UtilitaireListeDAO.NOM+", "+ UniversDAO.KEY+
                 " FROM "+TABLE_NAME+" JOIN "+joinTable+" ON "+TABLE_NAME+"."+outerKey+" = "+joinTable+"."+outerKey+
-                " WHERE "+FichePersonnageDAO.KEY+" = ?", new String[]{charName});
+                " WHERE "+FichePersonnageDAO.KEY+" = ? ORDER BY "+UtilitaireListeDAO.NOM, new String[]{charName});
         ArrayList<UtilitaireValeur> results = new ArrayList<UtilitaireValeur>();
         UtilitaireListe utilListe;
         UtilitaireValeur utilitaireValeur;

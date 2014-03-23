@@ -3,7 +3,7 @@ package edu.jdr.DicePaper.models.table.Liste;
 /**
  * Created by mario on 06/02/14.
  */
-public class MasterListe {
+public class MasterListe implements Comparable<MasterListe>{
     protected int id;
     protected String nom;
     protected String nomUnivers;
@@ -50,5 +50,10 @@ public class MasterListe {
     @Override
     public String toString(){
         return nom;
+    }
+
+    @Override
+    public int compareTo(MasterListe other){
+        return nom.compareTo(other.nom);
     }
 }

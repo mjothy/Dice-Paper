@@ -50,7 +50,8 @@ public class CompetenceListeDAO extends DAOBase {
     }
 
     public ArrayList<CompetenceListe> getAllCompetence(String univ){
-        Cursor c = mDb.rawQuery("SELECT * FROM "+TABLE_NAME+" WHERE "+UniversDAO.KEY+" = ?", new String[]{univ});
+        Cursor c = mDb.rawQuery("SELECT * FROM "+TABLE_NAME+" WHERE "+UniversDAO.KEY+" = ? ORDER BY "+NOM,
+                                new String[]{univ});
         ArrayList<CompetenceListe> results = new ArrayList<CompetenceListe>();
         while (c.moveToNext()){
             results.add(new CompetenceListe(c.getInt(0), c.getString(1), c.getString(2)));

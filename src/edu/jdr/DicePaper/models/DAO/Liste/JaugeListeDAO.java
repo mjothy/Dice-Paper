@@ -63,7 +63,8 @@ public class JaugeListeDAO extends DAOBase {
     }
 
     public ArrayList<JaugeListe> getAllJaugeListe(String univ){
-        Cursor c = mDb.rawQuery("SELECT * FROM "+TABLE_NAME+" WHERE "+UniversDAO.KEY+" = ?", new String[]{univ});
+        Cursor c = mDb.rawQuery("SELECT * FROM "+TABLE_NAME+" WHERE "+UniversDAO.KEY+" = ? ORDER BY "+NOM,
+                                new String[]{univ});
         ArrayList<JaugeListe> results = new ArrayList<JaugeListe>();
         while (c.moveToNext()){
             results.add(new JaugeListe(c.getInt(0), c.getString(1), c.getString(4), c.getInt(2), c.getInt(3)));
