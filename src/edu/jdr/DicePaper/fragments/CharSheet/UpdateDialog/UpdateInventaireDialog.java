@@ -51,7 +51,7 @@ public class UpdateInventaireDialog extends DialogFragment {
             String tempName = name.getText().toString();
             String tempDescription = description.getText().toString();
             long result = -1;
-            if(!(tempDescription.isEmpty()) && !(tempName.isEmpty())){
+            if(!(tempName.isEmpty())){
                 equipement.setNom(tempName);
                 equipement.setDescription(tempDescription);
                 EquipementDAO manager = new EquipementDAO(getActivity());
